@@ -5,6 +5,15 @@ use App\Http\Resources\Favorite;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+
 $a=extraer_datos_db();
 $con=conectar_db($a['host'],$a['database'],$a['user'],$a['password'],$a['port']);
 $datos=run();
@@ -427,10 +436,12 @@ function e($row){
 }
 function obtenerTodo(){
     // Configuración de la conexión a la base de datos (reemplaza con tus propios valores)
-    $dsn = 'pgsql:host=localhost;dbname=laravel';
-    $username = 'postgres';
-    $password = '1234';
-    $options = [
+    $dsn = 'pgsql:host=' . env('DB_HOST') . ';port=' . env('DB_PORT') . ';dbname=' . env('DB_DATABASE');
+    $username = env('DB_USERNAME');
+    $password = env('DB_PASSWORD');
+
+
+     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
@@ -485,7 +496,7 @@ function obtenerTodo(){
 
         salida($_SESSION["usuario"], "Datos actualizados", true);
     } catch (PDOException $e) {
-        salida(null, "Error al conectar a la base de datos: " . $e->getMessage(), false);
+         salida(null, "Error al conectar a la base de datos: " . $e->getMessage(), false);
     }
 }
 
@@ -1347,9 +1358,9 @@ function guardarOpinionOrden() {
     $user_rating    = intval($_GET['user_rating']);
 
     try {   
-        $dsn = "pgsql:host=localhost;dbname=laravel";
-        $username = "postgres";
-        $password = 1234;
+        $dsn = "pgsql:host=" . env('DB_HOST') . ";port=" . env('DB_PORT') . ";dbname=" . env('DB_DATABASE');
+        $username = env('DB_USERNAME');
+        $password = env('DB_PASSWORD');
 
         // Establecer conexión PDO
         $pdo = new PDO($dsn, $username, $password);
@@ -2050,63 +2061,60 @@ function limpiar($var){
     }
 }
 
-function conectar_db($host,$base_dato,$usuario,$clave,$puerto){
-    $host = "localhost";
-    $database = "laravel";
-    $user = "postgres";
-    $password = "1234";
-    $port = "5432";
-    
-    // Conexión PDO
+function conectar_db(){
+    $host = getenv('DB_HOST') ?: '127.0.0.1';
+    $database = getenv('DB_DATABASE') ?: 'postgres';
+    $user = getenv('DB_USERNAME') ?: 'postgres';
+    $password = getenv('DB_PASSWORD') ?: 'postgres';
+    $port = getenv('DB_PORT') ?: '5432';
+
     try {
-        $dsn = "pgsql:host=$host;port=$port;dbname=$database;user=$user;password=$password";
-        $dbconn = new PDO($dsn);
-        // Configuración adicional de PDO si es necesario
-        return $dbconn;
+        $dsn = "pgsql:host=$host;port=$port;dbname=$database";
+        $pdo = new PDO($dsn, $user, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+        return $pdo;
 
     } catch (PDOException $e) {
-        echo "Error al conectar a la base de datos PostgreSQL: " . $e->getMessage();
+        echo "Error al conectar a la base de datos: " . $e->getMessage();
+        return null;
     }
-
 }
 function q($sql) {
     $arr = array();
 
     try {
-        // Crear una conexión PDO a la base de datos
-        $dsn = "pgsql:host=127.0.0.1;dbname=laravel";
-        $username = "postgres";
-        $password = "1234";
-        $pdo = new PDO($dsn, $username, $password);
+        // Leer variables desde el .env
+        $dsn = "pgsql:host=" . env('DB_HOST') . ";port=" . env('DB_PORT') . ";dbname=" . env('DB_DATABASE');
+        $username = env('DB_USERNAME');
+        $password = env('DB_PASSWORD');
 
-        // Preparar y ejecutar la consulta SQL
+        // Crear conexión PDO
+        $pdo = new PDO($dsn, $username, $password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+
+        // Ejecutar consulta
         $stmt = $pdo->query($sql);
-
-        // Obtener los resultados como un array asociativo
         $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Verificar si se devolvieron resultados
-        if (count($arr) > 0) {
-            return $arr;
-        } else {
-            return true; // Consulta ejecutada correctamente pero no devuelve resultados
-        }
+        return count($arr) > 0 ? $arr : true;
     } catch (PDOException $e) {
-        // Manejar errores de PDO
-        $errorMessage = $e->getMessage(); // Obtener el mensaje completo de la excepción
-        
-
-        salidaNueva(null, "Error de PDO: $errorMessage", false);
+        salidaNueva(null, "Error de PDO: " . $e->getMessage(), false);
 
         switch ($e->getCode()) {
-            case '23505': // El registro ya existe
+            case '23505':
                 salidaNueva(null, "El registro ya existe.", false);
                 break;
-            case '22P02': // Error de tipo de datos
-                salidaNueva(null, "Disculpe intente mas tarde..", false);
+            case '22P02':
+                salidaNueva(null, "Disculpe, intente más tarde.", false);
                 break;
             default:
-                salidaNueva(null, "Disculpe, intente mas tarde...", false);
+                salidaNueva(null, "Disculpe, intente más tarde...", false);
         }
     }
 

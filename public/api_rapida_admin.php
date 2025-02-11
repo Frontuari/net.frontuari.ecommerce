@@ -77,13 +77,24 @@ function extraer_datos_db(){
 function limpiar($var){
     return trim(explode('=',$var)[1]);
 }
-function conectar_db($host,$base_dato,$usuario,$clave,$puerto){
-    $conn = pg_connect("host=127.0.0.1 port=5432 dbname=laravel user=postgres password=1234")
-    or die('No se ha podido conectar: ' . pg_last_error());
+function conectar_db() {
+    // Obtener las variables de entorno desde Laravel
+    $host = env('DB_HOST', '127.0.0.1');
+    $port = env('DB_PORT', '5432');
+    $database = env('DB_DATABASE', 'postgres');
+    $user = env('DB_USERNAME', 'postgres');
+    $password = env('DB_PASSWORD', 'postgres');
 
-    return $dbconn;
-    
+    // Crear la conexión a PostgreSQL
+    $conn = pg_connect("host=$host port=$port dbname=$database user=$user password=$password");
+
+    if (!$conn) {
+        die('No se ha podido conectar: ' . pg_last_error());
+    }
+
+    return $conn;
 }
+
 function q($sql){
     $arr=array();
    // $result = pg_query($sql) or die(false);

@@ -67,25 +67,25 @@ class UsersTableSeeder extends Seeder
             ),
             2 => 
             array (
-                'id' => 13,
+                'id' => 21, // UsuarioMAsterMind
                 'last_ip' => NULL,
-                'last_activity' => '2020-01-22 23:04:38',
-                'password' => bcrypt('12345'),
-                'cant_orders' => NULL,
+                'last_activity' => now(),
+                'password' => bcrypt('admin'), // Encriptado con bcrypt
+                'cant_orders' => 0,
                 'peoples_id' => NULL,
                 'coins_id' => NULL,
                 'groups_id' => NULL,
-                'name' => 'leo',
-                'email' => 'superadmin777@gmail.com',
+                'name' => 'Super Admin',
+                'email' => 'admin@admin.com',
                 'validateemail' => NULL,
-                'email_verified_at' => NULL,
-                'failed_attempts' => NULL,
-                'purchase_quantity' => NULL,
-                'remember_token' => 'p9hh4uo7QTJBrZxu1S6AwUQ09L9tImNl1K6PywgiBZDBbcmnhYcTX05CodLO',
-                'created_at' => '2020-01-23 03:04:38',
-                'updated_at' => '2020-04-13 21:49:46',
+                'email_verified_at' => now(),
+                'failed_attempts' => 0,
+                'purchase_quantity' => 0,
+                'remember_token' => NULL,
+                'created_at' => now(),
+                'updated_at' => now(),
                 'avatar' => 'users/default.png',
-                'role_id' => 1,
+                'role_id' => 1, // Ajusta según la lógica de roles en tu sistema
                 'settings' => '{"locale":"es"}',
             ),
             3 => 
