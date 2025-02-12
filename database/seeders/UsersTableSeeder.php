@@ -75,7 +75,7 @@ class UsersTableSeeder extends Seeder
                 'peoples_id' => NULL,
                 'coins_id' => NULL,
                 'groups_id' => NULL,
-                'name' => 'Super Admin',
+                'name' => 'admin',
                 'email' => 'admin@admin.com',
                 'validateemail' => NULL,
                 'email_verified_at' => now(),

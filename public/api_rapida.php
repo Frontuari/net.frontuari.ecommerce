@@ -1354,8 +1354,8 @@ function guardarOpinionOrden() {
     // Obtener valores de $_SESSION y $_GET
     $users_id       = $_SESSION['usuario']['id'];
     $orders_id      = $_GET['orders_id'];
-    $opinion        = $_GET['opinion'];
-    $user_rating    = intval($_GET['user_rating']);
+    $opinion= $_GET['opinion'];
+    $user_rating = intval($_GET['user_rating']);
 
     try {   
         $dsn = "pgsql:host=" . env('DB_HOST') . ";port=" . env('DB_PORT') . ";dbname=" . env('DB_DATABASE');
@@ -2061,12 +2061,15 @@ function limpiar($var){
     }
 }
 
-function conectar_db(){
-    $host = getenv('DB_HOST') ?: '127.0.0.1';
-    $database = getenv('DB_DATABASE') ?: 'postgres';
-    $user = getenv('DB_USERNAME') ?: 'postgres';
-    $password = getenv('DB_PASSWORD') ?: 'postgres';
-    $port = getenv('DB_PORT') ?: '5432';
+
+function conectar_db() {
+    // Cargar variables de entorno desde el archivo .env
+
+    $host = $_ENV['DB_HOST'] ?? '127.0.0.1';
+    $database = $_ENV['DB_DATABASE'] ?? 'postgres';
+    $user = $_ENV['DB_USERNAME'] ?? 'postgres';
+    $password = $_ENV['DB_PASSWORD'] ?? 'postgres';
+    $port = $_ENV['DB_PORT'] ?? '5432';
 
     try {
         $dsn = "pgsql:host=$host;port=$port;dbname=$database";
