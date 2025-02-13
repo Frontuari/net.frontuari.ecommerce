@@ -439,7 +439,7 @@ function procesar(data, evento) {
 					if (pagado.toFixed(2) >= parseFloat(ra.total_pay)) {
 						ordenPagada = true;
 						div_image_top.innerHTML = '<img style="margin:0 auto" src="img/topPagado.png">';
-						div_completo_metodo_pago.innerHTML = '<div class="row mt-4"><div class="col-md-12 center h3 text-center" style="color:#67BE5A"><br><br><br><br>Desde bio mercados agradecemos su preferencia, nuestra prioridad es ofrecer el mejor servicio siempre. ¡Inspirados en servir!!</div></div>';
+						div_completo_metodo_pago.innerHTML = '<div class="row mt-4"><div class="col-md-12 center h3 text-center" style="color:#203876"><br><br><br><br>Desde bio mercados agradecemos su preferencia, nuestra prioridad es ofrecer el mejor servicio siempre. ¡Inspirados en servir!!</div></div>';
 					}
 
 				}
@@ -557,7 +557,7 @@ function procesar(data, evento) {
 
 				factura.innerHTML = `
 				<div class="row">
-					<div class="col-md-12 text-center h4" style="color:#67BE5A">Detalles de la orden #${id_orders}</div>
+					<div class="col-md-12 text-center h4" style="color:#203876">Detalles de la orden #${id_orders}</div>
 				</div>
 
 				<div id="cuadroPagado"></div>

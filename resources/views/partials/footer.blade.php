@@ -5,8 +5,9 @@
 					<div class="footer-block">
 						<img src="/assets/img/Logo.png" alt="Bio Mercados">
 						
-						<p><span>Teléfono:</span> (0241) 335.4101</p>
-						<p><span>Correo:</span> contacto@biomercados.com.ve</p>
+						<p><span>Teléfono:</span> Número de teléfono</p>
+						<p><span>Correo:</span> contacto@sitio.com.ve</p>
+						<!-- TODO: Arreglar info de contacto -->
 					</div>
 				</div>
 				<div class="col-lg-2">
@@ -31,7 +32,8 @@
 						</a>
 						<div class="collapse" id="apps">
 							<div class="card card-body">
-								<a href="https://play.google.com/store/apps/details?id=com.bio.biomercados"><img src="/assets/img/descarga-app-android-bio.svg"></a>
+								<a href="#"><img src="/assets/img/descarga-app-android-bio.svg"></a> 
+								<!-- TODO: ^^ Arreglar link de la app en la playstore ^^ -->
 								<!-- <a href="#"><img src="/assets/img/descarga-app-ios-bio.svg"></a> -->
 							</div>
 						</div>
@@ -71,11 +73,11 @@
 					</div>
 					<div class="col-md-4">
 						<ul class="social-icons">							
-							<li><a href="https://www.youtube.com/channel/UCV4s57Vi8rw_0aPXNfDJEcw" target="_blank" class="slyoutube"></a></li>
-							<li><a href="https://twitter.com/BioMercadosVe/" target="_blank" class="sltwitter"></a></li>
-							<li><a href="https://www.instagram.com/biomercadosVE/" target="_blank" class="slinstagram"></a></li>
-							<li><a href="https://www.facebook.com/BioMercadosVe/" target="_blank" class="slfacebook"></a></li>
-						</ul>
+							<li><a href="#" target="_blank" class="slyoutube"></a></li>
+							<li><a href="#" target="_blank" class="sltwitter"></a></li>
+							<li><a href="#" target="_blank" class="slinstagram"></a></li>
+							<li><a href="#" target="_blank" class="slfacebook"></a></li>
+						</ul> <!-- TODO: ^^ Reemplazar links de los sitios ^^ -->
 					</div>
 				</div>
 				
@@ -389,7 +391,7 @@
 	.loaderb {
 		margin: 0 auto;
 		border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #67BE5A; /* Blue */
+  border-top: 8px solid #203876; /* Blue */
   border-radius: 50%;
   width: 60px;
   height: 60px;

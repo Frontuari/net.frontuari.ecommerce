@@ -749,9 +749,9 @@ array (
 array (
 'id' => 4,
 'titulo' => 'Felicidades por su primera compra',
-'body' => '<div style="text-align: center; background-color: #7fbc01;"><img src="https://i.imgur.com/bqhoBSp.png" width="200" /></div>
+'body' => '<div style="text-align: center; background-color: #203876;"><img src="https://i.imgur.com/bqhoBSp.png" width="200" /></div>
 <p>&nbsp;</p>
-<div style="text-align: center;">Felicidades<br /><br /><hr /><a href="http://www.biomercados.com.ve">www.biomercados.com.ve</a></div>',
+<div style="text-align: center;">Felicidades<br /><br /><hr /><a href="#">linksitio.com</a></div>', // TODO: Reemplazar por link del sitio web
 'status' => 'A',
 'imagen' => NULL,
 'created_at' => '2020-04-15 23:26:31',
@@ -762,9 +762,9 @@ array (
 array (
 'id' => 3,
 'titulo' => 'Bienvenido',
-'body' => '<div style="text-align: center; background-color: #7fbc01;"><img src="https://i.imgur.com/bqhoBSp.png" width="200" /></div>
+'body' => '<div style="text-align: center; background-color: #203876;"><img src="https://i.imgur.com/bqhoBSp.png" width="200" /></div>
 <p>&nbsp;</p>
-<div style="text-align: center;">Bienvenido a Biomercados<br /><br /><hr /><a href="http://www.biomercados.com.ve">www.biomercados.com.ve</a></div>',
+<div style="text-align: center;">Bienvenido a Biomercados<br /><br /><hr /><a href="#">linksitio.com</a></div>',// TODO: Reemplazar por link del sitio web
 'status' => 'A',
 'imagen' => NULL,
 'created_at' => '2020-04-15 23:25:12',

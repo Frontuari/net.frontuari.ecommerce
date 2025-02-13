@@ -488,7 +488,7 @@ function voucherMalo($codigo,$nroTarjeta,$nroOrden,$detalles){
         <td></td>
         <td width='300' style=' font-family: \"Courier New\", Courier, monospace; padding:20px; border:1px solid #000; border-radius: 15px; border-style: dashed; width:300px; margin:0 auto; background:#F2F2F2'>
         <div >
-<div style='text-align:center;background:#67BE5A; color:white; margin-bottom:10px' >VOUCHER<BR>ELECTRÓNICO<BR></div>
+<div style='text-align:center;background:#203876; color:white; margin-bottom:10px' >VOUCHER<BR>ELECTRÓNICO<BR></div>
 Alimentos FM, C.A.<br>
 RIF: J-31721968-6<br>
 <br>
@@ -526,7 +526,7 @@ function voucher($status,$nroTarjeta,$nroOrden,$nroReferencia){
         <td></td>
         <td width='300' style=' font-family: \"Courier New\", Courier, monospace; padding:20px; border:1px solid #000; border-radius: 15px; border-style: dashed; width:300px; margin:0 auto; background:#F2F2F2'>
         <div >
-<div style='text-align:center;background:#67BE5A; color:white; margin-bottom:10px' >VOUCHER<BR>ELECTRÓNICO<BR></div>
+<div style='text-align:center;background:#203876; color:white; margin-bottom:10px' >VOUCHER<BR>ELECTRÓNICO<BR></div>
 Alimentos FM, C.A.<br>
 RIF: J-31721968-6<br>
 <br>

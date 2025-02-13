@@ -2019,7 +2019,7 @@ function salida_list($row,$bueno=true){
 }
 function plantillaCodigo($codigo){
     return '
-    <!--<div style="text-align:center; background-color: #7FBC01;">
+    <!--<div style="text-align:center; background-color: #203876;">
     <img width="200" src="https://i.imgur.com/bqhoBSp.png" titñe="Bio en Línea">
     
     </div>
@@ -2029,7 +2029,7 @@ function plantillaCodigo($codigo){
     <b><span style="font-size:25px">'.$codigo.'</span></b>
     <br>
     Recuerde revisar tu bandeja <b>spam<b> o correos no deseados
-    <br><hr><a href="http://www.biomercados.com.ve">www.biomercados.com.ve</a>
+    <br><hr><a href="#">linksitio.com</a> // TODO: Reemplazar por link del sitio web
     </div> 
     
  ';
@@ -2175,18 +2175,18 @@ function seguro($varb){
 
 function plantillaContacto($message){
     return '
-    <div style="text-align:center; background-color: #7FBC01;">
+    <div style="text-align:center; background-color: #203876;">
     <img width="200" src="https://i.imgur.com/bqhoBSp.png" titñe="Bio en Línea">
     
     </div>
     <br>
     <div style="text-align:center">
-    Ha sido contactado mediante el portal de <a href="http://www.biomercados.com.ve/contacto">contacto</a> por:
+    Ha sido contactado mediante el portal de <a href="#">contacto</a> por: // TODO: Reemplazar por link del sitio web
     <br>
     <p><strong>Nombre y Apellido:</strong>&nbsp;'.$message['name'].'<br>
     <strong>Email:</strong>&nbsp;'.$message['email'].'<br>
     <strong>Mensaje:</strong>&nbsp;'.$message['message'].'<br>
-    <br><hr><a href="http://www.biomercados.com.ve">www.biomercados.com.ve</a>
+    <br><hr><a href="#">linksitio.com</a> // TODO: Reemplazar por link del sitio web
     </div> 
     
  ';
