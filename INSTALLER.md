@@ -29,6 +29,14 @@
 
 ## Configuración del servidor
 
+## INSTALAR ESTO SI EL VOYAGGER YA TIENE LA BASE DE DATOS IMPORTADA
+php artisan vendor:publish --provider="TCG\Voyager\VoyagerServiceProvider" --tag=voyager_assets
+## CREAR EL ARCHIVO STORAGE
+
+php artisan storage:link
+
+
+
 ### si no conoce el postgresql (Windows)
 * activar la extensión pdo_pgsql y pgsql en el php.ini
 

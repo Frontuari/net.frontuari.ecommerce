@@ -8002,8 +8002,534 @@ render._withStripped = true;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function render() {};
-var staticRenderFns = [];
+var render = function render() {
+  var _vm$userData;
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "col-12"
+  }, [_vm._l((_vm$userData = _vm.userData) === null || _vm$userData === void 0 ? void 0 : _vm$userData.directions, function (direction, index) {
+    return _c("div", {
+      key: direction.id,
+      staticClass: "address-section",
+      attrs: {
+        id: "address-" + index
+      }
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-lg-4"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-1-state"
+      }
+    }, [_vm._v("Estados:")]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.state_id,
+        expression: "direction.state_id"
+      }],
+      staticClass: "form-control",
+      on: {
+        change: [function ($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(direction, "state_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }, function ($event) {
+          return _vm.loadMunicipio($event);
+        }]
+      }
+    }, [_c("option", {
+      attrs: {
+        value: ""
+      }
+    }, [_vm._v("Seleccione")]), _vm._v(" "), _vm._l(_vm.Allstates, function (state) {
+      return _c("option", {
+        key: state.id,
+        domProps: {
+          value: state.id
+        }
+      }, [_vm._v(_vm._s(state.name))]);
+    })], 2)])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-4"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-prov"
+      }
+    }, [_vm._v("Municipio:")]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.region_id,
+        expression: "direction.region_id"
+      }],
+      staticClass: "form-control",
+      on: {
+        change: [function ($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(direction, "region_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }, function ($event) {
+          return _vm.loadParroquia($event);
+        }]
+      }
+    }, [_c("option", {
+      attrs: {
+        value: ""
+      }
+    }, [_vm._v("Seleccione")]), _vm._v(" "), _vm._l(_vm.regions, function (region) {
+      return _c("option", {
+        key: region.id,
+        domProps: {
+          value: region.id
+        }
+      }, [_vm._v(_vm._s(region.name))]);
+    })], 2)])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-4"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-prov"
+      }
+    }, [_vm._v("Parroquia:")]), _vm._v(" "), _c("select", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.city_id,
+        expression: "direction.city_id"
+      }],
+      staticClass: "form-control",
+      on: {
+        change: function change($event) {
+          var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+            return o.selected;
+          }).map(function (o) {
+            var val = "_value" in o ? o._value : o.value;
+            return val;
+          });
+          _vm.$set(direction, "city_id", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+        }
+      }
+    }, [_c("option", {
+      attrs: {
+        value: ""
+      }
+    }, [_vm._v("Seleccione")]), _vm._v(" "), _vm._l(_vm.cities, function (city) {
+      return _c("option", {
+        key: city.id,
+        domProps: {
+          value: city.id
+        }
+      }, [_vm._v(_vm._s(city.name))]);
+    })], 2)])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-6"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-name"
+      }
+    }, [_vm._v("Dirección Corta (ejm: Mi Casa,\n                        Mi Oficina):")]), _vm._v(" "), _vm._m(0, true), _vm._v(" "), _vm._m(1, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.address,
+        expression: "direction.address"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "address-name",
+        name: "address-name",
+        disabled: "disabled"
+      },
+      domProps: {
+        value: direction.address
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(direction, "address", $event.target.value);
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-6"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-urb"
+      }
+    }, [_vm._v("Urbanización / Empresa:")]), _vm._v(" "), _vm._m(2, true), _vm._v(" "), _vm._m(3, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.urb,
+        expression: "direction.urb"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "address-urb",
+        name: "address-urb",
+        disabled: "disabled"
+      },
+      domProps: {
+        value: direction.urb
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(direction, "urb", $event.target.value);
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-6"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-av"
+      }
+    }, [_vm._v("Sector, Avenida, calles,\n                        veredas:")]), _vm._v(" "), _vm._m(4, true), _vm._v(" "), _vm._m(5, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.sector,
+        expression: "direction.sector"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "address-av",
+        name: "address-av",
+        disabled: "disabled"
+      },
+      domProps: {
+        value: direction.sector
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(direction, "sector", $event.target.value);
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-6"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-num"
+      }
+    }, [_vm._v("Número de casa / Local / Apto /\n                        Piso:")]), _vm._v(" "), _vm._m(6, true), _vm._v(" "), _vm._m(7, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.nro_home,
+        expression: "direction.nro_home"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "address-num",
+        name: "address-num",
+        disabled: "disabled"
+      },
+      domProps: {
+        value: direction.nro_home
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(direction, "nro_home", $event.target.value);
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-6"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-post"
+      }
+    }, [_vm._v("Código postal:")]), _vm._v(" "), _vm._m(8, true), _vm._v(" "), _vm._m(9, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.zip_code,
+        expression: "direction.zip_code"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "address-post",
+        name: "address-post",
+        disabled: "disabled"
+      },
+      domProps: {
+        value: direction.zip_code
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(direction, "zip_code", $event.target.value);
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-6"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("label", {
+      attrs: {
+        "for": "address-ref"
+      }
+    }, [_vm._v("Punto de Referencia\n                        (opcional):")]), _vm._v(" "), _vm._m(10, true), _vm._v(" "), _vm._m(11, true), _vm._v(" "), _c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: direction.reference_point,
+        expression: "direction.reference_point"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        type: "text",
+        id: "address-ref",
+        name: "address-ref",
+        disabled: "disabled"
+      },
+      domProps: {
+        value: direction.reference_point
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+          _vm.$set(direction, "reference_point", $event.target.value);
+        }
+      }
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-12"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("button", {
+      staticClass: "btn btn-submit",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.saveDirection(direction, index);
+        }
+      }
+    }, [_vm._v("GUARDAR CAMBIOS")])])]), _vm._v(" "), _c("div", {
+      staticClass: "col-lg-12"
+    }, [_c("div", {
+      staticClass: "form-group"
+    }, [_c("button", {
+      staticClass: "btn btn-delete-section",
+      attrs: {
+        type: "button"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.deleteDirection(direction, index);
+        }
+      }
+    }, [_vm._v("Eliminar Dirección "), _c("img", {
+      attrs: {
+        src: "assets/img/eliminar-bio-mercados.svg"
+      }
+    })])])])])]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-12"
+  }, [_c("button", {
+    staticClass: "btn btn-add-section",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.showAddDirection();
+      }
+    }
+  }, [_vm._v("Agregar nueva dirección "), _c("img", {
+    attrs: {
+      src: "assets/img/nueva-direccion-bio-mercados.svg"
+    }
+  })])])], 2);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-edit-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/editar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-confirm-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/confirmar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-edit-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/editar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-confirm-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/confirmar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-edit-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/editar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-confirm-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/confirmar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-edit-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/editar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-confirm-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/confirmar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-edit-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/editar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-confirm-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/confirmar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-edit-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/editar-bio-mercados.svg"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("button", {
+    staticClass: "btn btn-confirm-info",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("img", {
+    attrs: {
+      src: "assets/img/confirmar-bio-mercados.svg"
+    }
+  })]);
+}];
+render._withStripped = true;
 
 
 /***/ }),
@@ -96893,7 +97419,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/recargas.png?bbf54d60188985b0bfb4844d3b7e21f9";
+module.exports = "/images/recargas.png?8cec9b7f05b67544fefc081db07774d2";
 
 /***/ }),
 
