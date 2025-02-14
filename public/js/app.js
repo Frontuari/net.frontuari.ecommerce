@@ -8368,7 +8368,7 @@ var render = function render() {
     }
   }, [_vm._v("Agregar nueva dirección "), _c("img", {
     attrs: {
-      src: "assets/img/-direnuevaccion-bio-mercados.svg"
+      src: "assets/img/nueva-direccion-bio-mercados.svg"
     }
   })])])], 2);
 };
@@ -9171,7 +9171,7 @@ var staticRenderFns = [function () {
     staticClass: "social-nav"
   }, [_c("li", [_c("a", {
     attrs: {
-      href: "https://www.facebook.com/BioMercadosVe/",
+      href: "#",
       target: "_blank"
     }
   }, [_c("img", {
@@ -9181,7 +9181,7 @@ var staticRenderFns = [function () {
     }
   })])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
-      href: "https://www.instagram.com/biomercadosVE/",
+      href: "#",
       target: "_blank"
     }
   }, [_c("img", {
@@ -9191,7 +9191,7 @@ var staticRenderFns = [function () {
     }
   })])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
-      href: "https://twitter.com/BioMercadosVe/",
+      href: "#",
       target: "_blank"
     }
   }, [_c("img", {
@@ -99373,8 +99373,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
