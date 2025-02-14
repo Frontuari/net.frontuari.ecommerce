@@ -102,7 +102,7 @@
     display: inline-flex;
     justify-content: center;
     font-style: italic;
-    color: #67BE5A;
+    color: #203876;
     width: 100%;
 }
 

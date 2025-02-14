@@ -134,11 +134,11 @@
 						<!---->
 						<div class="col-md-12">
 							<ul class="social-nav">
-								<li><a href="https://www.facebook.com/BioMercadosVe/" target="_blank"><img src="/assets/img/icono-facebook-bio.svg" alt="Facebook"></a></li>
-								<li><a href="https://www.instagram.com/biomercadosVE/" target="_blank"><img src="/assets/img/icono-instagram-bio.svg" alt="Instagram"></a></li>
-								<li><a href="https://twitter.com/BioMercadosVe/" target="_blank"><img src="/assets/img/icono-twitter-bio.svg" alt="Twitter"></a></li>
+								<li><a href="#" target="_blank"><img src="/assets/img/icono-facebook-bio.svg" alt="Facebook"></a></li>
+								<li><a href="#" target="_blank"><img src="/assets/img/icono-instagram-bio.svg" alt="Instagram"></a></li>
+								<li><a href="#" target="_blank"><img src="/assets/img/icono-twitter-bio.svg" alt="Twitter"></a></li>
 								<!--<li><a href="#"><img src="/assets/img/icono-youtube-bio.svg" alt="LinkedIn"></a></li>-->
-							</ul>
+							</ul> <!-- TODO: ^^ reemplazar links de los sitios ^^ -->
 						</div>
 						<div class="col-md-12">
 							<!-- no loggeado -->

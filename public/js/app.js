@@ -9171,7 +9171,7 @@ var staticRenderFns = [function () {
     staticClass: "social-nav"
   }, [_c("li", [_c("a", {
     attrs: {
-      href: "https://www.facebook.com/BioMercadosVe/",
+      href: "#",
       target: "_blank"
     }
   }, [_c("img", {
@@ -9181,7 +9181,7 @@ var staticRenderFns = [function () {
     }
   })])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
-      href: "https://www.instagram.com/biomercadosVE/",
+      href: "#",
       target: "_blank"
     }
   }, [_c("img", {
@@ -9191,7 +9191,7 @@ var staticRenderFns = [function () {
     }
   })])]), _vm._v(" "), _c("li", [_c("a", {
     attrs: {
-      href: "https://twitter.com/BioMercadosVe/",
+      href: "#",
       target: "_blank"
     }
   }, [_c("img", {

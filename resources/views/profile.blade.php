@@ -10,7 +10,7 @@ if(isset($_GET['orders_id'])){
 
 ?>
 
-<section class="jumbotron" style="background-image: url('assets/img/banner-titulos.png');">
+<section class="jumbotron" style="">
 		<div class="container">
 			<div class="text-center">
 				<h1>Carrito de Compras</h1>
@@ -29,7 +29,7 @@ if(isset($_GET['orders_id'])){
 		<div class="row">
 			<div class="col-md-8" id="div_completo_metodo_pago">
 				<div class="row">
-                    <div class="col-md-12 text-center h4" style="color:#67BE5A">Métodos de pago</div>
+                    <div class="col-md-12 text-center h4" style="color:#203876">Métodos de pago</div>
 				</div>
 				<div class="row">
                     <div class="col-md-12"><span class="text-danger">Importante:</span><br>
@@ -51,7 +51,7 @@ if(isset($_GET['orders_id'])){
 
 }else{
 	?>
-		<section class="jumbotron" style="background-image: url('assets/img/banner-titulos.png');">
+		<section class="jumbotron" style="background-image: url('');">
 		<div class="container">
 			<div class="text-center">
 				<h1>Mi Cuenta</h1>

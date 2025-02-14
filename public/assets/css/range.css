@@ -184,17 +184,17 @@
 
 .irs-bar {
     height: 10px; top: 33px;
-    border-top: 1px solid #7fbc01;
-    border-bottom: 1px solid #7fbc01;
-    background: #7fbc01;
+    border-top: 1px solid #203876;
+    border-bottom: 1px solid #203876;
+    background: #203876;
     background: linear-gradient(to top, rgb(127, 188, 1) 0%,rgb(127, 188, 1) 100%);
 }
     .irs-bar-edge {
         height: 10px; top: 33px;
         width: 14px;
-        border: 1px solid #7fbc01;
+        border: 1px solid #203876;
         border-right: 0;
-        background: #7fbc01;
+        background: #203876;
         background: linear-gradient(to top, rgba(66,139,202,1) 0%,rgba(127,195,232,1) 100%); /* W3C */
         border-radius: 16px 0 0 16px;
         -moz-border-radius: 16px 0 0 16px;
@@ -247,7 +247,7 @@
     font-size: 14px; line-height: 1.333;
     text-shadow: none;
     padding: 1px 5px;
-    background: #7fbc01;
+    background: #203876;
     border-radius: 3px;
     -moz-border-radius: 3px;
 }
@@ -260,7 +260,7 @@
 }
 .irs-grid-pol {
     opacity: 0.5;
-    background: #7fbc01;
+    background: #203876;
 }
 .irs-grid-pol.small {
     background: #999;

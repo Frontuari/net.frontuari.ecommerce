@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
     "/js/app.js": "/js/app.js?id=b89005524067026952e2",
+=======
+    "/js/app.js": "/js/app.js?id=a8087dc96e588fc71afc",
+>>>>>>> testLocal
     "/css/app.css": "/css/app.css?id=8324806388ef66fc33ac"
 }

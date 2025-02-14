@@ -8,9 +8,10 @@
 					<div class="register-content">
 						<h2><i>Informaci&oacute;n de contacto</i></h2>
 						<ul class="items">
-							<li><strong>Tel&eacute;fono :&nbsp;</strong><a href="tel:0241-4124100">0241-7141600</a></li>
-							<li><strong>Email :&nbsp;</strong><a href="mailto:contacto@biomercados.com.ve">contacto@biomercados.com.ve</a></li>
-							<li><strong>Direcci&oacute;n:</strong><a href="#">Sede Principal: Urb Mañongo, vía de Servicio, Naguanagua 2005, Carabobo.</a></li>
+							<li><strong>Tel&eacute;fono :&nbsp;</strong><a href="#">número de telefono</a></li>
+							<li><strong>Email :&nbsp;</strong><a href="#">contacto@sitio.com.ve</a></li>  
+							<li><strong>Direcci&oacute;n:</strong><a href="#">Sede Principal: Localización.</a></li>
+							<!-- TODO: ^^ Arreglar información de contacto ^^ -->
 						</ul>
 					</div>
 				</div>

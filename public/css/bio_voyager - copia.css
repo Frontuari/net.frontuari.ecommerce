@@ -116,7 +116,7 @@ a:hover{
 
 }
 .voyager .side-menu.sidebar-inverse .navbar li>a .icon{
-    color:#28b67a;
+    color:#203876;
 }
 .voyager .side-menu.sidebar-inverse .navbar li.active>a .icon{
     color:#80BC00;
@@ -124,14 +124,14 @@ a:hover{
 
 .voyager .side-menu.sidebar-inverse .navbar li>a:hover{
     background:#FFF;
-    color:#28b67a;
+    color:#203876;
 }
 
 .voyager .side-menu.sidebar-inverse .navbar li.dropdown>.panel-collapse{
     background:rgb(243, 243, 243);
 }
 .voyager .table>thead>tr>th{
-    background-color: #28b67a;
+    background-color: #203876;
     color:#000;
     font-weight: 800;
 }
@@ -141,13 +141,13 @@ a:hover{
 }
 
 .voyager .navbar.navbar-default .navbar-nav>li:hover>a, .voyager .navbar .navbar-nav>li:hover>a{
-    color:#28b67a;
+    color:#203876;
 }
 .bgimage{
 background: #80bc00;
 }
 .control-label{
-    color: #28b67a;
+    color: #203876;
 }
 .dimmer_nuevo{
     background: #FFF;
@@ -157,13 +157,13 @@ background: #80bc00;
     color:#000;
 }
 input[type=radio]:checked~.check:before{
-    background-color:#eba900;
+    background-color:#BF2420;
 }
 input[type=radio]:checked~.check{
-    border: 4px solid #eba900;
+    border: 4px solid #BF2420;
 }
 ul.radio li:hover .check{
-    border: 4px solid #eba900;
+    border: 4px solid #BF2420;
 }
 .page-title{
     font-weight: 100;
@@ -171,16 +171,16 @@ ul.radio li:hover .check{
     font-size:30px;
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected]{
-    background-color:#eba900;
+    background-color:#BF2420;
 }
 .app-container .content-container .side-menu .navbar-nav li.dropdown>a:after{
-    color:#28b67a;
+    color:#203876;
 }
 .btn-group->.btn, .btn-sm{
     padding: 0 3px 0 3px;
     font-size: 13px;
 }
 .voyager .pagination .active>a, .voyager .pagination .active>a:focus, .voyager .pagination .active>a:hover, .voyager .pagination .active>span:focus, .voyager .pagination .active>span:hover, .voyager .pagination .active span{
-    background: #eba900;
+    background: #BF2420;
     border-color:#da9c01;
 }
