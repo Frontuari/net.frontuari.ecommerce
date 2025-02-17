@@ -8368,7 +8368,7 @@ var render = function render() {
     }
   }, [_vm._v("Agregar nueva dirección "), _c("img", {
     attrs: {
-      src: "assets/img/-direnuevaccion-bio-mercados.svg"
+      src: "assets/img/nueva-direccion-bio-mercados.svg"
     }
   })])])], 2);
 };
@@ -8887,37 +8887,10 @@ var render = function render() {
     }
   }), _c("span", {
     staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e(), _vm._v(" "), !!_vm.userlogged ? _c("li", {
-    attrs: {
-      id: "nav-fav",
-      "data-toggle": "tooltip",
-      "data-placement": "bottom"
-    }
-  }, [_c("a", {
-    staticStyle: {
-      background: "#ED3928",
-      "border-radius": "8px",
-      "padding-right": "8px"
-    },
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticStyle: {
-      width: "25px !important",
-      height: "25px !important",
-      padding: "5px"
-    },
-    attrs: {
-      src: "/assets/img/icono-puntos-bio.svg",
-      alt: "Bio Wallet"
-    }
-  }), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.saldo))])])]) : _vm._e()])])])])]), _vm._v(" "), _c("nav", {
+  }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e()])])])])]), _vm._v(" "), _c("nav", {
     staticClass: "navbar navbar-expand-lg navbar-light color-white navbar-custom",
     staticStyle: {
-      width: "100%",
+      width: "80%",
       "background-color": "white",
       "border-bottom": "1px solid #ccc",
       padding: "0"
@@ -8926,51 +8899,18 @@ var render = function render() {
     staticClass: "container-fluid",
     staticStyle: {
       width: "100%",
-      position: "absolute",
-      padding: "10px 0"
+      position: "relative",
+      padding: "0px 0"
     }
   }, [_c("div", {
     attrs: {
       id: "mainNavbar"
     }
-  }, [_c("div", {
-    staticClass: "w-100 align-items-center",
-    attrs: {
-      id: "top-info"
-    }
-  }, [_vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12"
-  }, [_vm.userlogged ? _c("div", {
-    staticClass: "top-info-nav"
-  }, [_c("a", {
-    staticClass: "bio-points",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Bio Wallet"), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.saldo)), _c("img", {
-    attrs: {
-      src: "/assets/img/icono-puntos-bio.svg",
-      alt: "Bio Points"
-    }
-  })])]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/favoritos-bio.svg",
-      alt: "Favorites"
-    }
-  }), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e()])]), _vm._v(" "), _c("div", [_c("ul", {
+  }, [_vm._m(5), _vm._v(" "), _c("div", [_c("ul", {
     staticClass: "navbar-nav",
     staticStyle: {
       display: "flex",
-      "align-items": "center",
-      "padding-left": "10rem",
+      "align-items": "left",
       "padding-right": "15px"
     }
   }, [_c("li", {
@@ -8978,11 +8918,13 @@ var render = function render() {
     attrs: {
       id: "nav-categories"
     }
-  }, [_vm._m(7), _vm._v(" "), _c("div", {
+  }, [_vm._m(6), _vm._v(" "), _c("div", {
     staticClass: "dropdown-menu",
     staticStyle: {
       "margin-left": "-10px",
-      "background-color": "#203876"
+      "background-color": "#203876",
+      height: "600px",
+      "overflow-y": "scroll"
     },
     attrs: {
       "aria-labelledby": "dropdownMenu2"
@@ -9003,7 +8945,8 @@ var render = function render() {
       "justify-content": "center",
       "font-size": "18",
       "font-family": "Arial, Helvetica, sans-serif",
-      color: "#203876"
+      color: "#203876",
+      "padding-right": "15px"
     }
   }, [_vm._v("Hogar")]), _vm._v(" "), _vm._l(_vm.categories.slice(0, 5), function (cat) {
     return _c("li", {
@@ -9040,8 +8983,12 @@ var render = function render() {
     attrs: {
       id: "nav-all-categories"
     }
-  }, [_vm._m(8), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "dropdown-menu",
+    staticStyle: {
+      height: "600px",
+      "overflow-y": "scroll"
+    },
     attrs: {
       "aria-labelledby": "navbarCategories"
     }
@@ -9053,7 +9000,7 @@ var render = function render() {
         href: "/catalog?cat=" + cat.id
       }
     }, [_vm._v(_vm._s(cat.name))]);
-  }), 0)]), _vm._v(" "), _vm._m(9)], 2)])])])])]);
+  }), 0)]), _vm._v(" "), _vm._m(7)], 2)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -9150,6 +9097,11 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "w-100 align-items-center",
+    attrs: {
+      id: "top-info"
+    }
+  }, [_c("div", {
     staticClass: "col-md-12 text-right"
   }, [_c("button", {
     staticClass: "navbar-toggler toggle-menu",
@@ -9161,45 +9113,7 @@ var staticRenderFns = [function () {
       src: "/assets/img/x.svg",
       alt: "Menu Bars"
     }
-  })])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-md-12"
-  }, [_c("ul", {
-    staticClass: "social-nav"
-  }, [_c("li", [_c("a", {
-    attrs: {
-      href: "https://www.facebook.com/BioMercadosVe/",
-      target: "_blank"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/icono-facebook-bio.svg",
-      alt: "Facebook"
-    }
-  })])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "https://www.instagram.com/biomercadosVE/",
-      target: "_blank"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/icono-instagram-bio.svg",
-      alt: "Instagram"
-    }
-  })])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "https://twitter.com/BioMercadosVe/",
-      target: "_blank"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/icono-twitter-bio.svg",
-      alt: "Twitter"
-    }
-  })])])])]);
+  })])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -9217,12 +9131,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       width: "100%",
       display: "flex",
-      "align-items": "center",
-      "justify-content": "center"
+      "align-items": "left",
+      "justify-content": "center",
+      "padding-left": "100px"
     }
   }, [_c("img", {
     staticStyle: {
-      width: "35px"
+      width: "55px",
+      height: "35px",
+      "padding-right": "10px"
     },
     attrs: {
       src: "/assets/img/Menu.png",
@@ -9232,10 +9149,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "black",
       "font-weight": "800",
-      "font-size": "18px",
-      "font-family": "Arial, Helvetica, sans-serif"
+      "font-size": "16px",
+      "font-family": "Arial, Helvetica, sans-serif",
+      "padding-left": "15px",
+      "padding-right": "15px"
     }
-  }, [_vm._v("Todas las categoría")]), _vm._v(" "), _c("hr", {
+  }, [_vm._v("Todas las categorías")]), _vm._v(" "), _c("hr", {
     staticStyle: {
       width: "2px",
       height: "35px",
@@ -9248,26 +9167,6 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("a", {
-    staticClass: "nav-link dropdown-toggle",
-    attrs: {
-      href: "#",
-      id: "navbarCategories",
-      role: "button",
-      "data-toggle": "dropdown",
-      "aria-haspopup": "true",
-      "aria-expanded": "false"
-    }
-  }, [_c("span", {
-    staticClass: "dropdown-uppercase"
-  }, [_vm._v("Categorías")]), _vm._v(" "), _c("img", {
-    attrs: {
-      src: "/assets/img/flecha-izquierda-bio.svg"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("li", {
     staticClass: "nav-item dropdown",
     attrs: {
@@ -9275,7 +9174,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("a", {
     staticStyle: {
-      color: "#ED3928"
+      color: "#fff"
     },
     attrs: {
       href: "#",
@@ -9285,11 +9184,7 @@ var staticRenderFns = [function () {
       "aria-haspopup": "true",
       "aria-expanded": "false"
     }
-  }, [_vm._v("\n\t\t\t\t\t\t\t\tOfertas\n\t\t\t\t\t\t\t\t"), _c("img", {
-    attrs: {
-      src: "/assets/img/abajo-blanco-bio.svg"
-    }
-  })])]);
+  }, [_vm._v("\n\t\t\t\t\t\t\t\tOfertas\n\t\t\t\t\t\t\t")])]);
 }];
 render._withStripped = true;
 
@@ -13010,16 +12905,7 @@ var render = function render() {
     staticClass: "profile-info"
   }, [_vm.dataLoaded ? _c("h2", {
     staticClass: "profile-title"
-  }, [_vm._v(_vm._s(_vm.userData.name))]) : _vm._e(), _vm._v(" "), _c("p", {
-    staticClass: "bio-points"
-  }, [_vm._v("Mi saldo disponible"), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.userData.saldo)), _c("img", {
-    attrs: {
-      src: "assets/img/icono-puntos-bio.svg",
-      alt: "Bio Points"
-    }
-  })])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.userData.name))]) : _vm._e()])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
   }, [_c("div", {
     staticClass: "row"
@@ -14459,7 +14345,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "button"
     }
-  }, [_vm._v("GUARDAR\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tCAMBIOS")])])])])]);
+  }, [_vm._v("GUARDAR CAMBIOS")])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
