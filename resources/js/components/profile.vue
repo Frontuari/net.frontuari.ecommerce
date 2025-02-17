@@ -254,30 +254,24 @@
 												</div>
 											</form>
 										</div>
-										<div class="tab-pane fade" id="security" role="tabpanel"
-											aria-labelledby="security-tab">
+										<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
 											<form action="">
 												<div class="col-lg-6">
 													<div class="form-group">
-														<label for="currently-password">Confirma tu contraseña
-															actual:</label>
-														<input type="password" class="form-control" id="currently-password"
-															name="currently-password" value="">
+														<label for="currently-password">Confirma tu contraseña actual:</label>
+														<input type="password" class="form-control" id="currently-password" name="currently-password" v-model="userData.currentlypassword">
 													</div>
 													<div class="form-group">
 														<label for="new-password">Escribe la nueva contraseña:</label>
-														<input type="password" class="form-control" id="new-password"
-															name="new-password" value="">
+														<input type="password" class="form-control" id="new-password" name="newpassword" v-model="userData.newpassword">
 													</div>
 													<div class="form-group">
-														<label for="new-password-confirm">Repite la nueva
-															contraseña:</label>
-														<input type="password" class="form-control"
-															id="new-password-confirm" name="new-password-confirm" value="">
+														<label for="new-password-confirm">Repite la nueva contraseña:</label>
+														<input type="password" class="form-control" id="new-password-confirm" name="newpasswordconfirm" v-model="userData.newpasswordconfirm">
 													</div>
 													<div class="mt-5"></div>
 													<div class="form-group">
-														<button class="btn btn-submit" style="background-color: black" type="button">GUARDAR CAMBIOS</button>
+														<button class="btn btn-submit" @click="update_password(userData)" type="button">GUARDAR CAMBIOS</button>
 													</div>
 												</div>
 											</form>
@@ -842,6 +836,7 @@ import ModalProducto from './ModalProducto.vue';
 import ModalCalificacion from './ModalCalificacion.vue';
 import DireccionHabitacion from './DireccionHabitacion.vue';
 import DireccionUser from './DireccionUser.vue';
+import { error } from 'jquery';
 export default {
 	data() {
 		return {
@@ -902,7 +897,7 @@ export default {
 		
 	 async fetchData() {
     try {
-
+		// Cambiar la IP Local a la URLHOME
         const response = await axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosAll');
         // Verificar si la solicitud fue exitosa y si hay datos recibidos
 		console.log(response);
@@ -1078,7 +1073,121 @@ export default {
 				}
 
 				makeRequest();
-				},
+		},
+
+		update_password(user) {
+				const that = this;
+				console.log(user);
+
+				const user_data = {
+					...user,
+				};
+				const maxAttempts = 5; // Número máximo de intentos
+				const retryDelay = 1000; // Retraso inicial en ms
+				
+				// Validación de campos de contraseñas vacios
+				if (!user_data.newpassword || !user_data.newpasswordconfirm || !user_data.currentlypassword) {
+					Swal.fire(
+						'Error',
+						'Por favor, completa los campos requeridos.',
+						'error'
+					);
+					return; // Salir de la función si la validación falla
+
+				}
+
+				// Validación de que las contraseñas sean iguales
+				if (user_data.newpassword !== user_data.newpasswordconfirm) {
+					Swal.fire(
+						'Error',
+						'Las contraseñas no coinciden. Por favor, verifica e intenta de nuevo.',
+						'error'
+					);
+					return; // Salir de la función si las contraseñas no coinciden
+				}
+
+				// Validación de caracteres y signos especiales
+            	const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.{9,})/; // Al menos un carácter especial y más de 8 caracteres
+				if (!passwordPattern.test(user_data.newpassword)) {
+					Swal.fire(
+						'Error',
+						'La nueva contraseña debe tener más de 8 caracteres y al menos un signo especial.',
+						'error'
+					);
+					return; // Salir de la función si la validación de la contraseña falla
+				}
+
+				// Validación de la contraseña actual
+				async function validateCurrentPassword(attempts = 0) {
+					const password = new FormData()
+					password.append("password",user_data.currentlypassword)
+					try {
+						const response = await axios.post(URLHOME + 'api_rapida.php', password,
+							{
+							params: {
+    								evento: 'verifyPassword'
+								}
+							},
+						);
+						if (response.data.isValid){
+							return response.data.isValid;
+						}
+					} 
+					catch (error) {
+						if (error.response && error.response.status === 429 && attempts < maxAttempts) {
+							console.warn(`Intento ${attempts + 1} fallido. Esperando ${retryDelay * (attempts + 1)}ms antes de reintentar.`);
+							setTimeout(() => verifyPassword(attempts + 1), retryDelay * (attempts + 1));
+						} else {
+							console.log("Error en la verificación de contraseña:", error);
+							Swal.fire(
+								'Error',
+								'Hubo un problema al verificar tu contraseña. Por favor, intenta de nuevo más tarde.',
+								'error'
+							);
+							return;
+						}
+					}
+				}
+				validateCurrentPassword().then(isValid => {
+        			if (isValid) {
+            			// Proceder con la actualización de la contraseña
+            			changePassword();
+        			} 
+					else {
+						Swal.fire(
+							'Error',
+							'Contraseña actual inválida. Por favor, intenta de nuevo...',
+							'error'
+						);
+						return;
+        			}
+				})
+
+				async function changePassword(attempts = 0) {
+					const formData = new FormData();
+					formData.append("email",user_data.email);
+					formData.append("password",user_data.newpassword);
+					axios.post(URLHOME+'api_rapida.php?evento=changePassword',formData).then( (data) => {
+							Swal.fire("EosCommerce","¡Clave Cambiada con Exito!","success").then( result => {
+								document.location.href = '/';
+							});
+						}).catch(error => {
+							if (error.response && error.response.status === 429 && attempts < maxAttempts) {
+								console.warn(`Intento ${attempts + 1} fallido. Esperando ${retryDelay * (attempts + 1)}ms antes de reintentar.`);
+								setTimeout(() => verifyPassword(attempts + 1), retryDelay * (attempts + 1));
+							} 
+							else {
+								console.log("Error al actualizar la contraseña:", error);
+								Swal.fire({
+										icon: 'error',
+										title: 'Error',
+										text: "Hubo un error al actualizar la contraseña. Intente de nuevo más tarde.",
+									});
+							return false;
+						}
+					});
+            	}
+		},
 
 		async getStates() {
 			const response = await axios.get(URLSERVER + "api/states");
