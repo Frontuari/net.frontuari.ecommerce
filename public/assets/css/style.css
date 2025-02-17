@@ -800,6 +800,7 @@ header .dropdown-menu a:focus {
 
 .navbar #mainNavbar {
     width: 100%;
+    overflow-y: scroll;
 }
 
 .navbar .navbar-nav {
@@ -907,6 +908,7 @@ header .dropdown-menu a:focus {
     }
     .navbar #mainNavbar {
         width: 100%;
+        overflow-y: scroll;
     }
     .navbar-nav #nav-bios {
         order: 0;
@@ -2656,7 +2658,7 @@ input[type=checkbox]:checked+.custom-check span {
 
 .dropdown-menu-state {
     max-height: 250px;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .user-profile .dropdown-item {
@@ -3748,6 +3750,7 @@ section#offers{
 
 div#mainNavbar{
     margin-bottom: 20px !important;
+    overflow-y: scroll;
 }
 
 section#combos{

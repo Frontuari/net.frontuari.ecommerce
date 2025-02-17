@@ -19,8 +19,6 @@
 						</div>
 						<div class="profile-info">
 							<h2 class="profile-title" v-if="dataLoaded">{{ userData.name }}</h2>
-							<p class="bio-points">Mi saldo disponible<span class="quantity-span">{{ userData.saldo }}<img
-										src="assets/img/icono-puntos-bio.svg" alt="Bio Points"></span></p>
 						</div>
 					</div>
 				</div>
@@ -279,8 +277,7 @@
 													</div>
 													<div class="mt-5"></div>
 													<div class="form-group">
-														<button class="btn btn-submit" style="background-color: black" type="button">GUARDAR
-															CAMBIOS</button>
+														<button class="btn btn-submit" style="background-color: black" type="button">GUARDAR CAMBIOS</button>
 													</div>
 												</div>
 											</form>
