@@ -115,6 +115,12 @@ switch($evento) {
     case 'obtenerTodo':
         obtenerTodo();
     break;
+    case 'verifyPassword':
+        verifyPassword();
+    break;
+    case 'changePassword':
+        changePassword();
+    break;
     case 'obtenerDireccion':
         obtenerDireccion();
     break;
@@ -497,6 +503,78 @@ function obtenerTodo(){
         salida($_SESSION["usuario"], "Datos actualizados", true);
     } catch (PDOException $e) {
          salida(null, "Error al conectar a la base de datos: " . $e->getMessage(), false);
+    }
+}
+
+function verifyPassword(){
+    $dsn = 'pgsql:host=' . env('DB_HOST') . ';port=' . env('DB_PORT') . ';dbname=' . env('DB_DATABASE');
+    $username = env('DB_USERNAME');
+    $password = env('DB_PASSWORD');
+
+     $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+
+    try {
+        // Establecer conexión PDO
+        $pdo = new PDO($dsn, $username, $password, $options);
+
+        // Consulta para obtener los datos del usuario
+        $query = "SELECT password FROM users WHERE email = :email";
+
+        // Preparar y ejecutar la consulta de usuario
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(['email' => $_SESSION['usuario']['email']]);
+        $user = $stmt->fetch();
+        
+        if ($user) {
+            // Verifica que la contraseña actual sea igual a la registrada
+            if (password_verify(trim($_POST['password']), trim($user['password']))) {
+                echo json_encode(['isValid' => true]);
+            } 
+            else {
+                echo json_encode(['isValid' => false]);
+            }
+        } 
+        else {
+            echo json_encode(['isValid' => false]);
+        }
+    } 
+    catch (PDOException $e) {
+        echo json_encode(['error' => 'Error al conectar a la base de datos: ' . $e->getMessage()]);  
+    }
+}
+
+function changePassword(){
+    $dsn = 'pgsql:host=' . env('DB_HOST') . ';port=' . env('DB_PORT') . ';dbname=' . env('DB_DATABASE');
+    $username = env('DB_USERNAME');
+    $password = env('DB_PASSWORD');
+
+     $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+
+    // Establecer conexión PDO
+    $pdo = new PDO($dsn, $username, $password, $options);
+
+    //Obtener datos del formulario
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
+
+    // Preparar la consulta
+    $query = "UPDATE users SET password = :password WHERE email = :email";
+    $stmt = $pdo->prepare($query);
+
+    // Ejecutar la consulta con los parámetros
+    if ($stmt->execute([':password' => $password, ':email' => $email])) {
+        salida(null, "BIEN", true);
+    } 
+    else{
+        salida(null, "MAL", false);
     }
 }
 
