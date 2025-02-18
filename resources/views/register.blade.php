@@ -16,7 +16,7 @@
 				<div class="col-12 col-lg-6">
 					<div class="register-content">
 						<h2><i>Beneficios de ser usuario de</i></h2>
-						<h1>bio mercados</h1>
+						<h1>EOS Delivery</h1>
 						<ul class="items">
 							<li>Tendrá acceso a nuestra tienda virtual y nuestras aplicaciones móviles con una sola cuenta.</li>
 							<!-- <li>Podrá acumular y canjear sus puntos bio por productos y ahorrar dinero en las compras.</li> -->

@@ -9,14 +9,6 @@
 							<a href="tel:584241234567">+58 424 123 4567</a>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<ul class="social-nav">
-							<li><a href="#"><img src="/assets/img/icono-facebook-bio.svg" alt="Facebook"></a></li>
-							<li><a href="#"><img src="/assets/img/icono-instagram-bio.svg" alt="Instagram"></a></li>
-							<li><a href="#"><img src="/assets/img/icono-twitter-bio.svg" alt="Twitter"></a></li>
-							<li><a href="#"><img src="/assets/img/icono-linkedin-bio.svg" alt="LinkedIn"></a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</div> -->
@@ -109,9 +101,6 @@
 							<li id="nav-fav" v-if="userlogged" data-toggle="tooltip" data-placement="bottom" title="Haga click para ver sus favoritos">
 								<a href="/profile?tab=my-favorites"><img src="/assets/img/Favorito.png" alt="Favorites"><span class="quantity-span">{{cant_favorite}}</span></a>
 							</li>
-							<li id="nav-fav" data-toggle="tooltip" data-placement="bottom"  v-if="!!userlogged">
-								<a href="#" style="background: #ED3928; border-radius: 8px; padding-right: 8px;"><img src="/assets/img/icono-puntos-bio.svg" style="width: 25px !important; height: 25px !important; padding: 5px;" alt="Bio Wallet"><span class="quantity-span">{{saldo}}</span></a>
-							</li>
 
 							<!-- loggeado -->
 							<!--<li id="nav-logout"><a href="javascript:void(0)" @click="logout()"><img src="/assets/img/icono-salir-bio.png"></a></li>-->
@@ -122,8 +111,8 @@
 				</div>
 			</div>
 		</div>
-		<nav class="navbar navbar-expand-lg navbar-light color-white navbar-custom" style=" width: 100%; background-color: white; border-bottom: 1px solid #ccc; padding: 0;">
-			<div class="container-fluid" style=" width: 100%; position: absolute; padding: 10px 0;">
+		<nav class="navbar navbar-expand-lg navbar-light color-white navbar-custom" style=" width: 80%; background-color: white; border-bottom: 1px solid #ccc; padding: 0;">
+			<div class="container-fluid" style=" width: 100%; position: relative; padding: 0px 0;">
 				<div id="mainNavbar">
 					<div id="top-info" class="w-100 align-items-center">
 						<div class="col-md-12 text-right">
@@ -131,40 +120,23 @@
 								<img src="/assets/img/x.svg" alt="Menu Bars">
 							</button>
 						</div>
-						<!---->
-						<div class="col-md-12">
-							<ul class="social-nav">
-								<li><a href="#" target="_blank"><img src="/assets/img/icono-facebook-bio.svg" alt="Facebook"></a></li>
-								<li><a href="#" target="_blank"><img src="/assets/img/icono-instagram-bio.svg" alt="Instagram"></a></li>
-								<li><a href="#" target="_blank"><img src="/assets/img/icono-twitter-bio.svg" alt="Twitter"></a></li>
-								<!--<li><a href="#"><img src="/assets/img/icono-youtube-bio.svg" alt="LinkedIn"></a></li>-->
-							</ul> <!-- TODO: ^^ reemplazar links de los sitios ^^ -->
-						</div>
-						<div class="col-md-12">
-							<!-- no loggeado -->
-							<div class="top-info-nav" v-if="userlogged">
-								<a href="#" class="bio-points">Bio Wallet<span class="quantity-span">{{saldo}}<img src="/assets/img/icono-puntos-bio.svg" alt="Bio Points"></span></a>
-								<a href="#"><img src="/assets/img/favoritos-bio.svg" alt="Favorites"><span class="quantity-span">{{cant_favorite}}</span></a>
-							</div>
-							<!-- no loggeado -->
-						</div>
 					</div>
 					<div>
-						<ul class="navbar-nav" style="display: flex;align-items: center; padding-left: 10rem; padding-right: 15px;">
+						<ul class="navbar-nav" style="display: flex;align-items: left; padding-right: 15px;">
 							<li id="nav-categories" class="nav-item dropdown">
 							<a class="nav-link" href="#" id="navbarCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-								<img src="/assets/img/Menu.png" style="width: 35px;" alt="Menu">
-								<span style="color: black; font-weight: 800; font-size: 18px; font-family: Arial, Helvetica, sans-serif " >Todas las categoría</span>
-								<hr  style="width: 2px; height: 35px; background-color: black; border: none; margin: 0px 6px; opacity: 0.3; " >
+								<div style="width: 100%; display: flex; align-items: left; justify-content: center; padding-left: 100px; ">
+								<img src="/assets/img/Menu.png" style="width: 55px; height: 35px; padding-right: 10px;" alt="Menu">
+								<span style="color: black; font-weight: 800; font-size: 16px; font-family: Arial, Helvetica, sans-serif; padding-left: 15px; padding-right: 15px;" >Todas las categorías</span>
+								<hr  style="width: 2px; height: 35px; background-color: black; border: none; margin: 0px 6px; opacity: 0.3;" >
 							</div>
 							</a>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: -10px; background-color: #203876; ">
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="margin-left: -10px; background-color: #203876; height: 600px; overflow-y: scroll; ">
 								
 								<a v-for="cat in categories.slice(5)" :key="cat.id" class="dropdown-item" :href="'/catalog?cat='+cat.id">{{cat.name}}</a>
 						</div>
 						</li> 
-						<span style=" font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 18 ; font-family: Arial, Helvetica, sans-serif; color: #203876;" >Hogar</span>
+						<span style=" font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 18 ; font-family: Arial, Helvetica, sans-serif; color: #203876; padding-right: 15px;" >Hogar</span>
 						<li class="nav-item" v-for="cat in categories.slice(0,5)" :key="cat.id">
 							<a class="nav-link" :href="'/catalog?cat=' + cat.id" style="display: flex; align-items: center;">
 							<span style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; color: black; display: flex; align-items: center;">
@@ -173,45 +145,16 @@
 							</span>
 							</a>
 
-					<!-- <template v-if="cat.name === 'VIVERES II'">
-						<div class="dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								{{ cat.name }}
-							</a>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" href="#">Arroz</a>
-								<a class="dorpdown-item" href="#">Arroz</a>
-							</div>
-						</div>
-						</template>
-						<template v-else>
-
-							<a class="nav-link" :href="'/catalog?cat=' + cat.id">{{ cat.name }}</a>
-
-						</template> -->
-
 						</li>
-						<!-- <li id="nav-categories" class="nav-item dropdown">
-							
-							<a class="nav-link dropdown-toggle" href="#" id="navbarCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Viveres</a>
-							<div class="dropdown-menu" aria-labelledby="navbarCategories">
-								<a v-for="cat in categories.slice(5)" :key="cat.id" class="dropdown-item" :href="'/catalog?cat='+cat.id">{{cat.name}}</a>
-							</div>
-						</li> -->
 					
 						<li id="nav-all-categories" class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="dropdown-uppercase">Categorías</span>
-								<img src="/assets/img/flecha-izquierda-bio.svg">
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarCategories">
+							<div class="dropdown-menu" aria-labelledby="navbarCategories" style="height: 600px; overflow-y: scroll;">
 								<a v-for="cat in categories" :key="cat.id" class="dropdown-item" :href="'/catalog?cat='+cat.id" >{{cat.name}}</a>
 							</div>
 						</li>
 						<li id="nav-bios" class="nav-item dropdown">
-							<a style="color: #ED3928;" href="#" id="navbarBios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a style="color: #fff;" href="#" id="navbarBios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Ofertas
-								<img src="/assets/img/abajo-blanco-bio.svg">
 							</a>
 							<!-- <div class="dropdown-menu" aria-labelledby="navbarBios">
 								<a class="dropdown-item" href="/culture">Cultura bio</a>

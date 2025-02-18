@@ -4093,6 +4093,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ModalCalificacion_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ModalCalificacion.vue */ "./resources/js/components/ModalCalificacion.vue");
 /* harmony import */ var _DireccionHabitacion_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DireccionHabitacion.vue */ "./resources/js/components/DireccionHabitacion.vue");
 /* harmony import */ var _DireccionUser_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DireccionUser.vue */ "./resources/js/components/DireccionUser.vue");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -4102,6 +4104,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw new Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw new Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -4399,135 +4402,272 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
       makeRequest();
     },
+    update_password: function update_password(user) {
+      var that = this;
+      console.log(user);
+      var user_data = _objectSpread({}, user);
+      var maxAttempts = 5; // Número máximo de intentos
+      var retryDelay = 1000; // Retraso inicial en ms
+
+      // Validación de campos de contraseñas vacios
+      if (!user_data.newpassword || !user_data.newpasswordconfirm || !user_data.currentlypassword) {
+        Swal.fire('Error', 'Por favor, completa los campos requeridos.', 'error');
+        return; // Salir de la función si la validación falla
+      }
+
+      // Validación de que las contraseñas sean iguales
+      if (user_data.newpassword !== user_data.newpasswordconfirm) {
+        Swal.fire('Error', 'Las contraseñas no coinciden. Por favor, verifica e intenta de nuevo.', 'error');
+        return; // Salir de la función si las contraseñas no coinciden
+      }
+
+      // Validación de caracteres y signos especiales
+      var passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.{9,})/; // Al menos un carácter especial y más de 8 caracteres
+      if (!passwordPattern.test(user_data.newpassword)) {
+        Swal.fire('Error', 'La nueva contraseña debe tener más de 8 caracteres y al menos un signo especial.', 'error');
+        return; // Salir de la función si la validación de la contraseña falla
+      }
+
+      // Validación de la contraseña actual
+      function validateCurrentPassword() {
+        return _validateCurrentPassword.apply(this, arguments);
+      }
+      function _validateCurrentPassword() {
+        _validateCurrentPassword = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+          var attempts,
+            password,
+            response,
+            _args6 = arguments;
+          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
+              case 0:
+                attempts = _args6.length > 0 && _args6[0] !== undefined ? _args6[0] : 0;
+                password = new FormData();
+                password.append("password", user_data.currentlypassword);
+                _context6.prev = 3;
+                _context6.next = 6;
+                return axios.post(URLHOME + 'api_rapida.php', password, {
+                  params: {
+                    evento: 'verifyPassword'
+                  }
+                });
+              case 6:
+                response = _context6.sent;
+                if (!response.data.isValid) {
+                  _context6.next = 9;
+                  break;
+                }
+                return _context6.abrupt("return", response.data.isValid);
+              case 9:
+                _context6.next = 21;
+                break;
+              case 11:
+                _context6.prev = 11;
+                _context6.t0 = _context6["catch"](3);
+                if (!(_context6.t0.response && _context6.t0.response.status === 429 && attempts < maxAttempts)) {
+                  _context6.next = 18;
+                  break;
+                }
+                console.warn("Intento ".concat(attempts + 1, " fallido. Esperando ").concat(retryDelay * (attempts + 1), "ms antes de reintentar."));
+                setTimeout(function () {
+                  return verifyPassword(attempts + 1);
+                }, retryDelay * (attempts + 1));
+                _context6.next = 21;
+                break;
+              case 18:
+                console.log("Error en la verificación de contraseña:", _context6.t0);
+                Swal.fire('Error', 'Hubo un problema al verificar tu contraseña. Por favor, intenta de nuevo más tarde.', 'error');
+                return _context6.abrupt("return");
+              case 21:
+              case "end":
+                return _context6.stop();
+            }
+          }, _callee6, null, [[3, 11]]);
+        }));
+        return _validateCurrentPassword.apply(this, arguments);
+      }
+      validateCurrentPassword().then(function (isValid) {
+        if (isValid) {
+          // Proceder con la actualización de la contraseña
+          changePassword();
+        } else {
+          Swal.fire('Error', 'Contraseña actual inválida. Por favor, intenta de nuevo...', 'error');
+          return;
+        }
+      });
+      function changePassword() {
+        return _changePassword.apply(this, arguments);
+      }
+      function _changePassword() {
+        _changePassword = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+          var attempts,
+            formData,
+            _args7 = arguments;
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
+              case 0:
+                attempts = _args7.length > 0 && _args7[0] !== undefined ? _args7[0] : 0;
+                formData = new FormData();
+                formData.append("email", user_data.email);
+                formData.append("password", user_data.newpassword);
+                axios.post(URLHOME + 'api_rapida.php?evento=changePassword', formData).then(function (data) {
+                  Swal.fire("EosCommerce", "¡Clave Cambiada con Exito!", "success").then(function (result) {
+                    document.location.href = '/';
+                  });
+                })["catch"](function (error) {
+                  if (error.response && error.response.status === 429 && attempts < maxAttempts) {
+                    console.warn("Intento ".concat(attempts + 1, " fallido. Esperando ").concat(retryDelay * (attempts + 1), "ms antes de reintentar."));
+                    setTimeout(function () {
+                      return verifyPassword(attempts + 1);
+                    }, retryDelay * (attempts + 1));
+                  } else {
+                    console.log("Error al actualizar la contraseña:", error);
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Error',
+                      text: "Hubo un error al actualizar la contraseña. Intente de nuevo más tarde."
+                    });
+                    return false;
+                  }
+                });
+              case 5:
+              case "end":
+                return _context7.stop();
+            }
+          }, _callee7);
+        }));
+        return _changePassword.apply(this, arguments);
+      }
+    },
     getStates: function getStates() {
       var _this6 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
-        var response, response2;
-        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
-            case 0:
-              _context6.next = 2;
-              return axios.get(URLSERVER + "api/states");
-            case 2:
-              response = _context6.sent;
-              console.log("esto es la respuesta", response);
-              _this6.states.push(response.data.data);
-              _context6.next = 7;
-              return axios.get(URLSERVER + "api/Allstates");
-            case 7:
-              response2 = _context6.sent;
-              console.log("esto es la response2", response2);
-              _this6.Allstates = response2.data.data;
-              console.log("esto es this.allStates ", _this6.Allstates);
-            case 11:
-            case "end":
-              return _context6.stop();
-          }
-        }, _callee6);
-      }))();
-    },
-    getRegions: function getRegions() {
-      var _this7 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
-        var response, _yield$axios$get, data;
-        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-          while (1) switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.next = 2;
-              return axios.get(URLSERVER + "api/regions");
-            case 2:
-              response = _context7.sent;
-              _this7.regions = response.data.data;
-              _context7.next = 6;
-              return axios.get(URLSERVER + "api/Allregions");
-            case 6:
-              _yield$axios$get = _context7.sent;
-              data = _yield$axios$get.data;
-              _this7.Allregions = data.data;
-            case 9:
-            case "end":
-              return _context7.stop();
-          }
-        }, _callee7);
-      }))();
-    },
-    getCities: function getCities() {
-      var _this8 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
-        var response, _yield$axios$get2, data;
+        var response, response2;
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
               _context8.next = 2;
-              return axios.get(URLSERVER + "api/cities");
+              return axios.get(URLSERVER + "api/states");
             case 2:
               response = _context8.sent;
-              _this8.cities = response.data.data;
-              _context8.next = 6;
-              return axios.get(URLSERVER + "api/Allcities");
-            case 6:
-              _yield$axios$get2 = _context8.sent;
-              data = _yield$axios$get2.data;
-              console.log("esto es la respon all cities", data);
-              _this8.Allcities = data.data;
-            case 10:
+              console.log("esto es la respuesta", response);
+              _this6.states.push(response.data.data);
+              _context8.next = 7;
+              return axios.get(URLSERVER + "api/Allstates");
+            case 7:
+              response2 = _context8.sent;
+              console.log("esto es la response2", response2);
+              _this6.Allstates = response2.data.data;
+              console.log("esto es this.allStates ", _this6.Allstates);
+            case 11:
             case "end":
               return _context8.stop();
           }
         }, _callee8);
       }))();
     },
-    loadMunicipioHab: function loadMunicipioHab(event) {
-      var _this9 = this;
+    getRegions: function getRegions() {
+      var _this7 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
-        var state_id, response;
+        var response, _yield$axios$get, data;
         return _regeneratorRuntime().wrap(function _callee9$(_context9) {
           while (1) switch (_context9.prev = _context9.next) {
             case 0:
-              state_id = event.target.value;
-              _context9.next = 3;
-              return axios.get(URLSERVER + "api/regions/state/" + state_id);
-            case 3:
+              _context9.next = 2;
+              return axios.get(URLSERVER + "api/regions");
+            case 2:
               response = _context9.sent;
-              _this9.Allregions = response.data.data;
-            case 5:
+              _this7.regions = response.data.data;
+              _context9.next = 6;
+              return axios.get(URLSERVER + "api/Allregions");
+            case 6:
+              _yield$axios$get = _context9.sent;
+              data = _yield$axios$get.data;
+              _this7.Allregions = data.data;
+            case 9:
             case "end":
               return _context9.stop();
           }
         }, _callee9);
       }))();
     },
-    loadParroquiaHab: function loadParroquiaHab(event) {
-      var _this10 = this;
+    getCities: function getCities() {
+      var _this8 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
-        var region_id, response;
+        var response, _yield$axios$get2, data;
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
             case 0:
-              region_id = event.target.value;
-              _context10.next = 3;
-              return axios.get(URLSERVER + "api/cities/region/" + region_id);
-            case 3:
+              _context10.next = 2;
+              return axios.get(URLSERVER + "api/cities");
+            case 2:
               response = _context10.sent;
-              _this10.Allcities = response.data.data;
-            case 5:
+              _this8.cities = response.data.data;
+              _context10.next = 6;
+              return axios.get(URLSERVER + "api/Allcities");
+            case 6:
+              _yield$axios$get2 = _context10.sent;
+              data = _yield$axios$get2.data;
+              console.log("esto es la respon all cities", data);
+              _this8.Allcities = data.data;
+            case 10:
             case "end":
               return _context10.stop();
           }
         }, _callee10);
       }))();
     },
-    getPedidos: function getPedidos() {
-      var _this11 = this;
+    loadMunicipioHab: function loadMunicipioHab(event) {
+      var _this9 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
-        var response;
+        var state_id, response;
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
-              _context11.next = 2;
+              state_id = event.target.value;
+              _context11.next = 3;
+              return axios.get(URLSERVER + "api/regions/state/" + state_id);
+            case 3:
+              response = _context11.sent;
+              _this9.Allregions = response.data.data;
+            case 5:
+            case "end":
+              return _context11.stop();
+          }
+        }, _callee11);
+      }))();
+    },
+    loadParroquiaHab: function loadParroquiaHab(event) {
+      var _this10 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+        var region_id, response;
+        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+          while (1) switch (_context12.prev = _context12.next) {
+            case 0:
+              region_id = event.target.value;
+              _context12.next = 3;
+              return axios.get(URLSERVER + "api/cities/region/" + region_id);
+            case 3:
+              response = _context12.sent;
+              _this10.Allcities = response.data.data;
+            case 5:
+            case "end":
+              return _context12.stop();
+          }
+        }, _callee12);
+      }))();
+    },
+    getPedidos: function getPedidos() {
+      var _this11 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+          while (1) switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.next = 2;
               return axios.get(URLSERVER + "api/orders");
             case 2:
-              response = _context11.sent;
+              response = _context13.sent;
               _this11.orders = response.data.data;
               _this11.completos = _this11.orders.filter(function (lista) {
                 return lista.namestatus == "Entregado";
@@ -4537,9 +4677,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 6:
             case "end":
-              return _context11.stop();
+              return _context13.stop();
           }
-        }, _callee11);
+        }, _callee13);
       }))();
     },
     repeatOrder: function repeatOrder(id) {
@@ -4565,34 +4705,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     devolucion: function devolucion(id) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
         var response;
-        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-          while (1) switch (_context12.prev = _context12.next) {
+        return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+          while (1) switch (_context14.prev = _context14.next) {
             case 0:
-              _context12.next = 2;
+              _context14.next = 2;
               return axios.get(URLSERVER + "api_rapida.php?evento=devolucion&orders_id" + id);
             case 2:
-              response = _context12.sent;
+              response = _context14.sent;
               Swal.fire('Devolución!', 'Su solicitud de devolución ha sido procesada. Será contactado muy pronto', 'success');
             case 4:
             case "end":
-              return _context12.stop();
+              return _context14.stop();
           }
-        }, _callee12);
+        }, _callee14);
       }))();
     },
     calificar: function calificar(id) {
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
-        return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-          while (1) switch (_context13.prev = _context13.next) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
+        return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+          while (1) switch (_context15.prev = _context15.next) {
             case 0:
               console.log("funciona");
             case 1:
             case "end":
-              return _context13.stop();
+              return _context15.stop();
           }
-        }, _callee13);
+        }, _callee15);
       }))();
     },
     increaseValue: function increaseValue(product) {
@@ -4628,23 +4768,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     sendPhoto: function sendPhoto() {
       var _this13 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16() {
         var avatar, data, response;
-        return _regeneratorRuntime().wrap(function _callee14$(_context14) {
-          while (1) switch (_context14.prev = _context14.next) {
+        return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+          while (1) switch (_context16.prev = _context16.next) {
             case 0:
               avatar = _this13.avatar;
               data = new FormData();
               data.append("image", avatar);
-              _context14.next = 5;
+              _context16.next = 5;
               return axios.post(URLSERVER + "api_rapida.php?evento=actualizarFotoPerfil&from=web", data);
             case 5:
-              response = _context14.sent;
+              response = _context16.sent;
             case 6:
             case "end":
-              return _context14.stop();
+              return _context16.stop();
           }
-        }, _callee14);
+        }, _callee16);
       }))();
     }
   },
@@ -4664,24 +4804,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     var _this14 = this;
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17() {
       var response, data, i;
-      return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-        while (1) switch (_context15.prev = _context15.next) {
+      return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+        while (1) switch (_context17.prev = _context17.next) {
           case 0:
-            _context15.prev = 0;
-            _context15.next = 3;
+            _context17.prev = 0;
+            _context17.next = 3;
             return fetch(URLHOME + "api_rapida.php?evento=obtenerTodo");
           case 3:
-            response = _context15.sent;
+            response = _context17.sent;
             if (response.ok) {
               _this14.dataLoaded = true;
             }
             // Convertir la respuesta a formato JSON
-            _context15.next = 7;
+            _context17.next = 7;
             return response.json();
           case 7:
-            data = _context15.sent;
+            data = _context17.sent;
             console.log("esto es data", data);
 
             // Verificar si habDirection está vacío
@@ -4721,17 +4861,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             // Verifica el resultado
             console.log("this.userData::> ", _this14.userData);
-            _context15.next = 18;
+            _context17.next = 18;
             break;
           case 15:
-            _context15.prev = 15;
-            _context15.t0 = _context15["catch"](0);
-            console.error("Error al obtener datos:", _context15.t0);
+            _context17.prev = 15;
+            _context17.t0 = _context17["catch"](0);
+            console.error("Error al obtener datos:", _context17.t0);
           case 18:
           case "end":
-            return _context15.stop();
+            return _context17.stop();
         }
-      }, _callee15, null, [[0, 15]]);
+      }, _callee17, null, [[0, 15]]);
     }))();
   }
 });
@@ -8887,37 +9027,10 @@ var render = function render() {
     }
   }), _c("span", {
     staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e(), _vm._v(" "), !!_vm.userlogged ? _c("li", {
-    attrs: {
-      id: "nav-fav",
-      "data-toggle": "tooltip",
-      "data-placement": "bottom"
-    }
-  }, [_c("a", {
-    staticStyle: {
-      background: "#ED3928",
-      "border-radius": "8px",
-      "padding-right": "8px"
-    },
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    staticStyle: {
-      width: "25px !important",
-      height: "25px !important",
-      padding: "5px"
-    },
-    attrs: {
-      src: "/assets/img/icono-puntos-bio.svg",
-      alt: "Bio Wallet"
-    }
-  }), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.saldo))])])]) : _vm._e()])])])])]), _vm._v(" "), _c("nav", {
+  }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e()])])])])]), _vm._v(" "), _c("nav", {
     staticClass: "navbar navbar-expand-lg navbar-light color-white navbar-custom",
     staticStyle: {
-      width: "100%",
+      width: "80%",
       "background-color": "white",
       "border-bottom": "1px solid #ccc",
       padding: "0"
@@ -8926,51 +9039,18 @@ var render = function render() {
     staticClass: "container-fluid",
     staticStyle: {
       width: "100%",
-      position: "absolute",
-      padding: "10px 0"
+      position: "relative",
+      padding: "0px 0"
     }
   }, [_c("div", {
     attrs: {
       id: "mainNavbar"
     }
-  }, [_c("div", {
-    staticClass: "w-100 align-items-center",
-    attrs: {
-      id: "top-info"
-    }
-  }, [_vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("div", {
-    staticClass: "col-md-12"
-  }, [_vm.userlogged ? _c("div", {
-    staticClass: "top-info-nav"
-  }, [_c("a", {
-    staticClass: "bio-points",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Bio Wallet"), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.saldo)), _c("img", {
-    attrs: {
-      src: "/assets/img/icono-puntos-bio.svg",
-      alt: "Bio Points"
-    }
-  })])]), _vm._v(" "), _c("a", {
-    attrs: {
-      href: "#"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/favoritos-bio.svg",
-      alt: "Favorites"
-    }
-  }), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e()])]), _vm._v(" "), _c("div", [_c("ul", {
+  }, [_vm._m(5), _vm._v(" "), _c("div", [_c("ul", {
     staticClass: "navbar-nav",
     staticStyle: {
       display: "flex",
-      "align-items": "center",
-      "padding-left": "10rem",
+      "align-items": "left",
       "padding-right": "15px"
     }
   }, [_c("li", {
@@ -8978,11 +9058,13 @@ var render = function render() {
     attrs: {
       id: "nav-categories"
     }
-  }, [_vm._m(7), _vm._v(" "), _c("div", {
+  }, [_vm._m(6), _vm._v(" "), _c("div", {
     staticClass: "dropdown-menu",
     staticStyle: {
       "margin-left": "-10px",
-      "background-color": "#203876"
+      "background-color": "#203876",
+      height: "600px",
+      "overflow-y": "scroll"
     },
     attrs: {
       "aria-labelledby": "dropdownMenu2"
@@ -9003,7 +9085,8 @@ var render = function render() {
       "justify-content": "center",
       "font-size": "18",
       "font-family": "Arial, Helvetica, sans-serif",
-      color: "#203876"
+      color: "#203876",
+      "padding-right": "15px"
     }
   }, [_vm._v("Hogar")]), _vm._v(" "), _vm._l(_vm.categories.slice(0, 5), function (cat) {
     return _c("li", {
@@ -9040,8 +9123,12 @@ var render = function render() {
     attrs: {
       id: "nav-all-categories"
     }
-  }, [_vm._m(8), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "dropdown-menu",
+    staticStyle: {
+      height: "600px",
+      "overflow-y": "scroll"
+    },
     attrs: {
       "aria-labelledby": "navbarCategories"
     }
@@ -9053,7 +9140,7 @@ var render = function render() {
         href: "/catalog?cat=" + cat.id
       }
     }, [_vm._v(_vm._s(cat.name))]);
-  }), 0)]), _vm._v(" "), _vm._m(9)], 2)])])])])]);
+  }), 0)]), _vm._v(" "), _vm._m(7)], 2)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -9150,6 +9237,11 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    staticClass: "w-100 align-items-center",
+    attrs: {
+      id: "top-info"
+    }
+  }, [_c("div", {
     staticClass: "col-md-12 text-right"
   }, [_c("button", {
     staticClass: "navbar-toggler toggle-menu",
@@ -9161,45 +9253,7 @@ var staticRenderFns = [function () {
       src: "/assets/img/x.svg",
       alt: "Menu Bars"
     }
-  })])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-md-12"
-  }, [_c("ul", {
-    staticClass: "social-nav"
-  }, [_c("li", [_c("a", {
-    attrs: {
-      href: "#",
-      target: "_blank"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/icono-facebook-bio.svg",
-      alt: "Facebook"
-    }
-  })])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#",
-      target: "_blank"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/icono-instagram-bio.svg",
-      alt: "Instagram"
-    }
-  })])]), _vm._v(" "), _c("li", [_c("a", {
-    attrs: {
-      href: "#",
-      target: "_blank"
-    }
-  }, [_c("img", {
-    attrs: {
-      src: "/assets/img/icono-twitter-bio.svg",
-      alt: "Twitter"
-    }
-  })])])])]);
+  })])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -9217,12 +9271,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       width: "100%",
       display: "flex",
-      "align-items": "center",
-      "justify-content": "center"
+      "align-items": "left",
+      "justify-content": "center",
+      "padding-left": "100px"
     }
   }, [_c("img", {
     staticStyle: {
-      width: "35px"
+      width: "55px",
+      height: "35px",
+      "padding-right": "10px"
     },
     attrs: {
       src: "/assets/img/Menu.png",
@@ -9232,10 +9289,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "black",
       "font-weight": "800",
-      "font-size": "18px",
-      "font-family": "Arial, Helvetica, sans-serif"
+      "font-size": "16px",
+      "font-family": "Arial, Helvetica, sans-serif",
+      "padding-left": "15px",
+      "padding-right": "15px"
     }
-  }, [_vm._v("Todas las categoría")]), _vm._v(" "), _c("hr", {
+  }, [_vm._v("Todas las categorías")]), _vm._v(" "), _c("hr", {
     staticStyle: {
       width: "2px",
       height: "35px",
@@ -9248,26 +9307,6 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("a", {
-    staticClass: "nav-link dropdown-toggle",
-    attrs: {
-      href: "#",
-      id: "navbarCategories",
-      role: "button",
-      "data-toggle": "dropdown",
-      "aria-haspopup": "true",
-      "aria-expanded": "false"
-    }
-  }, [_c("span", {
-    staticClass: "dropdown-uppercase"
-  }, [_vm._v("Categorías")]), _vm._v(" "), _c("img", {
-    attrs: {
-      src: "/assets/img/flecha-izquierda-bio.svg"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("li", {
     staticClass: "nav-item dropdown",
     attrs: {
@@ -9275,7 +9314,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("a", {
     staticStyle: {
-      color: "#ED3928"
+      color: "#fff"
     },
     attrs: {
       href: "#",
@@ -9285,11 +9324,7 @@ var staticRenderFns = [function () {
       "aria-haspopup": "true",
       "aria-expanded": "false"
     }
-  }, [_vm._v("\n\t\t\t\t\t\t\t\tOfertas\n\t\t\t\t\t\t\t\t"), _c("img", {
-    attrs: {
-      src: "/assets/img/abajo-blanco-bio.svg"
-    }
-  })])]);
+  }, [_vm._v("\n\t\t\t\t\t\t\t\tOfertas\n\t\t\t\t\t\t\t")])]);
 }];
 render._withStripped = true;
 
@@ -13010,16 +13045,7 @@ var render = function render() {
     staticClass: "profile-info"
   }, [_vm.dataLoaded ? _c("h2", {
     staticClass: "profile-title"
-  }, [_vm._v(_vm._s(_vm.userData.name))]) : _vm._e(), _vm._v(" "), _c("p", {
-    staticClass: "bio-points"
-  }, [_vm._v("Mi saldo disponible"), _c("span", {
-    staticClass: "quantity-span"
-  }, [_vm._v(_vm._s(_vm.userData.saldo)), _c("img", {
-    attrs: {
-      src: "assets/img/icono-puntos-bio.svg",
-      alt: "Bio Points"
-    }
-  })])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.userData.name))]) : _vm._e()])])]), _vm._v(" "), _c("div", {
     staticClass: "col-12"
   }, [_c("div", {
     staticClass: "row"
@@ -13536,14 +13562,125 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6"
-  })], 1)])])]), _vm._v(" "), _vm._m(7)])]), _vm._v(" "), _c("div", {
+  })], 1)])])]), _vm._v(" "), _c("div", {
+    staticClass: "tab-pane fade",
+    attrs: {
+      id: "security",
+      role: "tabpanel",
+      "aria-labelledby": "security-tab"
+    }
+  }, [_c("form", {
+    attrs: {
+      action: ""
+    }
+  }, [_c("div", {
+    staticClass: "col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "currently-password"
+    }
+  }, [_vm._v("Confirma tu contraseña actual:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userData.currentlypassword,
+      expression: "userData.currentlypassword"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      id: "currently-password",
+      name: "currently-password"
+    },
+    domProps: {
+      value: _vm.userData.currentlypassword
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.userData, "currentlypassword", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "new-password"
+    }
+  }, [_vm._v("Escribe la nueva contraseña:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userData.newpassword,
+      expression: "userData.newpassword"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      id: "new-password",
+      name: "newpassword"
+    },
+    domProps: {
+      value: _vm.userData.newpassword
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.userData, "newpassword", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "new-password-confirm"
+    }
+  }, [_vm._v("Repite la nueva contraseña:")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userData.newpasswordconfirm,
+      expression: "userData.newpasswordconfirm"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      id: "new-password-confirm",
+      name: "newpasswordconfirm"
+    },
+    domProps: {
+      value: _vm.userData.newpasswordconfirm
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.userData, "newpasswordconfirm", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mt-5"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("button", {
+    staticClass: "btn btn-submit",
+    attrs: {
+      type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.update_password(_vm.userData);
+      }
+    }
+  }, [_vm._v("GUARDAR CAMBIOS")])])])])])])]), _vm._v(" "), _c("div", {
     staticClass: "tab-pane fade",
     attrs: {
       id: "my-address",
       role: "tabpanel",
       "aria-labelledby": "my-address-tab"
     }
-  }, [_vm._m(8), _vm._v(" "), _c("div", {
+  }, [_vm._m(7), _vm._v(" "), _c("div", {
     staticClass: "tab-content",
     attrs: {
       id: "address-content"
@@ -13571,7 +13708,7 @@ var render = function render() {
       role: "tabpanel",
       "aria-labelledby": "my-orders-tab"
     }
-  }, [_vm._m(9), _vm._v(" "), _c("div", {
+  }, [_vm._m(8), _vm._v(" "), _c("div", {
     staticClass: "tab-content",
     staticStyle: {
       position: "relative"
@@ -13605,7 +13742,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "order-table"
-  }, [_vm._m(10), _vm._v(" "), _vm._l(_vm.orders, function (order) {
+  }, [_vm._m(9), _vm._v(" "), _vm._l(_vm.orders, function (order) {
     return _c("div", {
       key: order.id,
       staticClass: "row"
@@ -13747,7 +13884,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "order-table"
-  }, [_vm._m(11), _vm._v(" "), _vm._l(_vm.en_proceso, function (order) {
+  }, [_vm._m(10), _vm._v(" "), _vm._l(_vm.en_proceso, function (order) {
     return _c("div", {
       key: order.id,
       staticClass: "row"
@@ -13808,7 +13945,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "order-table"
-  }, [_vm._m(12), _vm._v(" "), _vm._l(_vm.completos, function (order) {
+  }, [_vm._m(11), _vm._v(" "), _vm._l(_vm.completos, function (order) {
     return _c("div", {
       key: order.id,
       staticClass: "row"
@@ -13906,7 +14043,7 @@ var render = function render() {
       role: "tabpanel",
       "aria-labelledby": "my-favorites"
     }
-  }, [_vm._m(13), _vm._v(" "), _c("div", {
+  }, [_vm._m(12), _vm._v(" "), _c("div", {
     staticClass: "tab-content",
     attrs: {
       id: "orders-content"
@@ -14389,77 +14526,6 @@ var staticRenderFns = [function () {
       src: "assets/img/editar-bio-mercados.svg"
     }
   })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "tab-pane fade",
-    attrs: {
-      id: "security",
-      role: "tabpanel",
-      "aria-labelledby": "security-tab"
-    }
-  }, [_c("form", {
-    attrs: {
-      action: ""
-    }
-  }, [_c("div", {
-    staticClass: "col-lg-6"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "currently-password"
-    }
-  }, [_vm._v("Confirma tu contraseña\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tactual:")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "password",
-      id: "currently-password",
-      name: "currently-password",
-      value: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "new-password"
-    }
-  }, [_vm._v("Escribe la nueva contraseña:")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "password",
-      id: "new-password",
-      name: "new-password",
-      value: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    attrs: {
-      "for": "new-password-confirm"
-    }
-  }, [_vm._v("Repite la nueva\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcontraseña:")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "password",
-      id: "new-password-confirm",
-      name: "new-password-confirm",
-      value: ""
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "mt-5"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("button", {
-    staticClass: "btn btn-submit",
-    staticStyle: {
-      "background-color": "black"
-    },
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("GUARDAR\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tCAMBIOS")])])])])]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
