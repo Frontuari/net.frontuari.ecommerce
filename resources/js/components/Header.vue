@@ -136,7 +136,7 @@
 								<a v-for="cat in categories.slice(5)" :key="cat.id" class="dropdown-item" :href="'/catalog?cat='+cat.id">{{cat.name}}</a>
 						</div>
 						</li> 
-						<span style=" font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 18 ; font-family: Arial, Helvetica, sans-serif; color: #203876; padding-right: 15px;" >Hogar</span>
+						
 						<li class="nav-item" v-for="cat in categories.slice(0,5)" :key="cat.id">
 							<a class="nav-link" :href="'/catalog?cat=' + cat.id" style="display: flex; align-items: center;">
 							<span style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; color: black; display: flex; align-items: center;">
@@ -153,9 +153,7 @@
 							</div>
 						</li>
 						<li id="nav-bios" class="nav-item dropdown">
-							<a style="color: #fff;" href="#" id="navbarBios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Ofertas
-							</a>
+						
 							<!-- <div class="dropdown-menu" aria-labelledby="navbarBios">
 								<a class="dropdown-item" href="/culture">Cultura bio</a>
 								<a class="dropdown-item" href="/sucursal">Sucursales</a>
@@ -260,8 +258,11 @@ export default {
             title: 'Error',
             text: 'Por favor, ingrese su correo electrónico y contraseña',
         });
+
         return; // Detener la ejecución si falta el correo electrónico o la contraseña
     }
+
+	
 
     // Realizar la solicitud GET al servidor para iniciar sesión
     await axios.get(`${URLSERVER}api_rapida.php?evento=login&email=${this.user.email}&password=${this.user.pass}`)

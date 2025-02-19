@@ -1918,7 +1918,7 @@ __webpack_require__.r(__webpack_exports__);
     getcategories: function getcategories() {
       var _this = this;
       this.categories.forEach(function (a, b) {
-        _this.backgrounds.push('url(http://127.0.0.1:8000/storage/' + a.image + ')');
+        _this.backgrounds.push('url(' + URLHOME + '/storage/' + a.image + ')');
       });
     }
   },
@@ -3646,14 +3646,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosArray');
+              return axios.get(URLHOME + '/api_rapida.php?evento=listarProductosArray');
             case 3:
               response = _context.sent;
               // Verificar si la solicitud fue exitosa y si hay datos recibidos
               console.log(response);
               if (response.data) {
-                console.log("Esto es reponse", response.data);
-
+                console.log("Esto es reponse de api", response.data);
                 // Convertir el texto JSON en un objeto
                 // Guardar los datos de productos en el local storage con la clave 'productosb'
                 window.localStorage.setItem('productos', JSON.stringify(response.data));
@@ -4171,7 +4170,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosAll');
+              return axios.get(URLHOME + '/api_rapida.php?evento=listarProductosAll');
             case 3:
               response = _context.sent;
               // Verificar si la solicitud fue exitosa y si hay datos recibidos
@@ -4219,7 +4218,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              axios.get(URLHOME + 'api/orders/' + id).then(function (datos) {
+              axios.get(URLHOME + +'api/orders/' + id).then(function (datos) {
                 var order = datos.data.data.order[0];
                 var products = datos.data.data.products;
                 _this4.tmpOrder = {
@@ -4822,7 +4821,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             return response.json();
           case 7:
             data = _context17.sent;
-            console.log("esto es data", data);
+            console.log("esto es data extraida", data);
 
             // Verificar si habDirection está vacío
             if (!_this14.userlogged.habDirection) {
@@ -7334,7 +7333,7 @@ var render = function render() {
       staticClass: "product-img"
     }, [com.image != null ? _c("LazyImg", {
       attrs: {
-        source: "http://127.0.0.1:8000/storage/" + com.image
+        source: _vm.URLHOME + "/storage/" + com.image
       }
     }) : _vm._e(), _vm._v(" "), _c("div", {
       staticClass: "product-actions"
@@ -7440,7 +7439,7 @@ var render = function render() {
       staticClass: "product-img"
     }, [com.image != null ? _c("LazyImg", {
       attrs: {
-        source: "http://127.0.0.1:8000/storage/" + com.image
+        source: _vm.URLHOME + "/storage/" + com.image
       }
     }) : _vm._e(), _vm._v(" "), _c("div", {
       staticClass: "product-actions"
@@ -7539,7 +7538,7 @@ var render = function render() {
       staticClass: "product-img"
     }, [com.image != null ? _c("LazyImg", {
       attrs: {
-        source: "http://127.0.0.1:8000/storage/" + com.image
+        source: _vm.URLHOME + "/storage/" + com.image
       }
     }) : _vm._e(), _vm._v(" "), _c("div", {
       staticClass: "product-actions"
@@ -9077,18 +9076,7 @@ var render = function render() {
         href: "/catalog?cat=" + cat.id
       }
     }, [_vm._v(_vm._s(cat.name))]);
-  }), 0)]), _vm._v(" "), _c("span", {
-    staticStyle: {
-      "font-weight": "900",
-      display: "flex",
-      "align-items": "center",
-      "justify-content": "center",
-      "font-size": "18",
-      "font-family": "Arial, Helvetica, sans-serif",
-      color: "#203876",
-      "padding-right": "15px"
-    }
-  }, [_vm._v("Hogar")]), _vm._v(" "), _vm._l(_vm.categories.slice(0, 5), function (cat) {
+  }), 0)]), _vm._v(" "), _vm._l(_vm.categories.slice(0, 5), function (cat) {
     return _c("li", {
       key: cat.id,
       staticClass: "nav-item"
@@ -9140,7 +9128,12 @@ var render = function render() {
         href: "/catalog?cat=" + cat.id
       }
     }, [_vm._v(_vm._s(cat.name))]);
-  }), 0)]), _vm._v(" "), _vm._m(7)], 2)])])])])]);
+  }), 0)]), _vm._v(" "), _c("li", {
+    staticClass: "nav-item dropdown",
+    attrs: {
+      id: "nav-bios"
+    }
+  })], 2)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -9304,27 +9297,6 @@ var staticRenderFns = [function () {
       opacity: "0.3"
     }
   })])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("li", {
-    staticClass: "nav-item dropdown",
-    attrs: {
-      id: "nav-bios"
-    }
-  }, [_c("a", {
-    staticStyle: {
-      color: "#fff"
-    },
-    attrs: {
-      href: "#",
-      id: "navbarBios",
-      role: "button",
-      "data-toggle": "dropdown",
-      "aria-haspopup": "true",
-      "aria-expanded": "false"
-    }
-  }, [_vm._v("\n\t\t\t\t\t\t\t\tOfertas\n\t\t\t\t\t\t\t")])]);
 }];
 render._withStripped = true;
 

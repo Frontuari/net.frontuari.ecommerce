@@ -898,7 +898,7 @@ export default {
 	 async fetchData() {
     try {
 		// Cambiar la IP Local a la URLHOME
-        const response = await axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosAll');
+        const response = await axios.get(URLHOME+'/api_rapida.php?evento=listarProductosAll');
         // Verificar si la solicitud fue exitosa y si hay datos recibidos
 		console.log(response);
         if (response.data) {
@@ -921,7 +921,7 @@ export default {
   },
 
 		getAmountBW: function (user_id) {
-			axios.get(URLHOME + 'api/getAmountBW/' + user_id).then(datos => {
+			axios.get(URLHOME+ 'api/getAmountBW/' + user_id).then(datos => {
 				this.userData.saldo = datos.data;
 				console.log("userData:", this.userData);
 
@@ -931,7 +931,7 @@ export default {
 			this.oneproduct = objP;
 		},
 		getOrder: async function (id) {
-			axios.get(URLHOME + 'api/orders/' + id).then(datos => {
+			axios.get(URLHOME+ + 'api/orders/' + id).then(datos => {
 				const order = datos.data.data.order[0];
 				const products = datos.data.data.products;
 				this.tmpOrder = {
@@ -982,7 +982,7 @@ export default {
 			});
 		},
 		getFavorites: async function () {
-			const response = await axios.get(URLHOME + 'api/favorites');
+			const response = await axios.get(URLHOME+ 'api/favorites');
 			this.favorites = response.data.data;
 			this.cant_favorites = response.data.data.length;
 		},
@@ -1018,7 +1018,7 @@ export default {
 					this.favorites.splice(index, 1);
 					this.cant_favorites = this.favorites.length;
 
-					axios.post(URLHOME + 'api/favorites/delete', {
+					axios.post(URLHOME+ 'api/favorites/delete', {
 						products_id: products_id,
 						user_id: users_id
 					})
@@ -1046,12 +1046,12 @@ export default {
 
 				async function makeRequest(attempts = 0) {
 					try {
-					const response = await axios.post(URLHOME + 'api/update_profile', {
+					const response = await axios.post(URLHOME+ 'api/update_profile', {
 						user_data: user_data,
 					});
 					console.log(response.data);
 					that.userData = user_data;
-					fetch(URLHOME + "api_rapida.php?evento=obtenerTodo");
+					fetch(URLHOME+"api_rapida.php?evento=obtenerTodo");
 					Swal.fire(
 						'Perfil',
 						'Tus datos han sido guardado exitosamente',
@@ -1122,7 +1122,7 @@ export default {
 					const password = new FormData()
 					password.append("password",user_data.currentlypassword)
 					try {
-						const response = await axios.post(URLHOME + 'api_rapida.php', password,
+						const response = await axios.post(URLHOME+'api_rapida.php', password,
 							{
 							params: {
     								evento: 'verifyPassword'
@@ -1338,7 +1338,7 @@ export default {
 	async created() {
   try {
     // Realizar la petición para obtener los datos y esperar la respuesta
-    const response = await fetch(URLHOME + "api_rapida.php?evento=obtenerTodo");
+    const response = await fetch(URLHOME+ "api_rapida.php?evento=obtenerTodo");
 	if(response.ok){
 
 			this.dataLoaded = true;
@@ -1349,7 +1349,7 @@ export default {
 
 	
 
-	console.log("esto es data", data);
+	console.log("esto es data extraida", data);
 	
     // Verificar si habDirection está vacío
     if (!this.userlogged.habDirection) {

@@ -195,7 +195,7 @@ export default {
   
   async created() {
     // Verificar si todas las props están cargadas
-    const response = await fetch(URLHOME + "api_rapida.php?evento=obtenerTodo");
+    const response = await fetch(URLHOME+"api_rapida.php?evento=obtenerTodo");
       const data = await response.json();
 
 
@@ -250,7 +250,7 @@ export default {
 			console.log("direction.action::> ", direction.action);
 			if (typeof direction.action === 'undefined') {
 
-				axios.put(URLHOME + 'api/user_address/' + direction.id, {
+				axios.put(URLHOME+'api/user_address/' + direction.id, {
 					id: direction.id,
 					cities_id: direction.city_id,
 					address: direction.address,
@@ -268,7 +268,7 @@ export default {
 				})
 					.then(function (response) {
 						Swal.fire("Direccion Actualizada exitosamente");
-						fetch(URLHOME + "api_rapida.php?evento=obtenerDireccion");
+						fetch(URLHOME+ "api_rapida.php?evento=obtenerDireccion");
 					})
 					.catch(function (error) {
 						console.log(error);
@@ -276,7 +276,7 @@ export default {
 
 			} else {
 				console.log("esta entrando por el POST");
-				axios.post(URLHOME + 'api/user_address', {
+				axios.post(URLHOME+'api/user_address', {
 					id: direction.id,
 					cities_id: direction.city_id,
 					address: direction.address,
@@ -294,7 +294,7 @@ export default {
 					.then(function (response) {
 						console.log(response);
 						Swal.fire("Direccion Guardada exitosamente");
-						fetch(URLHOME + "api_rapida.php?evento=obtenerDireccion");
+						fetch(URLHOME+ "api_rapida.php?evento=obtenerDireccion");
 					})
 					.catch(function (error) {
 						console.log(error);
@@ -318,11 +318,11 @@ export default {
 				if (result.value) {
 					this.userlogged.directions.splice(index, 1);
 
-					axios.delete(URLHOME + 'api/user_address/' + direction.id, {
+					axios.delete(URLHOME+ 'api/user_address/' + direction.id, {
 						id: direction.id,
 					})
 						.then(function (response) {
-							fetch(URLHOME + "api_rapida.php?evento=obtenerDireccion");
+							fetch(URLHOME+ "api_rapida.php?evento=obtenerDireccion");
 						})
 						.catch(function (error) {
 							console.log(error);

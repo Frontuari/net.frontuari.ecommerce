@@ -160,13 +160,12 @@
             async fetchDataArray() {
              try {
 
-        const response = await axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosArray');
+        const response = await axios.get( URLHOME+'/api_rapida.php?evento=listarProductosArray');
         // Verificar si la solicitud fue exitosa y si hay datos recibidos
 		console.log(response);
         if (response.data) {
 			
-			console.log("Esto es reponse",response.data);
-
+			console.log("Esto es reponse de api",response.data);
             // Convertir el texto JSON en un objeto
             // Guardar los datos de productos en el local storage con la clave 'productosb'
             window.localStorage.setItem('productos', JSON.stringify(response.data));
@@ -212,7 +211,7 @@
                 return Math.ceil(v * Math.pow(10, n)) / Math.pow(10, n);
             }
         },
-        created() {
+            created() {
                  
                     const storedProducts = window.localStorage.getItem("productos");
                     console.log("esto es productosB", storedProducts);
@@ -224,7 +223,7 @@
                 console.log("entre aqui");
 
                 Object.values(products).forEach(product => {
-    // Acceder a cada producto y establecer su cantidad a 1
+                // Acceder a cada producto y establecer su cantidad a 1
                     this.cant_product[product.id] = 1;
 
                     // Aquí puedes realizar cualquier otra operación necesaria con el producto

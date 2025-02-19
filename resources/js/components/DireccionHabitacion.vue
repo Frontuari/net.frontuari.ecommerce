@@ -108,7 +108,7 @@ export default {
   },
   async created() {
     // Verificar si todas las props están cargadas
-    const response = await fetch(URLHOME + "api_rapida.php?evento=obtenerTodo");
+    const response = await fetch(URLHOME+ "api_rapida.php?evento=obtenerTodo");
       const data = await response.json();
       
       // Asignar los datos del usuario a la propiedad userData
@@ -187,7 +187,7 @@ async loadParroquiaHab(event) {
                 	console.log(response.data);
 					that.userData = user_data;
           console.log("valor de that.userData",that.userData);
-					fetch(URLHOME + "api_rapida.php?evento=obtenerTodo");
+					fetch(URLHOME+ "api_rapida.php?evento=obtenerTodo");
 					Swal.fire(
 						'Perfil',
 						'Tus datos han sido guardado exitosamente',

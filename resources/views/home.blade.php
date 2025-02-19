@@ -47,7 +47,7 @@
 	async function fetchData() {
     try {
 
-        const response = await axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosAll');
+        const response = await axios.get(URLHOME+'/api_rapida.php?evento=listarProductosAll');
         // Verificar si la solicitud fue exitosa y si hay datos recibidos
 		console.log(response);
         if (response.data) {
@@ -70,12 +70,12 @@
 async function fetchDataArray() {
     try {
 
-        const response = await axios.get('http://127.0.0.1:8000/api_rapida.php?evento=listarProductosArray');
+        const response = await axios.get(URLHOME+'/api_rapida.php?evento=listarProductosArray');
         // Verificar si la solicitud fue exitosa y si hay datos recibidos
 		console.log(response);
         if (response.data) {
 			
-			console.log("Esto es reponse",response.data);
+			console.log("Esto es reponse home",response.data);
 
             // Convertir el texto JSON en un objeto
             // Guardar los datos de productos en el local storage con la clave 'productosb'
