@@ -2,7 +2,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
-					<div class="footer-block">
+					<div class="footer-block" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
 						<img src="/assets/img/Logo.png" alt="Bio Mercados">
 						
 						<p><span>Teléfono:</span> Número de teléfono</p>
@@ -10,7 +10,7 @@
 						<!-- TODO: Arreglar info de contacto -->
 					</div>
 				</div>
-				<div class="col-lg-2">
+				<div class="col-lg-2" style="display: flex; flex-direction: column; align-items: center;">
 					<div class="footer-block">
 						<a class="btn btn-title" data-toggle="collapse" href="#enlaces" role="button" aria-expanded="false" aria-controls="enlaces">
 							Enlaces Importantes
@@ -25,7 +25,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-3" style="display: flex; flex-direction: column; align-items: center;">
 					<div class="footer-block">
 						<a class="btn btn-title" data-toggle="collapse" href="#apps" role="button" aria-expanded="false" aria-controls="apps">
 							Descarga nuestras <br class="on-desktop">app's móviles
@@ -39,7 +39,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-4" style="display: flex; flex-direction: column; align-items: center;">
 					<div class="footer-block">
 						<a class="btn btn-title" data-toggle="collapse" href="#suscripcion" role="button" aria-expanded="false" aria-controls="suscripcion">
 						   Suscríbete para recibir notificaciones
@@ -68,13 +68,12 @@
 		<div class="bottom-footer">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-8">
-						<p>Alimentos FM, C.A. © 2020 Todos los Derechos Reservados <br/>J-31721968-6</p>
-					</div>
+				<div class="col-md-8">
+					<p>EOS © <?php echo date('Y'); ?> Todos los Derechos Reservados <br/>J-XXXXXXXX-Z</p>
+				</div>
 					<div class="col-md-4">
 						<ul class="social-icons">							
 							<li><a href="#" target="_blank" class="slyoutube"></a></li>
-							<li><a href="#" target="_blank" class="sltwitter"></a></li>
 							<li><a href="#" target="_blank" class="slinstagram"></a></li>
 							<li><a href="#" target="_blank" class="slfacebook"></a></li>
 						</ul> <!-- TODO: ^^ Reemplazar links de los sitios ^^ -->

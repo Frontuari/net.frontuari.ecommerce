@@ -8740,10 +8740,6 @@ var render = function render() {
     staticClass: "row align-items-center-md"
   }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "col-lg-6 col-md-14",
-    staticStyle: {
-      width: "350px",
-      position: "relative"
-    },
     attrs: {
       id: "search-header"
     }
@@ -9003,12 +8999,18 @@ var render = function render() {
       href: "/cart"
     }
   }, [_c("img", {
+    staticStyle: {
+      "margin-bottom": "-47px"
+    },
     attrs: {
       src: "/assets/img/Carrito.png",
       alt: "Cart"
     }
   }), _c("span", {
-    staticClass: "quantity-span"
+    staticClass: "quantity-span",
+    staticStyle: {
+      "margin-bottom": "-45px"
+    }
   }, [_vm._v(_vm._s(_vm.cant_cart))])])]), _vm._v(" "), _vm.userlogged ? _c("li", {
     attrs: {
       id: "nav-fav",
@@ -9199,14 +9201,7 @@ var staticRenderFns = [function () {
       src: "/assets/img/Usuario.png",
       alt: "Login"
     }
-  }), _vm._v(" "), _c("span", {
-    staticClass: "link-text",
-    staticStyle: {
-      color: "black",
-      "font-size": "18px",
-      width: "25%"
-    }
-  }, [_vm._v("Inicio de sesion")])]);
+  })]);
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
@@ -9249,6 +9244,9 @@ var staticRenderFns = [function () {
       type: "button"
     }
   }, [_c("img", {
+    staticStyle: {
+      fill: "gray"
+    },
     attrs: {
       src: "/assets/img/x.svg",
       alt: "Menu Bars"
@@ -99439,8 +99437,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
