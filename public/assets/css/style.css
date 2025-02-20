@@ -3765,9 +3765,7 @@ ul.social-icons{
 
 ul.social-icons li a{
     float: right;
-    display:block;
-    padding: 25px !important;
-    margin:0px 2px !important;
+    display:flex;
 
 }
 
@@ -3793,8 +3791,10 @@ a.sltwitter{
 }
 
 a.slyoutube{
-    background: url('/assets/img/Youtube.png') -100px 0;
-    background-repeat:no-repeat ;
+    background: url('/assets/img/Youtube.png') 0px 0;
+    background-repeat:no-repeat;
+    background-size: cover;
+    width: 70;
 
 }
 

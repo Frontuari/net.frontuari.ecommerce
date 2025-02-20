@@ -43,7 +43,7 @@ ul.social-icons{
 
 ul.social-icons li a{
 	float: right;
-	display:block;
+	display:flex;
 	padding: 25px !important;
 	margin:0px 2px !important;
 
@@ -66,7 +66,9 @@ a.sltwitter{
 }
 
 a.slyoutube{
-	background: url('/assets/img/social_icons.png') -150px 0;
+	background: url('/assets/img/social_icons.png') 0px 0;
+	background-size: cover;
+	width: 70;
 }
 
 ul.carousel-indicators{

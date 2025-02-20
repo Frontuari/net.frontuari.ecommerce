@@ -24,7 +24,7 @@
 						<a  href="/" class="navbar-brand"><img  src="/img/Logo.png" alt="Bio Mercados" style="width: 80%; height: auto"></a>
 					</div>
 
-					<div id="search-header" class="col-lg-6 col-md-14" style=" width: 350px; position: relative;">
+					<div id="search-header" class="col-lg-6 col-md-14">
 						<form class="form-inline" style=" display: flex; align-items: center;justify-content: space-between;width: 100%;" v-on:submit="search()">
 							<div style="display: flex; width: 90%; align-items: center ;  ">
 							<input class="form-control" style="  flex-grow: 1;  border-top-left-radius: 100px;border-bottom-left-radius: 100px; padding: 10px;"id="bio-search" type="text" placeholder="Buscar Productos" aria-label="Search" v-on:input="SearchProducts($event)" v-model="searchText" autocomplete="off">
@@ -55,7 +55,6 @@
 									<div style="display: flex; width: 45%; align-items: center; justify-content: space-between">
 									
 									<img src="/assets/img/Usuario.png" alt="Login"  > 
-									<span class="link-text" style=" color: black ;font-size: 18px; width: 25%;" >Inicio de sesion</span> 
 								   </div>
 								</a>
 				
@@ -95,7 +94,7 @@
 							<!-- loggeado -->
 							
 							<li id="nav-cart" data-toggle="tooltip" data-placement="bottom" title="Haga click para ver el carrito">
-								<a href="/cart"><img src="/assets/img/Carrito.png" alt="Cart"><span class="quantity-span">{{ cant_cart }}</span></a>
+								<a href="/cart"><img src="/assets/img/Carrito.png" alt="Cart" style="margin-bottom: -47px"><span class="quantity-span" style="margin-bottom: -45px">{{ cant_cart }}</span></a>
 							</li>
 
 							<li id="nav-fav" v-if="userlogged" data-toggle="tooltip" data-placement="bottom" title="Haga click para ver sus favoritos">
@@ -117,7 +116,7 @@
 					<div id="top-info" class="w-100 align-items-center">
 						<div class="col-md-12 text-right">
 							<button class="navbar-toggler toggle-menu" type="button">
-								<img src="/assets/img/x.svg" alt="Menu Bars">
+								<img src="/assets/img/x.svg" style="fill: gray" alt="Menu Bars">
 							</button>
 						</div>
 					</div>
