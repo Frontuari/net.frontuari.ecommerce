@@ -8,10 +8,9 @@ class Packages extends Model
 {
     protected $table='packages';
     protected $fillable = [
-        'name', // Agrega el campo 'name' aquí
-        // Otros campos que desees permitir en asignación masiva
+        'name', 'discount', 'type', 'status', 'image'
     ];
-
+ 
     public function setNameAttribute($value)
     {
         if(isset($this->attributes['id'])){
@@ -45,5 +44,11 @@ class Packages extends Model
        $fg= new FuncionesGenerales;
        return $fg->get_formato_moneda($value);
     }
+
+    public function products()
+{
+    return $this->belongsToMany(Product::class, 'det_product_packages', 'packages_id', 'products_id')
+                ->withPivot('cant'); // Si hay más columnas en la tabla pivote
+}
     
 }

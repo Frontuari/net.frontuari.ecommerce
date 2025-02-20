@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetProductPackages extends Model
 {
     protected $table = 'det_product_packages';
-    protected $fillable = ['cant', 'packages_id', 'product_id'];
+    protected $fillable = ['cant', 'packages_id', 'products_id'];
     public $timestamps = false;
 
 

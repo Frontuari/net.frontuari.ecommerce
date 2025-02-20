@@ -15,11 +15,19 @@ class Cities extends Model
         $this->perPage = request()->input('show') ?? 50;
     }
     public function getFullNameAttribute()
-    {
-        $Regions = Regions::find($this->regions_id);
-        $States = States::find($Regions->states_id);
-        //$Brands = Banks::where('id',$this->banks_id)->get();
-        //$Brands->name;
-        return "{$States->name} {$Regions->name} {$this->name}";
+{
+    $Regions = Regions::find($this->regions_id);
+
+    if (!$Regions) {
+        return "{$this->name}";
     }
+
+    $States = States::find($Regions->states_id);
+
+    if (!$States) {
+        return "{$Regions->name} {$this->name}";
+    }
+
+    return "{$States->name} {$Regions->name} {$this->name}";
+}
 }

@@ -32,11 +32,70 @@ class PackagesController extends VoyagerBreadController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        
+
+     //VALIDACION DE CREACION DE PAQUETES
+     public function store(Request $request)
+{
+    // Verificar qué datos están llegando (depuración)
+    // dd($request->all()); // Verificar que la imagen esté en la solicitud
+
+    // Convertir el descuento a formato decimal correcto
+    $discount = str_replace(',', '.', $request->input('discount'));
+
+    // Asegúrate de que el descuento esté correctamente formateado
+    if (is_numeric($discount)) {
+        $discount = floatval($discount);
+    } else {
+        $discount = 0;  // Asigna 0 si el valor no es válido
     }
 
+    // Preparar los datos para guardar
+    $data = [
+        'name' => $request->input('name'),
+        'discount' => $discount,
+        'type' => $request->input('type'),
+        'status' => $request->input('status'),
+    ];
+
+ 
+
+    // Manejo de la imagen
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imagePath = $image->store('packages/' . now()->format('FYm'), 'public');
+
+        // Verificar si la imagen se guardó correctamente
+        // dd($imagePath);  // Verificar que la ruta se ha generado correctamente
+        if ($imagePath) {
+            $data['image'] = $imagePath;  // Guardar la ruta de la imagen
+        } else {
+            dd('Error al guardar la imagen');
+        }
+    }
+
+   
+
+    // Insertar el paquete en la base de datos
+    $package = Packages::create($data);
+
+    // Verificar si la creación fue exitosa
+    if ($package) {
+        // Verificar si hay productos para insertar en `det_product_packages`
+        if ($request->has('package_belongstomany_product_relationship')) {
+            foreach ($request->package_belongstomany_product_relationship as $productId) {
+                DetProductPackages::create([
+                    'cant' => $request->cantidad[$productId] ?? 0, // Cantidad del producto
+                    'packages_id' => $package->id, // ID del paquete recién creado
+                    'products_id' => $productId, // ID del producto
+                ]);
+            }
+        }
+
+        return redirect()->route('voyager.packages.index')->with('success', 'Paquete creado con éxito');
+    } else {
+        return back()->with('error', 'No se pudo crear el paquete');
+    }
+}
 
     /**
      * Display the specified resource.
