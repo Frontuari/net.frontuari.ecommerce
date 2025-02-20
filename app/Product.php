@@ -44,4 +44,10 @@ class Product extends Model
     {
         return $this->hasMany('App\ProductTax');
     }
+
+    public function packages()
+    {
+        return $this->belongsToMany(Packages::class, 'DetProductPackages', 'products_id', 'packages_id')
+                    ->withPivot('cant'); // Incluye la cantidad en la relación
+    }
 }

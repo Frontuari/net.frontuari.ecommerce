@@ -202,17 +202,17 @@
 													<div class="row">
 														<div class="col-md-4">
 															<div class="radio">
-															  <label><input type="radio" onclick="deli_type(this);" value="0" name="delivery_type" checked> Zona Pick up Mañongo</label>
+															  <label><input type="radio" onclick="deli_type(this);" value="0" name="delivery_type" checked> Zona Pick up </label>
 															</div>
 														</div>
 														<div class="col-md-4">
 															<div class="radio">
-															  <label><input type="radio" onclick="deli_type(this);"  value="2" name="delivery_type"> Delivery Gratis: Entrega en las próximas 24 horas. Valencia Norte, Naguanagua y San Diego</label>
+															  <label><input type="radio" onclick="deli_type(this);"  value="2" name="delivery_type"> Delivery Gratis: Entrega en las próximas 24 horas</label>
 															</div>
 														</div>
 														<div class="col-md-4">
 															<div class="radio">
-															  <label><input type="radio" onclick="deli_type(this);"  value="1" name="delivery_type"> Delivery Express: $3, 2 horas. Valencia Norte, Naguanagua y San Diego</label>
+															  <label><input type="radio" onclick="deli_type(this);"  value="1" name="delivery_type"> Delivery Express: </label>
 															</div>
 														</div>
 														<input id="dvy_type" type="hidden" value="0" name="dvy_type" />
