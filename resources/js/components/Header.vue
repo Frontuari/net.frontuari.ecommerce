@@ -94,7 +94,7 @@
 							<!-- loggeado -->
 							
 							<li id="nav-cart" data-toggle="tooltip" data-placement="bottom" title="Haga click para ver el carrito">
-								<a href="/cart"><img src="/assets/img/Carrito.png" alt="Cart" style="margin-bottom: -47px"><span class="quantity-span" style="margin-bottom: -45px">{{ cant_cart }}</span></a>
+								<a href="/cart"><img src="/assets/img/Carrito.png" alt="Cart" ><span class="quantity-span" >{{ cant_cart }}</span></a>
 							</li>
 
 							<li id="nav-fav" v-if="userlogged" data-toggle="tooltip" data-placement="bottom" title="Haga click para ver sus favoritos">

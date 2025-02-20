@@ -28,7 +28,7 @@ export default {
     methods: {
 		getcategories: function() {
 			this.categories.forEach( (a,b) => {
-				this.backgrounds.push('url('+URLHOME+'/storage/'+a.image+')');
+				this.backgrounds.push('url('+URLHOME+'storage/'+a.image+')');
 			});
         }
     },

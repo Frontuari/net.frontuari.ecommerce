@@ -1918,7 +1918,7 @@ __webpack_require__.r(__webpack_exports__);
     getcategories: function getcategories() {
       var _this = this;
       this.categories.forEach(function (a, b) {
-        _this.backgrounds.push('url(' + URLHOME + '/storage/' + a.image + ')');
+        _this.backgrounds.push('url(' + URLHOME + 'storage/' + a.image + ')');
       });
     }
   },
@@ -6689,7 +6689,7 @@ var staticRenderFns = [function () {
       name: "delivery_type",
       checked: ""
     }
-  }), _vm._v(" Zona Pick up Mañongo")])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" Zona Pick up ")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
   }, [_c("div", {
     staticClass: "radio"
@@ -6700,7 +6700,7 @@ var staticRenderFns = [function () {
       value: "2",
       name: "delivery_type"
     }
-  }), _vm._v(" Delivery Gratis: Entrega en las próximas 24 horas. Valencia Norte, Naguanagua y San Diego")])])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" Delivery Gratis: Entrega en las próximas 24 horas")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
   }, [_c("div", {
     staticClass: "radio"
@@ -6711,7 +6711,7 @@ var staticRenderFns = [function () {
       value: "1",
       name: "delivery_type"
     }
-  }), _vm._v(" Delivery Express: $3, 2 horas. Valencia Norte, Naguanagua y San Diego")])])]), _vm._v(" "), _c("input", {
+  }), _vm._v(" Delivery Express: ")])])]), _vm._v(" "), _c("input", {
     attrs: {
       id: "dvy_type",
       type: "hidden",
@@ -7333,46 +7333,11 @@ var render = function render() {
       staticClass: "product-img"
     }, [com.image != null ? _c("LazyImg", {
       attrs: {
-        source: _vm.URLHOME + "/storage/" + com.image
+        source: "/storage/" + com.image
       }
     }) : _vm._e(), _vm._v(" "), _c("div", {
       staticClass: "product-actions"
     }, [_c("button", {
-      staticClass: "btn",
-      attrs: {
-        type: "button"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.addComboToCart(com.products);
-        }
-      }
-    }, [_c("svg", {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 14.31 15"
-      }
-    }, [_c("title", [_vm._v("añadir-carrito-bio")]), _c("g", {
-      attrs: {
-        id: "Capa_2",
-        "data-name": "Capa 2"
-      }
-    }, [_c("g", {
-      attrs: {
-        id: "Guias_y_recursos",
-        "data-name": "Guias y recursos"
-      }
-    }, [_c("path", {
-      staticClass: "cls-1",
-      attrs: {
-        d: "M13.2,11.58H8.83a.45.45,0,1,0,0,.9H10.1a.81.81,0,1,1-.81.81.46.46,0,0,0-.91,0,1.72,1.72,0,1,0,3.22-.81h1.6a.45.45,0,1,0,0-.9Z"
-      }
-    }), _c("path", {
-      staticClass: "cls-1",
-      attrs: {
-        d: "M14.21,3.33a.48.48,0,0,0-.35-.16H4V1.35A.45.45,0,0,0,3.67.92L.58,0A.45.45,0,0,0,0,.32a.45.45,0,0,0,.3.56l2.77.81v9.89H2.65a.45.45,0,0,0,0,.9h2.6a.81.81,0,1,1-.81.81.45.45,0,1,0-.9,0,1.72,1.72,0,1,0,1.71-1.71H4v-.77h8.52a.43.43,0,0,0,.22-.06.46.46,0,0,0,.22-.3L14.3,3.71A.48.48,0,0,0,14.21,3.33Zm-.9.74L13,5.39H4V4.07ZM4,9.91V8.59H10.1a.45.45,0,0,0,0-.9H4V6.29h8.87l-.72,3.62Z"
-      }
-    })])])])]), _vm._v(" "), _c("button", {
       staticClass: "btn",
       attrs: {
         type: "button",
@@ -7416,7 +7381,9 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(com.name))]), _vm._v(" "), _c("span", {
       staticClass: "product-info"
-    }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")])])]);
+    }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")]), _vm._v(" "), _c("div", {
+      staticClass: "product-prices"
+    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(com.combo_price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(com.combo_price)))])])])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-12",
     attrs: {
@@ -7439,46 +7406,11 @@ var render = function render() {
       staticClass: "product-img"
     }, [com.image != null ? _c("LazyImg", {
       attrs: {
-        source: _vm.URLHOME + "/storage/" + com.image
+        source: "/storage/" + com.image
       }
     }) : _vm._e(), _vm._v(" "), _c("div", {
       staticClass: "product-actions"
     }, [_c("button", {
-      staticClass: "btn",
-      attrs: {
-        type: "button"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.addComboToCart(com.products);
-        }
-      }
-    }, [_c("svg", {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 14.31 15"
-      }
-    }, [_c("title", [_vm._v("añadir-carrito-bio")]), _c("g", {
-      attrs: {
-        id: "Capa_2",
-        "data-name": "Capa 2"
-      }
-    }, [_c("g", {
-      attrs: {
-        id: "Guias_y_recursos",
-        "data-name": "Guias y recursos"
-      }
-    }, [_c("path", {
-      staticClass: "cls-1",
-      attrs: {
-        d: "M13.2,11.58H8.83a.45.45,0,1,0,0,.9H10.1a.81.81,0,1,1-.81.81.46.46,0,0,0-.91,0,1.72,1.72,0,1,0,3.22-.81h1.6a.45.45,0,1,0,0-.9Z"
-      }
-    }), _c("path", {
-      staticClass: "cls-1",
-      attrs: {
-        d: "M14.21,3.33a.48.48,0,0,0-.35-.16H4V1.35A.45.45,0,0,0,3.67.92L.58,0A.45.45,0,0,0,0,.32a.45.45,0,0,0,.3.56l2.77.81v9.89H2.65a.45.45,0,0,0,0,.9h2.6a.81.81,0,1,1-.81.81.45.45,0,1,0-.9,0,1.72,1.72,0,1,0,1.71-1.71H4v-.77h8.52a.43.43,0,0,0,.22-.06.46.46,0,0,0,.22-.3L14.3,3.71A.48.48,0,0,0,14.21,3.33Zm-.9.74L13,5.39H4V4.07ZM4,9.91V8.59H10.1a.45.45,0,0,0,0-.9H4V6.29h8.87l-.72,3.62Z"
-      }
-    })])])])]), _vm._v(" "), _c("button", {
       staticClass: "btn",
       attrs: {
         type: "button",
@@ -7522,7 +7454,9 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(com.name))]), _vm._v(" "), _c("span", {
       staticClass: "product-info"
-    }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")])])]);
+    }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")]), _vm._v(" "), _c("div", {
+      staticClass: "product-prices"
+    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(com.combo_price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(com.combo_price)))])])])]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "combo-group",
     attrs: {
@@ -7538,46 +7472,11 @@ var render = function render() {
       staticClass: "product-img"
     }, [com.image != null ? _c("LazyImg", {
       attrs: {
-        source: _vm.URLHOME + "/storage/" + com.image
+        source: "/storage/" + com.image
       }
     }) : _vm._e(), _vm._v(" "), _c("div", {
       staticClass: "product-actions"
     }, [_c("button", {
-      staticClass: "btn",
-      attrs: {
-        type: "button"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.addComboToCart(com.products);
-        }
-      }
-    }, [_c("svg", {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 14.31 15"
-      }
-    }, [_c("title", [_vm._v("añadir-carrito-bio")]), _c("g", {
-      attrs: {
-        id: "Capa_2",
-        "data-name": "Capa 2"
-      }
-    }, [_c("g", {
-      attrs: {
-        id: "Guias_y_recursos",
-        "data-name": "Guias y recursos"
-      }
-    }, [_c("path", {
-      staticClass: "cls-1",
-      attrs: {
-        d: "M13.2,11.58H8.83a.45.45,0,1,0,0,.9H10.1a.81.81,0,1,1-.81.81.46.46,0,0,0-.91,0,1.72,1.72,0,1,0,3.22-.81h1.6a.45.45,0,1,0,0-.9Z"
-      }
-    }), _c("path", {
-      staticClass: "cls-1",
-      attrs: {
-        d: "M14.21,3.33a.48.48,0,0,0-.35-.16H4V1.35A.45.45,0,0,0,3.67.92L.58,0A.45.45,0,0,0,0,.32a.45.45,0,0,0,.3.56l2.77.81v9.89H2.65a.45.45,0,0,0,0,.9h2.6a.81.81,0,1,1-.81.81.45.45,0,1,0-.9,0,1.72,1.72,0,1,0,1.71-1.71H4v-.77h8.52a.43.43,0,0,0,.22-.06.46.46,0,0,0,.22-.3L14.3,3.71A.48.48,0,0,0,14.21,3.33Zm-.9.74L13,5.39H4V4.07ZM4,9.91V8.59H10.1a.45.45,0,0,0,0-.9H4V6.29h8.87l-.72,3.62Z"
-      }
-    })])])])]), _vm._v(" "), _c("button", {
       staticClass: "btn",
       attrs: {
         type: "button",
@@ -7621,7 +7520,9 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(com.name))]), _vm._v(" "), _c("span", {
       staticClass: "product-info"
-    }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")])])]);
+    }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")]), _vm._v(" "), _c("div", {
+      staticClass: "product-prices"
+    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(com.combo_price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(com.combo_price)))])])])]);
   }), 0)])])])])]), _vm._v(" "), _c("ModalCombo", {
     attrs: {
       tasadolar: _vm.tasadolar,
@@ -8998,18 +8899,12 @@ var render = function render() {
       href: "/cart"
     }
   }, [_c("img", {
-    staticStyle: {
-      "margin-bottom": "-47px"
-    },
     attrs: {
       src: "/assets/img/Carrito.png",
       alt: "Cart"
     }
   }), _c("span", {
-    staticClass: "quantity-span",
-    staticStyle: {
-      "margin-bottom": "-45px"
-    }
+    staticClass: "quantity-span"
   }, [_vm._v(_vm._s(_vm.cant_cart))])])]), _vm._v(" "), _vm.userlogged ? _c("li", {
     attrs: {
       id: "nav-fav",
@@ -99409,8 +99304,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
