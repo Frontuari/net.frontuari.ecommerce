@@ -2383,7 +2383,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       selectedTags: '',
       products: {},
       filterP: '',
-      limitP: 50,
+      limitP: 20,
       orderP: 'AZasc',
       rangeP: '',
       min_price: 0,
@@ -2418,7 +2418,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 2:
               response = _context.sent;
               this.products = (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.data;
-              console.log(this.products);
+              console.log("filterProducts: ", response.data);
             case 5:
             case "end":
               return _context.stop();
@@ -2472,7 +2472,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     filtros: function filtros() {
-      return "&" + this.filterP + "&cat=" + this.cat + "&limit=" + this.limitP + "&order=" + this.orderP + "&precio=" + this.min_price + "," + this.max_price + "&page=" + this.page + this.sParam + this.fTags + this.idParam;
+      var params = [];
+
+      // Se agregan los filtros solo si tienen valores válidos
+      if (this.filterP) {
+        params.push(this.filterP);
+      }
+      if (this.cat) {
+        params.push("cat=".concat(this.cat));
+      }
+      if (this.limitP) {
+        params.push("limit=".concat(this.limitP));
+      }
+      if (this.orderP) {
+        params.push("order=".concat(this.orderP));
+      }
+      // El filtro de this.min_price y this.max_price se debe ajustar a una logica flexible.
+      // Siempre filtra por un rango de precios por default.
+      // Se habilitara un boton que habilite el filtro por rango de precios para evitar ser siempre enviado en los filtros de la URL...
+      if (this.min_price || this.max_price) {
+        params.push("precio=".concat(this.min_price, ",").concat(this.max_price));
+      }
+      if (this.page) {
+        params.push("page=".concat(this.page));
+      }
+      if (this.sParam) {
+        params.push(this.sParam);
+      }
+      if (this.fTags) {
+        params.push(this.fTags);
+      }
+      if (this.idParam) {
+        params.push(this.idParam);
+      }
+      // Se une todos los parámetros en una cadena
+      return params.length ? '&' + params.join('&') : '';
     }
   },
   created: function created() {
@@ -3716,7 +3750,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       Object.values(products).forEach(function (product) {
         // Acceder a cada producto y establecer su cantidad a 1
         _this.cant_product[product.id] = 1;
-
         // Aquí puedes realizar cualquier otra operación necesaria con el producto
         console.log("estos son los productos", product);
       });
@@ -99439,8 +99472,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\ecommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

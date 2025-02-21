@@ -150,7 +150,7 @@
 				selectedTags:'',
 				products: {},
 				filterP: '',
-				limitP: 50,
+				limitP: 20,
 				orderP: 'AZasc',
 				rangeP: '',
 				min_price: 0,
@@ -177,7 +177,7 @@
 			filterProducts: async function() {
 				const response = await axios.get(URLSERVER+'api/products?'+this.filtros);
 				this.products = response.data?.data;
-				console.log(this.products);
+				console.log("filterProducts: ",response.data);
 			},
 			putToggle(event) {
 				let tmp = [];
@@ -227,7 +227,42 @@
 		},
 		computed: {
 			filtros: function() {
-				return "&"+this.filterP+"&cat="+this.cat+"&limit="+this.limitP+"&order="+this.orderP+"&precio="+this.min_price+","+this.max_price+"&page="+this.page+this.sParam+this.fTags+this.idParam;
+				const params = [];
+
+				// Se agregan los filtros solo si tienen valores válidos
+				if (this.filterP) {
+					params.push(this.filterP);
+				}
+				if (this.cat) {
+					params.push(`cat=${this.cat}`);
+				}
+				if (this.limitP) {
+					params.push(`limit=${this.limitP}`);
+				}
+				if (this.orderP) {
+					params.push(`order=${this.orderP}`);
+				}
+				// El filtro de this.min_price y this.max_price se debe ajustar a una logica flexible.
+				// Siempre filtra por un rango de precios por default.
+				// Se habilitara un boton que habilite el filtro por rango de precios para evitar ser siempre enviado en los filtros de la URL...
+				if (this.min_price || this.max_price) {
+					params.push(`precio=${this.min_price},${this.max_price}`);
+				}
+
+				if (this.page) {
+					params.push(`page=${this.page}`);
+				}
+				if (this.sParam) {
+					params.push(this.sParam);
+				}
+				if (this.fTags) {
+					params.push(this.fTags);
+				}
+				if (this.idParam) {
+					params.push(this.idParam);
+				}
+				// Se une todos los parámetros en una cadena
+				return params.length ? '&' + params.join('&') : '';
 			}
 		},
 		created: function() {
