@@ -169,13 +169,13 @@ class PackagesController extends VoyagerBreadController
                 DetProductPackages::create([
                     'cant' => $request->cantidad[$productId] ?? 0,
                     'packages_id' => $id,
-                    'product_id' => $productId,
+                    'products_id' => $productId,
                 ]);
             }
         }
     
         // Redireccionar a la página de edición del paquete actualizado
-        return redirect()->route('voyager.packages.edit', $package->getKey())->with('success', 'Package updated successfully');
+        return redirect()->route('voyager.packages.index')->with('success', 'Paquete actualizado con exito con éxito');
     }
     
 
