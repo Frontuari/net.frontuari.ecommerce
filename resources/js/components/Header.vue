@@ -50,7 +50,7 @@
 					<div id="nav-header" class="col-lg-4 col-5">
 						<ul>
 							<!-- no loggeado-->
-							<li id="nav-login" class="dropdown" style="width: 25%;" >
+							<li id="nav-login" class="dropdown" style="width: 5%;" >
 								<a href="#" v-if="!userlogged" id="navbarLogin" class="navbarLogin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<div style="display: flex; width: 45%; align-items: center; justify-content: space-between">
 									
