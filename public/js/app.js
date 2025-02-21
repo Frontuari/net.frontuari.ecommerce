@@ -8797,7 +8797,7 @@ var render = function render() {
   }, [_c("ul", [_c("li", {
     staticClass: "dropdown",
     staticStyle: {
-      width: "25%"
+      width: "5%"
     },
     attrs: {
       id: "nav-login"
@@ -97511,6 +97511,10 @@ Vue.directive('lazyload', {
 var globalFunc = {
   addToFavorite: function addToFavorite(product, user_id) {
     console.log(product, user_id);
+    var audio = new Audio('filling-your-inbox.ogg');
+    audio.play()["catch"](function (error) {
+      console.error("Error al reproducir el audio:", error);
+    });
     var products_id = product.id;
     if (!!user_id) {
       axios.post(URLHOME + 'api/favorites', {
@@ -97546,6 +97550,10 @@ var globalFunc = {
       window.localStorage.setItem('cartNew', JSON.stringify(cart));
       var cantUpdate = globalFunc.getCartCant(cart);
       EventBus.$emit("update_cantCart", cantUpdate);
+      var audio = new Audio('filling-your-inbox.ogg');
+      audio.play()["catch"](function (error) {
+        console.error("Error al reproducir el audio:", error);
+      });
     } else {
       cart = globalFunc.validateCart(product, cart, cantidad);
       window.localStorage.setItem('cartNew', JSON.stringify(cart));
@@ -99337,8 +99345,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\ecommerce\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

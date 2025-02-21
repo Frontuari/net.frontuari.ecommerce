@@ -119,6 +119,10 @@ var globalFunc = {
     addToFavorite: function(product,user_id) {
 
         console.log(product, user_id);
+        const audio = new Audio('filling-your-inbox.ogg');
+        audio.play().catch(error => {
+            console.error("Error al reproducir el audio:", error);
+        });
         
         let products_id = product.id;
         
@@ -160,7 +164,10 @@ var globalFunc = {
             window.localStorage.setItem('cartNew', JSON.stringify(cart));
             const cantUpdate = globalFunc.getCartCant(cart);
             EventBus.$emit("update_cantCart",cantUpdate);
-
+            const audio = new Audio('filling-your-inbox.ogg');
+            audio.play().catch(error => {
+                console.error("Error al reproducir el audio:", error);
+            });
             
             
         }else {
