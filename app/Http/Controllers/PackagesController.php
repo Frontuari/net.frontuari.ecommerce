@@ -169,7 +169,7 @@ class PackagesController extends VoyagerBreadController
                 DetProductPackages::create([
                     'cant' => $request->cantidad[$productId] ?? 0,
                     'packages_id' => $id,
-                    'product_id' => $productId,
+                    'products_id' => $productId,
                 ]);
             }
         }
