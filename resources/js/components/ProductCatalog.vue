@@ -223,9 +223,8 @@
                 console.log("entre aqui");
 
                 Object.values(products).forEach(product => {
-                // Acceder a cada producto y establecer su cantidad a 1
+                    // Acceder a cada producto y establecer su cantidad a 1
                     this.cant_product[product.id] = 1;
-
                     // Aquí puedes realizar cualquier otra operación necesaria con el producto
                     console.log("estos son los productos", product);
                 });
