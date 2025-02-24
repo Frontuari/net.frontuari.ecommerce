@@ -144,7 +144,6 @@ ul.carousel-indicators{
 }
 
 #faq_view{
-	background-image: url(../../img/fondo01.jpg);
     background-size: contain;
     background-position: left bottom;
 	background-repeat: no-repeat;

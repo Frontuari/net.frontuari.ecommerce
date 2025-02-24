@@ -1641,7 +1641,6 @@
 */	
 	#register{
 		padding: 3rem 0;
-		background-image: url('../img/fondo-registro.jpg');
 		background-size: 100%;
 		background-position: left bottom;
 		background-repeat: no-repeat;
@@ -1649,7 +1648,6 @@
 	.register-form{
 		padding: 2rem 4rem 2rem 2rem;
 		background-color: #fff;
-		background-image: url('../img/fondo-formulario-bio-mercados.png');
 		background-size: 135px;
 		background-position: 95% top;
 		background-repeat: no-repeat;
@@ -1657,7 +1655,7 @@
 		box-shadow: 2px 2px 10px rgba(0,0,0,.2);
 	}
 	.form-title{
-		color: #e1251b;
+		color: #203876;
 		margin-bottom: 2rem;
 	}
 	.register-form .form-group:last-child{
