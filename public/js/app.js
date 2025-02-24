@@ -2038,7 +2038,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var data = [];
       var envioData = {
         precio_b: this.delivery,
-        precio_d: this.delivery / this.tasadolar,
+        precio_d: this.delivery * this.tasadolar,
         peso_max: this.peso_max
       };
       data[0] = envioData;
@@ -2505,6 +2505,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.idParam) {
         params.push(this.idParam);
       }
+      console.log(params);
+
       // Se une todos los parámetros en una cadena
       return params.length ? '&' + params.join('&') : '';
     }
@@ -5861,7 +5863,7 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(product_cart.product.name))]), _c("br"), _vm._v(" "), product_cart.product.discount > 0 ? _c("span", {
       staticClass: "product-descount"
-    }, [_vm._v("$ 4 / " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount > 0 ? _c("p", [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.discount / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.discount)))]) : _vm._e(), _vm._v(" "), product_cart.product.price > 0 && product_cart.product.discount <= 0 ? _c("p", [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price)))]) : _vm._e()])])]), _vm._v(" "), _c("div", {
+    }, [_vm._v("$ 4 / " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount > 0 ? _c("p", [_vm._v("$ " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.discount * _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatDolar")(product_cart.product.discount)))]) : _vm._e(), _vm._v(" "), product_cart.product.price > 0 && product_cart.product.discount <= 0 ? _c("p", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.price * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.price)))]) : _vm._e()])])]), _vm._v(" "), _c("div", {
       staticClass: "col-md-3 align-self-center"
     }, [_c("div", {
       staticClass: "input-group mt-1"
@@ -5949,7 +5951,7 @@ var render = function render() {
       staticClass: "product-add"
     }, [_c("div", {
       staticClass: "product-prices"
-    }, [product_cart.product.discount > 0 ? _c("p", [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.discount * product_cart.cant / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.discount * product_cart.cant)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("p", [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.price * product_cart.cant / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price * product_cart.cant)))]) : _vm._e()])])]), _vm._v(" "), _c("div", {
+    }, [product_cart.product.discount > 0 ? _c("p", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.discount * product_cart.cant * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.discount * product_cart.cant)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("p", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.price * product_cart.cant * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.price * product_cart.cant)))]) : _vm._e()])])]), _vm._v(" "), _c("div", {
       staticClass: "col-md-1 text-right align-self-center"
     }, [_c("button", {
       staticClass: "btn btn-delete-section",
@@ -5992,9 +5994,9 @@ var render = function render() {
       staticClass: "row"
     }, [_c("p", [_vm._v(_vm._s(product_cart.product.name) + " (" + _vm._s(product_cart.cant) + " Articulos)")]), _vm._v(" "), product_cart.product.discount > 0 ? _c("h3", {
       staticClass: "order-text"
-    }, [_vm._v("\n                                                                        $ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.discount * product_cart.cant / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.discount * product_cart.cant)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("h3", {
+    }, [_vm._v("\n                                                                        Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.discount * product_cart.cant * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.discount * product_cart.cant)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("h3", {
       staticClass: "order-text"
-    }, [_vm._v("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.price * product_cart.cant / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price * product_cart.cant)))]) : _vm._e()]);
+    }, [_vm._v("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tBs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.price * product_cart.cant * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.price * product_cart.cant)))]) : _vm._e()]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "order-description order-total"
   }, [_c("div", {
@@ -6003,7 +6005,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Subtotal")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_cart / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_cart)) + " ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_cart * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_cart)) + " ")])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Peso")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
@@ -6011,11 +6013,11 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Total Delivery:")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_delivery / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_delivery)) + " ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_delivery * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_delivery)) + " ")])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Total a Pagar:")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_pagar / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_pagar)) + " ")])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_pagar * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_pagar)) + " ")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "order-footer-buttons"
   }, [this.datauser.id !== "undefined" ? _c("button", {
     staticClass: "btn btn-submit next action-button",
@@ -6318,9 +6320,9 @@ var render = function render() {
       staticClass: "row"
     }, [_c("p", [_vm._v(_vm._s(product_cart.product.name) + " (" + _vm._s(product_cart.cant) + " Articulos)")]), _vm._v(" "), product_cart.product.discount > 0 ? _c("h3", {
       staticClass: "order-text"
-    }, [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.discount * product_cart.cant / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.discount * product_cart.cant)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("h3", {
+    }, [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.discount * product_cart.cant * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.discount * product_cart.cant)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("h3", {
       staticClass: "order-text"
-    }, [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.price * product_cart.cant / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price * product_cart.cant)))]) : _vm._e()]);
+    }, [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.price * product_cart.cant * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.price * product_cart.cant)))]) : _vm._e()]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "order-description order-total"
   }, [_c("div", {
@@ -6329,7 +6331,7 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Subtotal")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_cart / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_cart)) + " ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_cart * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_cart)) + " ")])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Peso")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
@@ -6337,11 +6339,11 @@ var render = function render() {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Total Delivery:")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_delivery / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_delivery)) + " ")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_delivery * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_delivery)) + " ")])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-12"
   }, [_c("p", [_vm._v("Total a Pagar:")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_pagar / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_pagar)) + " ")])])])])])])])])])])])])]), _vm._v(" "), _c("fieldset", [_c("div", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_pagar * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_pagar)) + " ")])])])])])])])])])])])])]), _vm._v(" "), _c("fieldset", [_c("div", {
     staticClass: "payment-methods"
   }, [_c("div", {
     staticClass: "row"
@@ -6554,7 +6556,7 @@ var render = function render() {
     staticClass: "row"
   }, [_c("p", [_vm._v("Total")]), _vm._v(" "), _c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.total_cart / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.total_cart)) + " ")]), _vm._v(" "), _vm.payButton ? _c("span", [_c("font", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.total_cart * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.total_cart)) + " ")]), _vm._v(" "), _vm.payButton ? _c("span", [_c("font", {
     attrs: {
       color: "red"
     }
@@ -6566,7 +6568,7 @@ var render = function render() {
     staticClass: "order-text"
   }, [_vm._v("Abono")]), _vm._v(" "), _c("table", {
     staticClass: "table table-sm table-borderless"
-  }, [_c("tr", [_vm._m(7), _vm._v(" "), _c("td", [_vm._v("$ " + _vm._s(_vm.up(_vm.totalAbonoUsd, 2)) + " ")])]), _vm._v(" "), _c("tr", [_vm._m(8), _vm._v(" "), _c("td", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.totalAbonoBs)))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Resta:  ")]), _vm._v(" "), _c("td", [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.Resta / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.Resta)))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Total:  ")]), _vm._v(" "), _c("td", [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.totalAbono / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.totalAbono)))])])])])]), _vm._v(" "), _c("div", {
+  }, [_c("tr", [_vm._m(7), _vm._v(" "), _c("td", [_vm._v("$ " + _vm._s(_vm.up(_vm.totalAbonoUsd, 2)) + " ")])]), _vm._v(" "), _c("tr", [_vm._m(8), _vm._v(" "), _c("td", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.totalAbonoBs)))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Resta:  ")]), _vm._v(" "), _c("td", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.Resta * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.Resta)))])]), _vm._v(" "), _c("tr", [_c("td", [_vm._v("Total:  ")]), _vm._v(" "), _c("td", [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.totalAbono * _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatDolar")(_vm.totalAbono)))])])])])]), _vm._v(" "), _c("div", {
     staticClass: "order-description"
   }, _vm._l(_vm.products_cart, function (product_cart) {
     return _c("div", {
@@ -6574,9 +6576,9 @@ var render = function render() {
       staticClass: "row"
     }, [_c("p", [_vm._v(_vm._s(product_cart.product.name) + " (" + _vm._s(product_cart.cant) + " Articulos)")]), _vm._v(" "), product_cart.product.discount > 0 ? _c("h3", {
       staticClass: "order-text"
-    }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.discount / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.discount)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("h3", {
+    }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.discount * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.discount)))]) : _vm._e(), _vm._v(" "), product_cart.product.discount <= 0 ? _c("h3", {
       staticClass: "order-text"
-    }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.up(product_cart.product.price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product_cart.product.price)))]) : _vm._e()]);
+    }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product_cart.product.price * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product_cart.product.price)))]) : _vm._e()]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "order-description"
   }, [_c("div", {
@@ -6636,7 +6638,7 @@ var render = function render() {
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 21.43 19.97"
     }
-  }, [_c("title", [_vm._v("mis-pedidos-bio-mercados")]), _c("g", {
+  }, [_c("title", [_vm._v("mis-pedidos")]), _c("g", {
     attrs: {
       id: "Capa_2",
       "data-name": "Capa 2"
@@ -7416,7 +7418,7 @@ var render = function render() {
       staticClass: "product-info"
     }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")]), _vm._v(" "), _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(com.combo_price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(com.combo_price)))])])])]);
+    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatNumber")(_vm.up(com.combo_price * _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatDolar")(com.combo_price)))])])])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-lg-12",
     attrs: {
@@ -7489,7 +7491,7 @@ var render = function render() {
       staticClass: "product-info"
     }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")]), _vm._v(" "), _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(com.combo_price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(com.combo_price)))])])])]);
+    }, [_c("p", [_vm._v(" Bs" + _vm._s(_vm._f("FormatNumber")(_vm.up(com.combo_price * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(com.combo_price)))])])])]);
   }), 0), _vm._v(" "), _c("div", {
     staticClass: "combo-group",
     attrs: {
@@ -7555,7 +7557,7 @@ var render = function render() {
       staticClass: "product-info"
     }, [_vm._v(_vm._s(com.cantTotal) + " Articulos")]), _vm._v(" "), _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(com.combo_price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(com.combo_price)))])])])]);
+    }, [_c("p", [_vm._v(" Bs" + _vm._s(_vm._f("FormatNumber")(_vm.up(com.combo_price * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(com.combo_price)))])])])]);
   }), 0)])])])])]), _vm._v(" "), _c("ModalCombo", {
     attrs: {
       tasadolar: _vm.tasadolar,
@@ -9541,13 +9543,17 @@ var render = function render() {
         color: "red"
       }
     }, [_vm._v(" (" + _vm._s(p.qty_avaliable) + " Disponible) ")])], 1) : _vm._e()]);
-  })], 2), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "product-prices"
+  }, [_c("p", [_vm._v(" Bs" + _vm._s(_vm._f("FormatNumber")(_vm.combo.combo_price * _vm.tasadolar)) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.combo.combo_price)))])])], 2), _vm._v(" "), _c("div", {
     staticClass: "product-options"
   }, [_c("form", {
     attrs: {
       action: ""
     }
   }, [_c("div", {
+    staticClass: "product-prices"
+  }, [_c("p", [_c("b", [_vm._v("Total:")]), _vm._v(" Bs " + _vm._s(_vm._f("FormatDolar")(_vm.totalModal * _vm.tasadolar)) + " / $ " + _vm._s(_vm._f("FormatNumber")(_vm.totalModal)) + " ")])]), _vm._v(" "), _c("div", {
     staticClass: "product-buttons"
   }, [_c("button", {
     staticClass: "btn btn-addcart",
@@ -9626,7 +9632,7 @@ var render = function render() {
     staticClass: "col-12 col-md-8"
   }, [_c("h3", {
     staticClass: "order-text"
-  }, [_vm._v("$ " + _vm._s(_vm._f("FormatDolar")(_vm.order.total / _vm.tasadolar)) + " / " + _vm._s(_vm._f("FormatNumber")(_vm.order.total)) + " Bs ")])])])]), _vm._v(" "), _c("label", {
+  }, [_vm._v("Bs " + _vm._s(_vm._f("FormatNumber")(_vm.order.total * _vm.tasadolar)) + " / " + _vm._s(_vm._f("FormatDolar")(_vm.order.total)) + " $ ")])])])]), _vm._v(" "), _c("label", {
     staticClass: "order-text"
   }, [_vm._v("Dirección de envio")]), _vm._v("\n\t\t\t\t\t\t\t\t" + _vm._s(_vm.order.direction) + "\n\t\t\t\t\t\t\t\t"), _vm.order.direction == 0 ? _c("p", [_vm._v("\n                                    Pick - Up\n                                ")]) : _vm._e(), _vm._v(" "), _vm.order.direction > 0 ? _c("p", [_vm._v("\n                                    " + _vm._s(_vm.order.direction_text) + "\n                                ")]) : _vm._e(), _vm._v(" "), _c("label", {
     staticClass: "order-text"
@@ -9763,9 +9769,9 @@ var render = function render() {
     staticClass: "product-prices"
   }, [_c("p", [_vm._v("EXENTO DE IVA")])]) : _vm._e(), _vm._v(" "), _vm.product.impuesto > 0 ? _c("div", {
     staticClass: "product-prices"
-  }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.product.calculado / _vm.tasadolar)) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.product.calculado)))])]) : _vm._e(), _vm._v(" "), !_vm.product.impuesto ? _c("div", {
+  }, [_c("p", [_vm._v(" Bs" + _vm._s(_vm._f("FormatNumber")(_vm.product.calculado * _vm.tasadolar)) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.product.calculado)))])]) : _vm._e(), _vm._v(" "), !_vm.product.impuesto ? _c("div", {
     staticClass: "product-prices"
-  }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.product.price / _vm.tasadolar)) + " / Bs " + _vm._s(_vm._f("FormatNumber")(_vm.product.price)))])]) : _vm._e()]), _vm._v(" "), _c("div", {
+  }, [_c("p", [_vm._v(" Bs" + _vm._s(_vm._f("FormatNumber")(_vm.product.price * _vm.tasadolar)) + " / $ " + _vm._s(_vm._f("FormatDolar")(_vm.product.price)))])]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "product-options"
   }, [_vm.product.qty_avaliable > 0 ? _c("span", {
     staticClass: "product-info"
@@ -9839,7 +9845,7 @@ var render = function render() {
     }
   })])])])]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "product-prices"
-  }, [_c("p", [_c("b", [_vm._v("Total:")]), _vm._v(" $ " + _vm._s(_vm._f("FormatDolar")(_vm.up(_vm.totalModal / _vm.tasadolar, 2))) + " / Bs\n                                            " + _vm._s(_vm._f("FormatNumber")(_vm.totalModal)) + " ")])]), _vm._v(" "), _c("div", {
+  }, [_c("p", [_c("b", [_vm._v("Total:")]), _vm._v(" Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(_vm.totalModal * _vm.tasadolar, 2))) + " / $\n                                            " + _vm._s(_vm._f("FormatDolar")(_vm.totalModal)) + " ")])]), _vm._v(" "), _c("div", {
     staticClass: "product-buttons"
   }, [_vm.product.qty_avaliable > 0 ? _c("button", {
     staticClass: "btn",
@@ -10150,9 +10156,9 @@ var render = function render() {
       staticClass: "product-prices"
     }, [_c("p", [_vm._v("EXENTO DE IVA")])]) : _vm._e(), _vm._v(" "), product.impuesto > 0 ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(product.calculado / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product.calculado)))])]) : _vm._e(), _vm._v(" "), !product.impuesto ? _c("div", {
+    }, [_c("p", [_vm._v("  Bs" + _vm._s(_vm._f("FormatNumber")(_vm.up(product.calculado * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product.calculado)))])]) : _vm._e(), _vm._v(" "), !product.impuesto ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(_vm.up(product.price / _vm.tasadolar, 2))) + " / Bs " + _vm._s(_vm._f("FormatNumber")(product.price)))])]) : _vm._e()]), _vm._v(" "), _c("div", {
+    }, [_c("p", [_vm._v("  Bs " + _vm._s(_vm._f("FormatNumber")(_vm.up(product.price * _vm.tasadolar, 2))) + " / $ " + _vm._s(_vm._f("FormatDolar")(product.price)))])]) : _vm._e()]), _vm._v(" "), _c("div", {
       staticClass: "product-add"
     }, [product.qty_avaliable > 0 ? _c("span", {
       staticClass: "product-info"
@@ -10608,9 +10614,9 @@ var render = function render() {
       staticClass: "product-prices"
     }, [_c("p", [_vm._v("EXENTO DE IVA")])]) : _vm._e(), _vm._v(" "), product_recent.impuesto > 0 ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_recent.calculado)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_recent.calculado / _vm.tasadolar, 2))) + " $")])]) : _vm._e(), _vm._v(" "), !product_recent.impuesto ? _c("div", {
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(product_recent.calculado)) + " $")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_recent.calculado * _vm.tasadolar, 2))) + " Bs")])]) : _vm._e(), _vm._v(" "), !product_recent.impuesto ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_recent.price)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_recent.price / _vm.tasadolar, 2))) + " $")])]) : _vm._e()])]);
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(product_recent.price)) + " $")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_recent.price * _vm.tasadolar, 2))) + "Bs")])]) : _vm._e()])]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "tab-pane fade",
     attrs: {
@@ -10772,9 +10778,9 @@ var render = function render() {
       staticClass: "product-prices"
     }, [_c("p", [_vm._v("EXENTO DE IVA")])]) : _vm._e(), _vm._v(" "), product_sold.impuesto > 0 ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_sold.calculado)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_sold.calculado / _vm.tasadolar, 2))) + " $")])]) : _vm._e(), _vm._v(" "), !product_sold.impuesto ? _c("div", {
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_sold.calculado)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_sold.calculado * _vm.tasadolar, 2))) + " $")])]) : _vm._e(), _vm._v(" "), !product_sold.impuesto ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_sold.price)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_sold.price / _vm.tasadolar, 2))) + " $")])]) : _vm._e()])]);
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(product_sold.price)) + " $")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_sold.price * _vm.tasadolar, 2))) + " Bs")])]) : _vm._e()])]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "tab-pane fade",
     attrs: {
@@ -10792,7 +10798,7 @@ var render = function render() {
       staticClass: "product-block"
     }, [_c("div", {
       staticClass: "product-img"
-    }, [product_view.photo != null ? _c("LazyImg", {
+    }, [_vm._v("g\n\t\t\t\t\t\t\t\t\t"), product_view.photo != null ? _c("LazyImg", {
       attrs: {
         source: _vm._f("MediumImage")("storage/" + JSON.parse(product_view.photo)[0])
       }
@@ -10936,9 +10942,9 @@ var render = function render() {
       staticClass: "product-prices"
     }, [_c("p", [_vm._v("EXENTO DE IVA")])]) : _vm._e(), _vm._v(" "), product_view.impuesto > 0 ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_view.calculado)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_view.calculado / _vm.tasadolar, 2))) + " $")])]) : _vm._e(), _vm._v(" "), !product_view.impuesto ? _c("div", {
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(product_view.calculado)) + " $")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_view.calculado * _vm.tasadolar, 2))) + " Bs")])]) : _vm._e(), _vm._v(" "), !product_view.impuesto ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_view.price)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_view.price / _vm.tasadolar, 2))) + " $")])]) : _vm._e()])]);
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(product_view.price)) + " $ ")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_view.price * _vm.tasadolar, 2))) + "Bs ")])]) : _vm._e()])]);
   }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "tab-pane fade",
     attrs: {
@@ -11100,9 +11106,9 @@ var render = function render() {
       staticClass: "product-prices"
     }, [_c("p", [_vm._v("EXENTO DE IVA")])]) : _vm._e(), _vm._v(" "), product_best.impuesto > 0 ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_best.calculado)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_best.calculado / _vm.tasadolar, 2))) + " $")])]) : _vm._e(), _vm._v(" "), !product_best.impuesto ? _c("div", {
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_best.calculado)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_best.calculado * _vm.tasadolar, 2))) + " $")])]) : _vm._e(), _vm._v(" "), !product_best.impuesto ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(product_best.price)) + " Bs")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(_vm.up(product_best.price / _vm.tasadolar, 2))) + " $")])]) : _vm._e()])]);
+    }, [_c("p", [_vm._v(_vm._s(_vm._f("FormatDolar")(product_best.price)) + " $")]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm._f("FormatNumber")(_vm.up(product_best.price * _vm.tasadolar, 2))) + " Bs")])]) : _vm._e()])]);
   }), 0)])])]), _vm._v(" "), _c("ModalProducto", {
     attrs: {
       tasadolar: _vm.tasadolar,
@@ -14097,9 +14103,9 @@ var render = function render() {
       staticClass: "product-prices"
     }, [_c("p", [_vm._v("IVA INCLUIDO")])]) : _vm._e(), _vm._v(" "), favorite.impuesto > 0 ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(favorite.calculado / _vm.tasadolar)) + " / Bs " + _vm._s(_vm._f("FormatNumber")(favorite.calculado)))])]) : _vm._e(), _vm._v(" "), !favorite.impuesto ? _c("div", {
+    }, [_c("p", [_vm._v(" Bs" + _vm._s(_vm._f("FormatNumber")(favorite.calculado * _vm.tasadolar)) + " / $ " + _vm._s(_vm._f("FormatDolar")(favorite.calculado)))])]) : _vm._e(), _vm._v(" "), !favorite.impuesto ? _c("div", {
       staticClass: "product-prices"
-    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatDolar")(favorite.price / _vm.tasadolar)) + "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t/ Bs " + _vm._s(_vm._f("FormatNumber")(favorite.price)))])]) : _vm._e()]), _vm._v(" "), _c("div", {
+    }, [_c("p", [_vm._v(" $" + _vm._s(_vm._f("FormatNumber")(favorite.price * _vm.tasadolar)) + "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t/ Bs " + _vm._s(_vm._f("FormatDolar")(favorite.price)))])]) : _vm._e()]), _vm._v(" "), _c("div", {
       staticClass: "product-add"
     }, [favorite.qty_avaliable > 0 ? _c("span", {
       staticClass: "product-info"

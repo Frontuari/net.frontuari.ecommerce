@@ -278,7 +278,7 @@ echo "<pre>".print_r($var,true)."</pre>";
 }
 
 function formato_numero($numero){
-	return "Bs ".number_format($numero, 2, ".", ",");
+	return "Bs ".number_format($numero, 4, ".", ",");
 	}
     
 ?>

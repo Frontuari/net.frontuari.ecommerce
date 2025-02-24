@@ -52,10 +52,10 @@
                                 <p>EXENTO DE IVA</p>
                             </div>
                             <div class="product-prices" v-if="product.impuesto > 0">
-                                <p> ${{ (up((product.calculado / tasadolar), 2)) | FormatDolar}} / Bs {{ product.calculado | FormatNumber }}</p>
+                                <p>  Bs{{ (up((product.calculado * tasadolar), 2)) | FormatNumber}} / $ {{ product.calculado | FormatDolar  }}</p>
                             </div>
                             <div class="product-prices" v-if="!product.impuesto">
-                                <p> ${{ (up((product.price / tasadolar), 2)) | FormatDolar}} / Bs {{ product.price | FormatNumber }}</p>
+                                <p>  Bs {{ (up((product.price * tasadolar), 2)) | FormatNumber }} / $ {{ product.price | FormatDolar  }}</p>
                             </div>
                         </div>
                         <div class="product-add">
