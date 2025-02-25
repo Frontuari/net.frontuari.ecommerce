@@ -15,6 +15,6 @@ class ProductTax extends Model
 
     public function taxes()
     {
-        return $this->belongsTo("App\Tax");
+        return $this->belongsToMany(Tax::class, 'det_product_taxes', 'products_id', 'taxes_id');
     }
 }

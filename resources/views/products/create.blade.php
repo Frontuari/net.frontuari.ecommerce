@@ -36,29 +36,47 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="peso">Peso:</label>
-                        <input type="integer" name="peso" class="form-control" placeholder="Ingrese el peso del producto">
+                        <label for="peso">Peso Kg:</label>
+                        <input type="integer" name="peso" class="form-control" placeholder="Ingrese el peso del producto"  value="0.00">
                     </div>
                     <div class="form-group">
-                        <label for="price">Precio:</label>
-                        <input type="number" name="price" class="form-control" placeholder="Ingrese el precio del producto">
+                        <label for="price">Precio $:</label>
+                        <input type="integer" name="price" class="form-control" placeholder="Ingrese el precio del producto" value="0.00">
                     </div>
+                    {{-- <div class="form-group">
+                        <label for="discount">Descuento %</label>
+                        <input type="integer" name="discount" class="form-control" placeholder="Ingrese el precio del producto" value="0">
+                    </div> --}}
                     <div class="form-group">
                         <label for="stores_id">Tienda:</label>
-                        <select name="stores_id" class="form-control">
+                        <select name="stores_id" class="form-control select2">
                             @foreach($stores as $store)
                             <option value="{{ $store->id }}">{{ $store->name }}</option>
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="keyword">Palabras Claves</label>
+                        <input type="integer" name="keyword" class="form-control" placeholder="Ejemplo: salsa, liquido, rojo, vidrio" >
+                    </div>
                     <div class="form-group">
                         <label for="sub_categories_id">Subcategoría:</label>
-                        <select name="sub_categories_id" class="form-control">
+                        <select name="sub_categories_id" class="form-control select2">
                             @foreach($subCategories as $subCategory)
                                 <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="taxes">Impuesto para Productos:</label>
+                        <select name="taxes[]" class="form-control select2">
+                                @foreach($taxes as $tax)
+                                <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                 
                     <div class="form-group">
                         <label for="photo">Imagen:</label>
                         <input  type="file" id="photo" name="photo" class="form-control-file">

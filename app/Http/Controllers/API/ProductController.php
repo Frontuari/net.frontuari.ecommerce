@@ -13,6 +13,7 @@ use App\Stores;
 use App\SubCategories;
 use App\Favorites;
 use App\UserVisitProducts;
+use App\Tax;
 
 
 class ProductController extends BaseController
@@ -144,9 +145,10 @@ class ProductController extends BaseController
             // Obtener todas las tiendas y subcategorías para el formulario de edición
             $stores = Stores::all();
             $subCategories = SubCategories::all();
+            $taxes = Tax::all(); 
     
             // Cargar la vista de edición con los datos del producto y las opciones de tiendas y subcategorías
-            return view('products.edit', compact('product', 'stores', 'subCategories'));
+            return view('products.edit', compact('product', 'stores', 'subCategories','taxes'));
         }
 
         public function update(Request $request, $id)
@@ -159,7 +161,10 @@ class ProductController extends BaseController
                 'stores_id' => 'required|exists:stores,id',
                 'sub_categories_id' => 'required|exists:sub_categories,id', 
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Regla de validación para la foto
+                'taxes.*' => 'exists:taxes,id',
             ]);
+
+          
         
             // Encontrar el producto a actualizar por su ID
             $product = Product::findOrFail($id);
@@ -171,6 +176,8 @@ class ProductController extends BaseController
             $product->price = $request->price;
             $product->peso = $request->peso;
             $product->stores_id = $request->stores_id;
+            $product->discount= $request->discount;
+            $product->keyword=$request->keyword;
             $product->sub_categories_id = $request->sub_categories_id;
             $product->qty_avaliable = $request->qty_avaliable;
         
@@ -184,6 +191,11 @@ class ProductController extends BaseController
         
             // Guardar los cambios en la base de datos
             $product->save();
+
+            if ($request->has('taxes')) {
+                
+                $product->taxes()->sync($request->taxes);
+            }
         
             // Redireccionar de vuelta con un mensaje de éxito
             return redirect()->back()->with('success', '¡Producto actualizado exitosamente!');

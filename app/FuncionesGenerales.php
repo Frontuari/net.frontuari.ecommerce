@@ -4,7 +4,7 @@ namespace App;
 class FuncionesGenerales{
 
     public function get_formato_moneda($value){
-        return number_format($value, 2, ',', '.');
+        return number_format($value, 4, ',', '.');
     }
     public function set_formato_moneda($value){
         $listo=null;

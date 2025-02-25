@@ -20,7 +20,7 @@ class Product extends Model
     }
 
     protected $table = 'products';
-    protected $fillable = ['id', 'EAN', 'brands_id', 'description', 'description_short','discount','keyword','name','price','sub_categories_id','promote','qty_avaliable','qty_sold','qty_view','qty_max','qty_min','record','status','stores_id','photo'];
+    protected $fillable = ['id', 'EAN', 'brands_id', 'description', 'description_short','discount','keyword','name','price','sub_categories_id','promote','qty_avaliable','qty_sold','qty_view','qty_max','qty_min','record','status','stores_id','photo','impuesto'];
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
@@ -42,7 +42,7 @@ class Product extends Model
 
     public function taxes()
     {
-        return $this->hasMany('App\ProductTax');
+        return $this->belongsToMany(Tax::class, 'det_product_taxes', 'products_id', 'taxes_id');
     }
 
     public function packages()
@@ -50,4 +50,5 @@ class Product extends Model
         return $this->belongsToMany(Packages::class, 'DetProductPackages', 'products_id', 'packages_id')
                     ->withPivot('cant'); // Incluye la cantidad en la relación
     }
+    
 }

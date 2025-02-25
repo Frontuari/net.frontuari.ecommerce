@@ -8,8 +8,8 @@ class Tax extends Model
 {
     protected $table = 'taxes';
 
-    public function products()
+      public function products()
     {
-        return $this->hasMany('App\ProductTax');
+        return $this->belongsToMany(Product::class, 'det_product_taxes', 'taxes_id', 'products_id');
     }
 }

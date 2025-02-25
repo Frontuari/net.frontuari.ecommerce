@@ -8,6 +8,7 @@ use App\Stores;
 use App\Favorites;
 use App\SubCategories;
 use App\UserVisitProducts;
+use App\Tax;
 use Illuminate\Support\Str;
 
 
@@ -45,8 +46,9 @@ class ProductsController extends Controller
         
         $stores = Stores::all(); // Obtener todas las tiendas
         $subCategories = SubCategories::all();
+        $taxes = Tax::all(); 
 
-        return view('products.create', compact('stores', 'subCategories'));
+        return view('products.create', compact('stores', 'subCategories','taxes'));
      }
 
 
@@ -59,6 +61,8 @@ class ProductsController extends Controller
              'price' => 'required|numeric',
              'stores_id' => 'required|exists:stores,id',
              'sub_categories_id' => 'required|exists:sub_categories,id', 
+             'taxes.*' => 'exists:taxes,id',
+             
 
              // Agrega las reglas de validación para los demás campos según sea necesario
          ]);
@@ -70,10 +74,10 @@ class ProductsController extends Controller
                 // Generar un nuevo SKU si el actual ya existe en la base de datos
                 $sku = str_pad(random_int(0, 99999999), 8, '0', STR_PAD_LEFT);
             }
+
+                
      
-         // Guardar la imagen en el directorio 'public/products' y obtener la ruta relativa
-     
-         // Obtener la URL pública de la imagen
+    
      
          // Crear el producto en la base de datos y guardar la URL de la imagen
          $product = new Product();
@@ -83,6 +87,8 @@ class ProductsController extends Controller
          $product->price = $request->price;
          $product->peso = $request->peso;
          $product->stores_id = $request->stores_id;
+         $product->discount= $request->discount;
+         $product->keyword=$request->keyword;
          $product->sub_categories_id = $request->sub_categories_id;
          $product->qty_avaliable = $request->qty_avaliable;
          $product->sku = $sku; // Asignar el SKU generado al objeto del producto
@@ -100,7 +106,14 @@ class ProductsController extends Controller
                         $product->photo = $photoUrl;
                 }
 
+           
+
+
          $product->save();
+         if ($request->has('taxes')) {
+            // Sync de impuestos, asegura que los impuestos sean correctamente actualizados
+            $product->taxes()->sync($request->taxes);
+        }
      
          return back()->with('success', 'Product Created successfully');
          
