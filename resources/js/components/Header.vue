@@ -53,9 +53,8 @@
 							<li id="nav-login" class="dropdown" style="width: 5%;" >
 								<a href="#" v-if="!userlogged" id="navbarLogin" class="navbarLogin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<div style="display: flex; width: 45%; align-items: center; justify-content: space-between">
-									
-									<img src="/assets/img/Usuario.png" alt="Login"  > 
-								   </div>
+										<img src="/assets/img/Usuario.png" alt="Login" data-toggle="tooltip" data-placement="bottom" title="Haga click para iniciar sesión"> 	
+									</div>
 								</a>
 				
 								<!-- el login-->

@@ -9120,7 +9120,10 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     attrs: {
       src: "/assets/img/Usuario.png",
-      alt: "Login"
+      alt: "Login",
+      "data-toggle": "tooltip",
+      "data-placement": "bottom",
+      title: "Haga click para iniciar sesión"
     }
   })]);
 }, function () {
@@ -99345,8 +99348,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/developftu/Documentos/Proyecto web/net.frontuari.ecommerce/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

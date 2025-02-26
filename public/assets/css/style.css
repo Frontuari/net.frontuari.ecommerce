@@ -2210,7 +2210,6 @@ div[class*="col-"]:not(:last-child) .product-block {
 
 #register {
     padding: 3rem 0;
-    background-image: url('../../img/fondo01.jpg');
     background-size: contain;
     background-position: left bottom;
     background-repeat: no-repeat;
@@ -2219,7 +2218,6 @@ div[class*="col-"]:not(:last-child) .product-block {
 .register-form {
     padding: 2rem 4rem 2rem 2rem;
     background-color: #fff;
-    background-image: url('../img/fondo-formulario-bio-mercados.png');
     background-size: 135px;
     background-position: 95% top;
     background-repeat: no-repeat;
@@ -2228,7 +2226,7 @@ div[class*="col-"]:not(:last-child) .product-block {
 }
 
 .form-title {
-    color: #ED3928;
+    color: #203876;
     margin-bottom: 2rem;
 }
 
@@ -3871,7 +3869,6 @@ ul.carousel-indicators{
 }
 
 #faq_view{
-    background-image: url(../../img/fondo01.jpg);
     background-size: contain;
     background-position: left bottom;
     background-repeat: no-repeat;
