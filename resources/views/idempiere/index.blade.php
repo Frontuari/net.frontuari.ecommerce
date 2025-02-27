@@ -5,14 +5,11 @@
 @section('content')
 <div class="container">
     
-      {{-- Verificar si el usuario tiene el rol de superadmin o el rol ID 4 --}}
+      {{-- Verificar si el usuario tiene el rol de superadmin o el rol ID 1 --}}
     @if(Auth::user()->role_id == 1)
-    <h2>Conexiones Idempiere</h2>
+    <h2 class="text-center">Conexiones Idempiere</h2>
 
-    
-
-   
-
+       <a href="{{ route('getProducts') }}" class="btn btn-primary">Consulta Idempiere</a>
     <table class="table">
         <thead>
             <tr>

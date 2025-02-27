@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Idempiere;
 
-use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\Controller; 
 use App\IdempiereConnection;
-use GuzzleHttp\Client;
+
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +28,6 @@ class IdempiereProductController extends Controller
     }
 
     // Construir la URL
-
-
     $url = "{$conexion->url}ADInterface/services/rest/model_adservice/query_data?{$conexion->token}=";
    
     // Definir el cuerpo de la solicitud
