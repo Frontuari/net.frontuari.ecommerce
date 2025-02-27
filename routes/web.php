@@ -11,6 +11,10 @@
 |
 */
 
+use App\Http\Controllers\IdempiereController;
+
+
+
 Route::get('/',"HomeController@index")->name("home");
 Route::get('/international-payment-button/{nb}/{ap}/{ci}/{nai}/{mt}/{em}/{from?}','HomeController@InternationalPaymentButton')->name('InternationalPaymentButton');
 Route::get('/123pago/despedida','HomeController@url_despedida');
@@ -40,7 +44,13 @@ Route::get('/culture',"SinglePageController@culture")->name("culture");
 Route::get('/sucursal/{id?}',"SinglePageController@sucursal")->name("sucursal");
 Route::get('/contact',"SinglePageController@contact")->name("contact");
 
+
 // Auth::routes();
+
+
+
+
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -73,4 +83,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('kpis/sales-units-for-period','KpisController@SalesUnitsForPeriod');
     
     Route::post('kpis/getData', 'KpisController@getData')->name('get_data');
+    Route::get('idempiere/products', [IdempiereController::class, 'getProducts']);
 });
