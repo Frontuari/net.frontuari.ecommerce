@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-use App\IdempiereConection;
+use App\IdempiereConnection;
 
 class IdempiereService
 {
@@ -11,7 +11,7 @@ class IdempiereService
 
     public function __construct()
     {
-        $this->connection = IdempiereConection::first();
+        $this->connection = IdempiereConnection::first();
     }
 
     public function fetchDataFromIdempiere($serviceType, $limit = 10)

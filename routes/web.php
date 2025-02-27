@@ -10,8 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\IdempiereController;
+use App\Http\Controllers\IdempiereProductController;
+use App\Http\Controllers\IdempiereConnectionController;
+use TCG\Voyager\Facades\Voyager;
+
 
 
 
@@ -83,5 +87,22 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('kpis/sales-units-for-period','KpisController@SalesUnitsForPeriod');
     
     Route::post('kpis/getData', 'KpisController@getData')->name('get_data');
-    Route::get('idempiere/products', [IdempiereController::class, 'getProducts']);
+ 
+
+
+    //Vista Idempiere Para actualizar dato y ver los datos del Token
+
+    Route::get('idempiere/products', [IdempiereProductController::class, 'getProducts']);
+    // Rutas protegidas solo para el rol 'super'
+    Route::get('/idempiere', [IdempiereConnectionController::class, 'index'])->name('idempiere.index');
+    Route::get('/idempiere/create', [IdempiereConnectionController::class, 'create'])->name('idempiere.create');
+    Route::post('/idempiere', [IdempiereConnectionController::class, 'store'])->name('idempiere.store');
+    
+        // Vista para Editar el Idempiere
+    Route::get('/connection/{id}/edit', [IdempiereConnectionController::class, 'edit'])->name('connection.edit');
+    Route::put('/connection/{id}', [IdempiereConnectionController::class, 'update'])->name('connection.update');
+ 
+
+    
+
 });

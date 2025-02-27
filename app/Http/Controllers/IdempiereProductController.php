@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\IdempiereConection;
+use App\IdempiereConnection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Auth;
 
 
-class IdempiereController extends Controller
+class IdempiereProductController extends Controller
 {
     public function getProducts()
 {
@@ -19,7 +19,7 @@ class IdempiereController extends Controller
     }
 
     // Obtener la configuración de conexión desde la base de datos
-    $conexion = IdempiereConection::first();
+    $conexion = IdempiereConnection::first();
 
     if (!$conexion) {
         return dd('No se encontró la configuración de conexión a IDempiere');
