@@ -970,7 +970,7 @@ header .dropdown-menu a:focus {
 */
 
 #main-slider {
-    display: none;
+    display: block;
 }
 
 .contenedor {

@@ -4,6 +4,7 @@
 
 <?php 
 //exit("<div style='text-align:center'><img style='margin:0 auto' width='200' src='img/logo.png'><br>Estamos trabajando en una actualización, intente más tarde.</div>");
+// dd( $medio_bajo );
 ?>
 	<div id="loader-wrapper">
 		<div id="loader"></div>
@@ -20,8 +21,7 @@
 	<ads :categories="{{ $categories }}"></ads>
 
 	<!-- <offers :medio_bajo="{{ $medio_bajo }}"></offers> -->
-
-	<slider :id="'sliderHome2'" :sliders="{{ $medio_bajo }}"></slider>
+    
 
 	<nuestros-productos 
 		:recent="{{ $recent }}"
