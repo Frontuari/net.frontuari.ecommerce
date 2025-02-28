@@ -51,6 +51,9 @@ if(!isset($_GET['minimo'])){
 
 $id=$dataTypeContent->getAttribute('id');
 
+
+//Se debe realizar una funcion global para manejar correctamente la moneda base del eCommerce (ya sea Dolar o Bolivar).
+//El manejo de la moneda de funcionar dinamicamente
 $sql="SELECT 
     (
         SELECT 
@@ -113,6 +116,10 @@ WHERE
 //exit($sql);
 $a=DB::select($sql);
 
+function formato_numero($numero){
+	return "Bs ".number_format($numero, 4, ".", ",");
+	}
+
 if(isset($a)){
     $o=$a[0];
 $nro_factura=str_pad($o->id, 8, "0", STR_PAD_LEFT);
@@ -138,129 +145,194 @@ if($transport_id != 3){
 
 $fac= "
 <style>
-#t{
-    border:1px solid #000;
-    margin:0 auto;
-}
-.titu{
-    text-align:center
-}
-#t td { padding: 1px; }
+    /* Estilo general para la tabla */
+    table {
+        width: 50%;
+        max-width: 800px;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin: 0 auto;
+    }
+
+    /* Estilo para las celdas de título */
+    table thead {
+        //border-bottom: 1px solid #1e1e1e;
+    }
+    table thead tr th {
+        color: #1e1e1e;
+        font-size: 10px;
+        text-align: center;
+    }
+    table thead tr #titulo {
+        background-color: #fff;
+        font-weight: bold;
+        font-size: 2vw;
+    }
+    tbody tr td {
+        //border-bottom: 1px solid #ddd;
+        word-wrap: break-word;
+        padding: 3px 2vw;
+    }
+    tbody tr .subTitulo {
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+    }  
+    tbody tr .direccionEntrega {
+        padding-bottom: 1.5vw;
+    }
+        
+    tbody tr .subTituloInformacion {
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+        padding-top: 1vw;
+    }  
+    tbody tr .columnaPaddingBottom {
+        padding-bottom: 1.5vw;
+    }  
+    tbody tr .segundoTitulo {
+        background-color: #3c3c3c;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+    }
+    tbody tr .tituloDetalle {
+        background-color: #3c3c3c;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 2vw;
+    }
+    tbody tr .detalleFactura {
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }  
 </style>
+
 <table id='t'>
-<tr>
-    <td class='titu' colspan='2'>SENIAT</td>
-</tr>
-<tr>
-    <td class='titu' colspan='2'>J-317219686</td>
-</tr>
-<tr>
-    <td class='titu' colspan='2'>ALIMENTOS FM C.A.</td>
-</tr>
-<tr>
-    <td class='titu' colspan='2'>CALLE CALLEJON MAÑONGO (176)</td>
-</tr>
-<tr>
-    <td class='titu' colspan='2'>TERRENO CIVICO NRO. 01-A-15 LOCAL 1</td>
-</tr>
-<tr>
-    <td class='titu' colspan='2'>NRO 1 URB MAÑONGO NAGUANAGUA</td>
-</tr>
-<tr>
-    <td class='titu' colspan='2'>ESTADO CARABOBO ZONA POSTAL 2005</td>
-</tr>
-<tr>
-    <td>Documento: $nro_factura</td>
-    <td></td>
-</tr>
-<tr>
-    <td>Cliente: $o->nombre_usuario</td>
-    <td></td>
-</tr>
-<tr>
-    <td>Rif: $o->rif</td>
-    <td>Teléfonos: $o->phone $o->phone_home</td>
-</tr>
-<tr>
-    <td>Dirección: $direccion_usuario</td>
-    <td></td>
-</tr>
+    <thead>
+        <tr>
+            <th colspan='2'>SENIAT</th>
+        </tr>
+        <tr>
+            <th colspan='2'>J-317219686</th>
+        </tr>
+        <tr>
+            <th colspan='2'>ALIMENTOS FM C.A.</th>
+        </tr>
+        <tr>
+            <th colspan='2'>CALLE CALLEJON MAÑONGO (176)</th>
+        </tr>
+        <tr>
+            <th colspan='2'>TERRENO CIVICO NRO. 01-A-15 LOCAL 1</th>
+        </tr>
+        <tr>
+            <th colspan='2'>NRO 1 URB MAÑONGO NAGUANAGUA</th>
+        </tr>
+        <tr>
+            <th colspan='2'>ESTADO CARABOBO ZONA POSTAL 2005</th>
+        </tr>
+        <tr>
+            <th id='titulo' colspan='2'>FACTURA</th>
+        </tr>
+        <tr>
+            <th id='titulo' colspan='2'>$nro_factura</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- INFORMACIÓN DE LA FACTURA -->
+        <tr>
+            <td class='subTitulo'>Cliente:</td>
+            <td class='subTitulo'>Teléfonos:</td>
+            <!-- <td>Cajero: E-commerce</td> -->
+        </tr>
+        <tr>
+            <td>$o->nombre_usuario</td>
+            <td>$o->phone $o->phone_home</td>
+        </tr>
+        <tr>
+            <td class='subTitulo'>RIF:</td>
+            <td class='subTitulo'>Dirección:</td>
+            <!-- <td>Caja: N/P</td> -->
+        </tr>
+        <tr>
+            <td>$o->rif</td>
+            <td>$direccion_usuario</td>
+        </tr>
+        <tr>
+            <td class='subTitulo' colspan='2'>Dirección de entrega:</td>
+        </tr>
+        <tr>
+            <td class = 'direccionEntrega'>$direccion_entrega</td>
+        </tr>
+        <!-- DETALLE DE LA FACTURA -->
 
-<tr>
-    <td>Dirección de entrega: $direccion_entrega</td>
-    <td></td>
-</tr>
-<tr>
-    <td>Fecha para entrega: $fecha_entrega</td>
-    <td></td>
-</tr>
-<tr>
-    <td>Cajero: E-commerce</td>
-  
-    <td>Caja: N/P</td>
-</tr>
-
-<tr>
-<td  class='titu' colspan='2'>FACTURA</td>
-</tr>
-
-<tr>
-    <td>Factura:</td>
-    <td>$nro_factura</td>
-</tr>
-<tr>
-    <td>Fecha: $fecha_factura</td>
-    <td>Hora: $hora_factura</td>
-   
-</tr>
-<tr>
-    <td colspan='2'>&nbsp;</td>
-  
-</tr>
+        <tr>
+            <td class='segundoTitulo' colspan='2'>INFORMACIÓN DE LA FACTURA</td>
+        </tr>
+        <tr>
+            <td class='subTituloInformacion'>Fecha:</td>
+            <td class='subTituloInformacion'>Hora:</td>
+        </tr>
+        <tr>
+            <td class='columnaPaddingBottom '>$fecha_factura</td>
+            <td class='columnaPaddingBottom '>$hora_factura</td>
+        </tr>
+    </tbody>
 ";
 
 $pro=json_decode($o->productos);
+$jsonTasaCambio = json_decode($o->rate_json);
+
+//Se trae la Tasa de Cambio de Dolares a Bolivares. Favor de hacer dinamico
+foreach($jsonTasaCambio as $k=>$v){
+    if ($v->id == 1){
+        $tasaCambio = $v->rate;
+    }
+}
 
 foreach($pro as $k=>$v){
-    $fac.="<tr>
-    <td>$v->cant x $v->name</td>
-    <td>".formato_numero($v->price*$v->cant)."</td>
+    $fac.="
+    <tr>
+        <td class='tituloDetalle'>Descripción</td>
+        <td class='tituloDetalle'>Total</td>
+    </tr>
+    <tr>
+        <td class='detalleFactura'>$v->cant x $v->name</td>
+        <td class='detalleFactura'>".formato_numero(($v->price*$v->cant) * $tasaCambio)."</td>
     </tr>";
 }
 
 
 $fac.="
 <tr>
-    <td colspan='2'>&nbsp;</td>
-  
-</tr>
-<tr>
     <td>Productos</td>
-    <td>".formato_numero($o->sub_total)."</td>
+    <td>".formato_numero($o->sub_total * $tasaCambio)."</td>
 </tr>
 <tr>
     <td>Envío</td>
-    <td>".formato_numero($o->total_transport)."</td>
+    <td>".formato_numero($o->total_transport * $tasaCambio)."</td>
 </tr>
 <tr>
     <td>Sub total</td>
-    <td>".formato_numero($o->total_transport+$o->sub_total)."</td>
+    <td>".formato_numero(($o->total_transport+$o->sub_total) * $tasaCambio)."</td>
 </tr>
 <tr>
     <td>Exento</td>
-    <td>".formato_numero($o->exento)."</td>
+    <td>".formato_numero($o->exento * $tasaCambio)."</td>
 </tr>
 <tr>
     <td>Base imponible</td>
-    <td>".formato_numero($o->bi)."</td>
+    <td>".formato_numero($o->bi * $tasaCambio)."</td>
 </tr>
 <tr>
     <td>Impuestos</td>
-    <td>".formato_numero($o->total_tax)."</td>
+    <td>".formato_numero($o->total_tax * $tasaCambio)."</td>
 </tr>
 <tr>
     <td>TOTAL</td>
-    <td>".formato_numero($o->total_pay)."</td>
+    <td>".formato_numero($o->total_pay * $tasaCambio)."</td>
 </tr>
 
 </table>
@@ -272,14 +344,10 @@ echo $fac;
 }
 
 
-
-function bonito($var){
+//Esta fue una funcion creada para debuggear. Sin embargo, no tiene utilidad y tiende a causar muchos problemas a nivel de fuente. Usar en cambio dd(<nombre de la variable a ver datos>) que es nativo de Laravel
+/*function bonito($var){
 echo "<pre>".print_r($var,true)."</pre>";
-}
-
-function formato_numero($numero){
-	return "Bs ".number_format($numero, 4, ".", ",");
-	}
+}*/
     
 ?>
 

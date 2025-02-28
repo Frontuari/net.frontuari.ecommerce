@@ -58,25 +58,21 @@ function procesarPago() {
 
 	console.log('Esto es el rate de bolivares ', rate);
 
-
-
-	
-
-	if (coins_id == 2) { //bolivares
+	if (coins_id == 1) { //Dolares
 		if (amount > aPagarBs) {
-			Swal.fire("Pagos en Línea", "El monto a pagar en Bolivares debe ser exacto", "warning");
+			Swal.fire("Pagos en Línea", "El monto a pagar en Dolares debe ser exacto", "warning");
 			throw new Error("El monto a pagar debe ser exacto");
 			return false;
 		}
 		amount = parseFloat(formato_moneda(amount)) * rate;
 		mega_amount = amount.toFixed(2);
 	}
-	if (coins_id == 1) { //dolares
-		// if(amount > aPagarUsd) {
-		//     Swal.fire("Bio en Línea","El monto a pagar en Dolares debe ser exacto","warning");
-		//     throw new Error("El monto aa pagar debe ser exacto");
-		//     return false;
-		// }
+	if (coins_id == 2) { //Bolivares
+		if(amount > aPagarUsd) {
+			Swal.fire("Bio en Línea","El monto a pagar en Bolivares debe ser exacto","warning");
+			throw new Error("El monto aa pagar debe ser exacto");
+			return false;
+		}
 		amount = amount * rate;
 	}
 
@@ -336,7 +332,7 @@ function procesar(data, evento) {
 		case 'listarMetodosDePago':
 
 			if (limite_max_pagos_alcanzado == true) {
-				metodosPago.innerHTML = "<div class='text-danger center'><br>Disculpe, ya agoto sus 2 pagos máximos, deber ir a nuestra tienda biomercados más cercana para reportar su situación.</div>";
+				metodosPago.innerHTML = "<div class='text-danger center'><br>Disculpe, ya agoto sus 2 pagos máximos, deber ir a nuestra tienda más cercana para reportar su situación.</div>";
 			} else {
 				var datas = data;
 
