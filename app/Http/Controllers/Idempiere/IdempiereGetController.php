@@ -9,6 +9,10 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\Utils;
 use Illuminate\Support\Facades\Auth;
 use App\Services\IdempiereService;
+use App\Services\IdempiereQuery;
+use App\Http\Controllers\Idempiere\ProductControllerIdempiere; 
+use Illuminate\Http\Request;
+
 
 
 class IdempiereGetController extends Controller
@@ -86,18 +90,32 @@ class IdempiereGetController extends Controller
             }
         }
 
+        
+
         $idempiereService = new IdempiereService();
         $productsData = $idempiereService->extractProductData($responses);
         $taxData = $idempiereService->extracTaxtData($responses);
-        $wareHouseDAta = $idempiereService->extractWarehouse($responses);
+        $wareHouseData = $idempiereService->extractWarehouse($responses);
+        $coinsConversion = $idempiereService->extractConversion($responses);
 
-        return response()->json($wareHouseDAta);
+        dd($coinsConversion);
+
+      
 
         
 
+
+        // Llamar al ProductControllerIdempiere para almacenar los productos
+        // $productController = new ProductControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        // $productController->store(new Request($productsData));  // Inserta automáticamente
+
+
+
+        // return response()->json($wareHouseData);
+
         
 
-        return response()->json($responses);
+        // return response()->json($responses);
 
 
  

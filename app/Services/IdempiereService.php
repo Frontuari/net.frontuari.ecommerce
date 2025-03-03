@@ -9,11 +9,12 @@ class IdempiereService
     public function extractProductData($responseData)
     {
 
- 
         // Verificar si la respuesta ya es un array
         if (!is_array($responseData)) {
             return [];
         }
+
+      
 
 
         // Verificar si existen los datos esperados
@@ -35,6 +36,7 @@ class IdempiereService
             $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
         }
 
+  
         $productsData = [];
 
         foreach ($dataRows as $row) {
@@ -66,6 +68,9 @@ class IdempiereService
                 'pricelistsales'     => $fields->get('pricelistsales'),
             ];
         }
+
+        
+  
 
 
 
@@ -146,6 +151,64 @@ class IdempiereService
 
         // Obtener los registros de productos
         $dataRows = $responseData['getWarehouseAPP']['WindowTabData']['DataSet']['DataRow'];
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $wareHouseData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $wareHouseData[] = [
+                'ad_client_id'           => $fields->get('AD_Client_ID'),
+                'ad_org_id'      => $fields->get('AD_Org_ID'),
+                'm_warehouse_id'               => $fields->get('M_Warehouse_ID'),
+                'name'               => $fields->get('WarehouseName'),
+                'value'  => $fields->get('WarehouseValue')
+                
+            ];
+        }
+
+  
+
+
+
+        return $wareHouseData;
+    }
+
+    public function extractConversion($responseData)
+    {
+
+  
+
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+
+
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['getRateConversion']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['getRateConversion']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['getRateConversion']['WindowTabData']['DataSet']['DataRow'];
+
+        dd($dataRows);
 
         // Asegurar que sea un array de registros
         if (!is_array($dataRows) || isset($dataRows['field'])) {
