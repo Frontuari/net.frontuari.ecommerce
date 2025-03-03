@@ -30,7 +30,7 @@
 										<a href="#" class="product-title">{{ com.name }}</a>
 										<span class="product-info">{{com.cantTotal}} Articulos</span>
 										<div class="product-prices" >
-											<p> ${{ (up((com.combo_price / tasadolar), 2)) | FormatDolar}} / Bs {{ com.combo_price | FormatNumber }}</p>
+											<p> ${{ (up((com.combo_price * tasadolar), 2)) | FormatNumber}} / Bs {{ com.combo_price | FormatDolar   }}</p>
 										</div>
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 										<a href="#" class="product-title">{{com.name}}</a>
 										<span class="product-info">{{com.cantTotal}} Articulos</span>
 										<div class="product-prices">
-											<p> ${{ (up((com.combo_price / tasadolar), 2)) | FormatDolar}} / Bs {{ com.combo_price | FormatNumber }}</p>
+											<p> Bs{{ (up((com.combo_price * tasadolar), 2)) | FormatNumber }} / $ {{ com.combo_price | FormatDolar  }}</p>
 										</div>
 									</div>
 								</div>
@@ -85,7 +85,7 @@
 										<a href="#" class="product-title">{{ com.name }}</a>
 										<span class="product-info">{{com.cantTotal}} Articulos</span>
 										<div class="product-prices" >
-											<p> ${{ (up((com.combo_price / tasadolar), 2)) | FormatDolar}} / Bs {{ com.combo_price | FormatNumber }}</p>
+											<p> Bs{{ (up((com.combo_price * tasadolar), 2)) | FormatNumber }} / $ {{ com.combo_price | FormatDolar  }}</p>
 										</div>
 									</div>
 								</div>

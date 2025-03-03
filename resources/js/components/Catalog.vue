@@ -233,6 +233,9 @@
 				if (this.filterP) {
 					params.push(this.filterP);
 				}
+
+			
+				
 				if (this.cat) {
 					params.push(`cat=${this.cat}`);
 				}
@@ -261,6 +264,9 @@
 				if (this.idParam) {
 					params.push(this.idParam);
 				}
+
+				console.log(params);
+				
 				// Se une todos los parámetros en una cadena
 				return params.length ? '&' + params.join('&') : '';
 			}

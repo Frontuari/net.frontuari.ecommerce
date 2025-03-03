@@ -20,7 +20,7 @@
 								<div class="order-total">
 									<div class="row">
 										<div class="col-12 col-md-4"><h3 class="order-text">Costo Total</h3></div>
-										<div class="col-12 col-md-8"><h3 class="order-text">$ {{ (order.total / tasadolar) | FormatDolar}} / {{order.total | FormatNumber}} Bs </h3></div>
+										<div class="col-12 col-md-8"><h3 class="order-text">Bs {{ (order.total * tasadolar) | FormatNumber }} / {{order.total | FormatDolar }} $ </h3></div>
 									</div>
 								</div>
 								<label class="order-text">Dirección de envio</label>

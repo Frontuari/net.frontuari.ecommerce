@@ -40,12 +40,12 @@
                                         <p>EXENTO DE IVA</p>
                                     </div>
                                     <div class="product-prices" v-if="product.impuesto > 0">
-                                        <p> ${{ (product.calculado / tasadolar) | FormatDolar }} / Bs {{ product.calculado |
-                                            FormatNumber }}</p>
+                                        <p> Bs{{ (product.calculado * tasadolar) | FormatNumber  }} / $ {{ product.calculado |
+                                             FormatDolar }}</p>
                                     </div>
                                     <div class="product-prices" v-if="!product.impuesto">
-                                        <p> ${{ (product.price / tasadolar) | FormatDolar }} / Bs {{ product.price |
-                                            FormatNumber }}</p>
+                                        <p> Bs{{ (product.price * tasadolar) |  FormatNumber}} / $ {{ product.price |
+                                             FormatDolar}}</p>
                                     </div>
                                 </div>
                                 <div class="product-options">
@@ -71,8 +71,8 @@
                                             </div>
                                         </div>
                                         <div class="product-prices">
-                                            <p><b>Total:</b> $ {{ (up((totalModal / tasadolar), 2)) | FormatDolar }} / Bs
-                                                {{ totalModal | FormatNumber }} </p>
+                                            <p><b>Total:</b> Bs {{ (up((totalModal * tasadolar), 2)) | FormatNumber }} / $
+                                                {{ totalModal |  FormatDolar }} </p>
                                         </div>
                                         <div class="product-buttons">
                                             <button type="button" class="btn" v-if="product.qty_avaliable > 0"

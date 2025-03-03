@@ -811,7 +811,7 @@ function consultarOrden(){
 }
 function recargoEnvio($tipo_salida){
     $transports_id=2;
-        $coins_id=1;
+        $coins_id=1; // Esta es la moneda principal para los pagos. Esto se debe funcionar dinamicamente.
         //$sql="SELECT p.precio_b,(p.precio_b/(SELECT rate FROM coins WHERE id=$coins_id)) as precio_d FROM (SELECT (price*(SELECT SUM(value) FROM det_tax_transports dtt INNER JOIN taxes t ON t.id=dtt.taxes_id WHERE dtt.transports_id=$transports_id GROUP BY dtt.transports_id)/100+price) as precio_b FROM transports WHERE id=$transports_id) p";
         $sql="
         SELECT p.peso_max,p.precio_b,(p.precio_b/(SELECT rate FROM coins WHERE id=1)) as precio_d FROM (SELECT (price*
@@ -1063,7 +1063,8 @@ function guardarPago(){
     $arr=q($sql);
     if(is_array($arr)) $pagoAbonado=true;
 
-    $sql="SELECT id FROM orders WHERE id=$orders_id AND total_pay<=((SELECT (SUM(amount)$sumar_sql) as amount FROM det_bank_orders dbo WHERE dbo.orders_id=$orders_id and (status='aprobado' OR status='efectivo') GROUP BY dbo.orders_id))"; 
+    //La variable $sumar_sql esta siendo mal usada dentro de la consulta. Por tal motivo, se comentó. Favor de dar razón de su uso.
+    $sql="SELECT id FROM orders WHERE id=$orders_id AND total_pay<=((SELECT (SUM(amount)/*$sumar_sql*/) as amount FROM det_bank_orders dbo WHERE dbo.orders_id=$orders_id and (status='aprobado' OR status='efectivo') GROUP BY dbo.orders_id))"; 
     //exit($sql);
     $arr=q($sql);
 
@@ -1077,7 +1078,8 @@ function guardarPago(){
             enviarPaginaCorreo(4,$_SESSION['usuario']['email']);
         }
     }else{
-        $sql="SELECT id FROM orders WHERE id=$orders_id AND total_pay<=((SELECT (SUM(amount)$sumar_sql) as amount FROM det_bank_orders dbo WHERE dbo.orders_id=$orders_id and (status='nuevo' OR status='aprobado' OR status='efectivo') GROUP BY dbo.orders_id))";
+        //La variable $sumar_sql esta siendo mal usada dentro de la consulta. Por tal motivo, se comentó. Favor de dar razón de su uso.
+        $sql="SELECT id FROM orders WHERE id=$orders_id AND total_pay<=((SELECT (SUM(amount)/*$sumar_sql*/) as amount FROM det_bank_orders dbo WHERE dbo.orders_id=$orders_id and (status='nuevo' OR status='aprobado' OR status='efectivo') GROUP BY dbo.orders_id))";
     
         $arr=q($sql);
         if(is_array($arr)){

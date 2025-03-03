@@ -56,21 +56,23 @@ function procesarPago() {
 	var mega_amount = '';
 	var ref = '';
 
-	if (coins_id == 2) { //bolivares
+	console.log('Esto es el rate de bolivares ', rate);
+
+	if (coins_id == 1) { //Dolares
 		if (amount > aPagarBs) {
-			Swal.fire("Bio en Línea", "El monto a pagar en Bolivares debe ser exacto", "warning");
+			Swal.fire("Pagos en Línea", "El monto a pagar en Dolares debe ser exacto", "warning");
 			throw new Error("El monto a pagar debe ser exacto");
 			return false;
 		}
 		amount = parseFloat(formato_moneda(amount)) * rate;
 		mega_amount = amount.toFixed(2);
 	}
-	if (coins_id == 1) { //dolares
-		// if(amount > aPagarUsd) {
-		//     Swal.fire("Bio en Línea","El monto a pagar en Dolares debe ser exacto","warning");
-		//     throw new Error("El monto aa pagar debe ser exacto");
-		//     return false;
-		// }
+	if (coins_id == 2) { //Bolivares
+		if(amount > aPagarUsd) {
+			Swal.fire("Bio en Línea","El monto a pagar en Bolivares debe ser exacto","warning");
+			throw new Error("El monto aa pagar debe ser exacto");
+			return false;
+		}
 		amount = amount * rate;
 	}
 
@@ -170,11 +172,11 @@ function elegidoBanco(id, name, titular, descripcion, moneda, coins_id, rate) {
 	if (coins_id == 1) {
 		var patron = "^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$";
 		var msj = "Use punto (.) para decimales";
-		monto_total = up(aPagarUsd, 2);
+		monto_total = aPagarBs;
 	} else {
 		var patron = "^\\$?(([1-9](\\d*|\\d{0,2}(\.\\d{3})*))|0)(,\\d{1,2})?$";
 		var msj = "Use coma (,) para decimales";
-		monto_total = aPagarBs;
+		monto_total =  up(aPagarUsd, 2);
 	}
 
 	var mensaje = "Ingrese el monto en " + moneda + ":";
@@ -269,11 +271,11 @@ function procesar(data, evento) {
 
 
 			if (data.success == true) {
-				Swal.fire("Bio en casa", "Su pago ha sido procesado", "success");
+				Swal.fire("Exitoso", "Su pago ha sido procesado", "success");
 				location.reload();
 
 			} else {
-				Swal.fire("Bio en casa", data.msj_general, "success");
+				Swal.fire("Exitoso", data.msj_general, "success");
 				div_btn_guardar_pago.innerHTML = '<button class="btn btn-success">Pagar</button>';
 
 			}
@@ -330,7 +332,7 @@ function procesar(data, evento) {
 		case 'listarMetodosDePago':
 
 			if (limite_max_pagos_alcanzado == true) {
-				metodosPago.innerHTML = "<div class='text-danger center'><br>Disculpe, ya agoto sus 2 pagos máximos, deber ir a nuestra tienda biomercados más cercana para reportar su situación.</div>";
+				metodosPago.innerHTML = "<div class='text-danger center'><br>Disculpe, ya agoto sus 2 pagos máximos, deber ir a nuestra tienda más cercana para reportar su situación.</div>";
 			} else {
 				var datas = data;
 
@@ -416,7 +418,7 @@ function procesar(data, evento) {
 					if (id_rateb == 1) break;
 				}
 
-				var htotalD = parseFloat(ra.total_pay) / _rateb;
+				var htotalD = parseFloat(ra.total_pay) * _rateb;
 				htotalD = up(htotalD, 2);
 				var pagado = 0.00;
 				if (ra.cant_pagos != '0') {
@@ -434,7 +436,7 @@ function procesar(data, evento) {
 					// }
 					//alert(pagado.toFixed(2));
 
-					console.log("Esto es para carlitos ==> " + pagado.toFixed(2) + " ==> " + parseFloat(ra.total_pay));
+				
 
 					if (pagado.toFixed(2) >= parseFloat(ra.total_pay)) {
 						ordenPagada = true;
@@ -443,10 +445,10 @@ function procesar(data, evento) {
 					}
 
 				}
-				var pagadoD = pagado / _rateb;
+				var pagadoD = pagado * _rateb;
 
 				var resta = parseFloat((parseFloat(ra.total_pay) - pagado).toFixed(2));
-				var restaD = resta / _rateb;
+				var restaD = resta * _rateb;
 				restaD = up(restaD, 2);
 
 				aPagarBs = resta;
@@ -470,13 +472,13 @@ function procesar(data, evento) {
 
 				cuadroPagado.innerHTML = `
 			<div class="row">
-			<div class="col-md-6 text-left"><b>`+ titulopago + `</b></div><div class="col-md-6 text-right"><b>` + formatB(ra.total_pay) + ` / ` + formatD(htotalD) + `</b></div>
+			<div class="col-md-6 text-left"><b>`+ titulopago + `</b></div><div class="col-md-6 text-right"><b>` + formatD(ra.total_pay) + ` / ` + formatB(htotalD) + `</b></div>
 		</div>
 		<div class="row" `+ mostrar + `>
-			<div class="col-md-6 text-left"><b>Has pagado</b></div><div class="col-md-6 text-right"><b>`+ formatB(pagado) + ` / ` + formatD(pagadoD) + `</b></div>
+			<div class="col-md-6 text-left"><b>Has pagado</b></div><div class="col-md-6 text-right"><b>`+ formatD(pagado) + ` / ` + formatB(pagadoD) + `</b></div>
 		</div>
 		<div class="row `+ colorFalta + `" ` + mostrar + `>
-			<div class="col-md-6 text-left "><b>Saldo restante</b></div><div class="col-md-6 text-right"><b>`+ formatB(resta) + ` / ` + formatD(restaD) + `</b></div>
+			<div class="col-md-6 text-left "><b>Saldo restante</b></div><div class="col-md-6 text-right"><b>`+ formatD(resta) + ` / ` + formatB(restaD) + `</b></div>
 		</div>   
 			`;
 			}
@@ -521,7 +523,7 @@ function procesar(data, evento) {
 					if (id_rate == 1) break;
 				}
 
-				var totalD = up((parseFloat(Math.ceil(r.total_pay)) / _rate), 2);
+				var totalD = up((parseFloat(Math.ceil(r.total_pay)) * _rate), 2);
 
 				_totalProductoB = new Object();
 				_totalProductoD = new Object();
@@ -536,12 +538,12 @@ function procesar(data, evento) {
 				for (var i = 0; i < res.length; i++) {
 					var name = res[i]['name'];
 					var cant = res[i]['cant'];
-					var precio = res[i]['price'];
+					var precio = res[i]['price'] * _rate;;
 					_totalProductoB[i] = parseFloat(precio) * parseFloat(cant);
 					_totalProductoBConFormato[i] = formatB(_totalProductoB[i]);
 					p_totalB += _totalProductoB[i];
 
-					_totalProductoD[i] = _totalProductoB[i] / _rate;
+					_totalProductoD[i] = _totalProductoB[i] * _rate;
 					_totalProductoDConFormato[i] = formatD(_totalProductoD[i]);
 					p_totalD += _totalProductoD[i];
 
@@ -554,6 +556,8 @@ function procesar(data, evento) {
 						<div class="col-md-3 text-right">`+ formatB(_totalProductoB[i]) + `</div>
 					</div>`;
 				}
+
+				console.log( 'Esto es el carrito',r);
 
 				factura.innerHTML = `
 				<div class="row">
@@ -571,29 +575,33 @@ function procesar(data, evento) {
 				</div>
 				<div >`+ detalles + `</div>
 			   <div class="row">
-					<div class="col-md-6 text-left">Productos</div><div class="col-md-6 text-right">`+ formatB(r.sub_total) + `</div>
+					<div class="col-md-6 text-left">Productos</div><div class="col-md-6 text-right">`+ formatB(r.sub_total * _rate ) + `</div>
 				</div>
 				<div class="row">    
-					<div class="col-md-6 text-left">Envío</div><div class="col-md-6 text-right">`+ formatB(r.total_transport) + `</div>
+					<div class="col-md-6 text-left">Envío</div><div class="col-md-6 text-right">`+ formatB(r.total_transport * _rate) + `</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6 text-left">Sub total</div><div class="col-md-6 text-right">`+ formatB(subTotal) + `</div>
+					<div class="col-md-6 text-left">Sub total</div><div class="col-md-6 text-right">`+ formatB(subTotal * _rate ) + `</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6 text-left">Exento</div><div class="col-md-6 text-right">`+ formatB(r.exento) + `</div>
+					<div class="col-md-6 text-left">Exento</div><div class="col-md-6 text-right">`+ formatB(r.exento * _rate ) + `</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6 text-left">BI.</div><div class="col-md-6 text-right">`+ formatB(r.bi) + `</div>
+					<div class="col-md-6 text-left">Base Imponible.</div><div class="col-md-6 text-right">`+ formatB(r.bi * _rate) + `</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6 text-left">Impuestos</div><div class="col-md-6 text-right">`+ formatB(r.total_tax) + `</div>
+					<div class="col-md-6 text-left">Impuestos</div><div class="col-md-6 text-right">`+ formatB(r.total_tax * _rate) + `</div>
 				</div>
 				<hr>
 				<div class="row">
-					<div class="col-md-6 text-left"><b>TOTAL A PAGAR</b></div><div class="col-md-6 text-right"><b>`+ formatB(r.total_pay) + ` / ` + formatD(totalD) + `</b></div>
+					<div class="col-md-6 text-left"><b>TOTAL A PAGAR</b></div><div class="col-md-6 text-right"><b>`+ formatB(r.total_pay * _rate) + ` / ` + formatD(r.total_pay ) + `</b></div>
 			   </div>
 
 				`;
+			
+				console.log('calculo', r.total_pay * _rate);
+				
+				
 
 				if (document.getElementById("cuadroPagado")) {
 					cuadroPagado.innerHTML = "<div class='loaderb'><div>";
@@ -658,7 +666,7 @@ function procesar(data, evento) {
 
 				vaciarCarrito();
 			} else {
-				Swal.fire("Bio en Línea", data.msj_general);
+				Swal.fire("Pago en Línea", data.msj_general);
 			}
 
 			break;
@@ -765,10 +773,10 @@ function procesarOrden() {
 	if (document.getElementById("direccion_selected")) {
 		console.log("esto es apagar usd", aPagarUsd);
 		if (checkDeliveryType == 2 && aPagarUsd < 3) {
-			Swal.fire("Bio en Línea", "Para este tipo de delivery el monto debe ser al menos de 3$", "error");
+			Swal.fire("Pago en Línea", "Para este tipo de delivery el monto debe ser al menos de 3$", "error");
 		} else {
 			Swal.fire({
-				title: 'Bio en Línea',
+				title: 'Pago en Línea',
 				text: "A partir de este momento no podra modificar su carrito, esta seguro de continuar?",
 				icon: 'warning',
 				showCancelButton: true,
@@ -882,12 +890,12 @@ function actualizarResumenOrden() {
 					// var precio_con_iva = (p.total_precio * cant);
 					// var precio_dolar = (p.total_precio_dolar * cant);
 					var precio_con_iva = (p.price * cant);
-					var precio_dolar = parseFloat((p.price * cant) / productos.tasadolar);
+					var precio_dolar = parseFloat((p.price * cant) * productos.tasadolar);
 					var nombre = p.name;
 					totalB += precio_con_iva;
 					totalD += precio_dolar;
 					totalPeso += peso * cant;
-					console.log("precio dolar", precio_dolar, "p price", p.price, "productos tasadolar", productos.tasadolar);
+					console.log("precio dolar carrito", precio_dolar, "p price", p.price, "productos tasadolar", productos.tasadolar);
 					detalle += '<div class="row" style="margin-bottom:5px; border-bottom:1px solid #ddd "><div class="col-md-1" style="margin:0"><img width="30px" src="storage/' + p.image + '"></div><div class="col-md-5" style="font-size:13px">' + nombre + ' <span style="color:red"> X ' + cant + '</span></div><div class="col-md-5" style="text-align:right">' + formatB(precio_con_iva) + '<br>' + formatD(up(precio_dolar, 2)) + '</div></div>';
 				}
 			}
@@ -932,7 +940,7 @@ function actualizarResumenOrden() {
 			h = '<div class="detalleOrdenProducts">' + detalle + '</div><br>' +
 				'<div class="row"><div class="col-md-4">Sub total:</div><div class="col-md-8" style="text-align:right">' + formatB(totalB) + ' / ' + formatD(up(totalD, 2)) + '</div></div>' +
 				'<div class="row"><div class="col-md-4">Envío:</div><div class="col-md-8" style="text-align:right">' + formatB(totalEnvioB) + ' / ' + formatD(up(totalEnvioD, 2)) + '</div></div>' +
-				'<div class="row"><div class="col-md-4" style="font-size:17px">TOTAL:</div><div class="col-md-8" style="font-size:17px; text-align:right">' + formatB(totalPagarB) + ' / ' + formatD(up(totalPagarD, 2)) + '</div></div>' +
+				'<div class="row"><div class="col-md-4" style="font-size:17px">TOTAL:</div><div class="col-md-8" style="font-size:17px; text-align:right">' + formatB(totalPagarB) + ' / ' + formatD(up(totalPagarD, 4)) + '</div></div>' +
 				'<div class="row"><div class="col-md-12" style="color:red; text-align:right">(impuestos incluidos)</div></div><br>';
 		}
 

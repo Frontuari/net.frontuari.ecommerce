@@ -57,9 +57,9 @@
 																			<a href="#" class="product-title">{{product_cart.product.name}}</a><br>
 																				<span class="product-descount" v-if="product_cart.product.discount > 0">$ 4 / {{ product_cart.product.price | FormatNumber }}</span>
 
-																				<p v-if="product_cart.product.discount > 0">$ {{ (up((product_cart.product.discount  / tasadolar), 2)) | FormatDolar}} / Bs {{ product_cart.product.discount | FormatNumber }}</p>
+																				<p v-if="product_cart.product.discount > 0">$ {{ (up((product_cart.product.discount  * tasadolar), 2)) | FormatNumber }} / Bs {{ product_cart.product.discount | FormatDolar  }}</p>
 
-																				<p v-if="product_cart.product.price > 0 && product_cart.product.discount <= 0">$ {{ (up((product_cart.product.price  / tasadolar), 2)) | FormatDolar}} / Bs {{ product_cart.product.price | FormatNumber }}</p>
+																				<p v-if="product_cart.product.price > 0 && product_cart.product.discount <= 0">Bs {{ (up((product_cart.product.price  * tasadolar), 2)) | FormatNumber }} / $ {{ product_cart.product.price | FormatDolar  }}</p>
 
 																		</div>
 																	</div>
@@ -86,9 +86,9 @@
 	
 																	
 																		<div class="product-prices">
-																			<p v-if="product_cart.product.discount > 0">$ {{ up(((product_cart.product.discount * product_cart.cant) / tasadolar),2) | FormatDolar}} / Bs {{product_cart.product.discount * product_cart.cant | FormatNumber}}</p>
+																			<p v-if="product_cart.product.discount > 0">Bs {{ up(((product_cart.product.discount * product_cart.cant) * tasadolar),2) |FormatNumber }} / $ {{product_cart.product.discount * product_cart.cant | FormatDolar }}</p>
 
-																			<p v-if="product_cart.product.discount <= 0">$ {{ up(((product_cart.product.price * product_cart.cant) / tasadolar), 2) | FormatDolar}} / Bs {{product_cart.product.price * product_cart.cant | FormatNumber}}</p>
+																			<p v-if="product_cart.product.discount <= 0">Bs {{ up(((product_cart.product.price * product_cart.cant) * tasadolar), 2) | FormatNumber }} / $ {{product_cart.product.price * product_cart.cant | FormatDolar }}</p>
 																		</div>
 															
 																	</div>
@@ -121,16 +121,16 @@
 																	<div class="row"  v-for="product_cart in products_cart" :key="product_cart.id">
 																		<p>{{product_cart.product.name}} ({{product_cart.cant}} Articulos)</p>
                                                                         <h3 v-if="product_cart.product.discount > 0" class="order-text">
-                                                                        $ {{ up( ((product_cart.product.discount * product_cart.cant) / tasadolar) , 2) | FormatDolar}} / Bs {{product_cart.product.discount * product_cart.cant | FormatNumber}}</h3>
+                                                                        Bs {{ up( ((product_cart.product.discount * product_cart.cant) * tasadolar) , 2) | FormatNumber}} / $ {{product_cart.product.discount * product_cart.cant | FormatDolar }}</h3>
 																		<h3 v-if="product_cart.product.discount <= 0" class="order-text">
-																		$ {{ up(((product_cart.product.price * product_cart.cant) / tasadolar),2) | FormatDolar}} / Bs {{product_cart.product.price * product_cart.cant | FormatNumber}}</h3>
+																		Bs {{ up(((product_cart.product.price * product_cart.cant) * tasadolar),2) |FormatNumber }} / $ {{product_cart.product.price * product_cart.cant | FormatDolar}}</h3>
 																	</div>
 																</div>
 																<div class="order-description order-total">
 																	<div class="row">
 																		<div class="col-md-12">
 																			<p>Subtotal</p>
-																			<h3 class="order-text">$ {{ up(((total_cart) / tasadolar), 2) | FormatDolar}} / Bs {{total_cart | FormatNumber}} </h3>
+																			<h3 class="order-text">Bs {{ up(((total_cart) * tasadolar), 2) |  FormatNumber}} / $ {{total_cart | FormatDolar}} </h3>
 																		</div>
 																		<div class="col-md-12">
 																			<p>Peso</p>
@@ -138,11 +138,11 @@
 																		</div>
 																		<div class="col-md-12">
 																			<p>Total Delivery:</p>
-																			<h3 class="order-text">$ {{ up((total_delivery / tasadolar), 2) | FormatDolar }} / Bs {{ total_delivery | FormatNumber }} </h3>
+																			<h3 class="order-text">Bs {{ up((total_delivery * tasadolar), 2) |  FormatNumber}} / $ {{ total_delivery | FormatDolar }} </h3>
 																		</div>
 																		<div class="col-md-12">
 																			<p>Total a Pagar:</p>
-																			<h3 class="order-text">$ {{ up((total_pagar / tasadolar), 2) | FormatDolar }} / Bs {{total_pagar | FormatNumber}} </h3>
+																			<h3 class="order-text">Bs {{ up((total_pagar * tasadolar), 2) |  FormatNumber}} / $ {{total_pagar | FormatDolar}} </h3>
 																		</div>
 																	</div>
 																</div>
@@ -314,9 +314,9 @@
 																	<div class="row"  v-for="product_cart in products_cart" :key="product_cart.id">
 																		<p>{{product_cart.product.name}} ({{product_cart.cant}} Articulos)</p>
 
-																		<h3 v-if="product_cart.product.discount > 0" class="order-text">{{ up(((product_cart.product.discount * product_cart.cant) / tasadolar),2) | FormatDolar }} / Bs {{ (product_cart.product.discount * product_cart.cant) | FormatNumber}}</h3>
+																		<h3 v-if="product_cart.product.discount > 0" class="order-text">{{ up(((product_cart.product.discount * product_cart.cant) * tasadolar),2) | FormatNumber }} / $ {{ (product_cart.product.discount * product_cart.cant) | FormatDolar }}</h3>
 
-																		<h3 v-if="product_cart.product.discount <= 0" class="order-text">{{ up(((product_cart.product.price * product_cart.cant) / tasadolar), 2) | FormatDolar }} / Bs {{ (product_cart.product.price * product_cart.cant) | FormatNumber}}</h3>
+																		<h3 v-if="product_cart.product.discount <= 0" class="order-text">{{ up(((product_cart.product.price * product_cart.cant) * tasadolar), 2) | FormatNumber  }} / $ {{ (product_cart.product.price * product_cart.cant) | FormatDolar }}</h3>
 
 																	</div>
 
@@ -325,7 +325,7 @@
 																	<div class="row">
 																		<div class="col-md-12">
 																			<p>Subtotal</p>
-																			<h3 class="order-text">$ {{ up(((total_cart) / tasadolar), 2) | FormatDolar}} / Bs {{total_cart | FormatNumber}} </h3>
+																			<h3 class="order-text">Bs {{ up(((total_cart) * tasadolar), 2) | FormatNumber }} / $ {{total_cart | FormatDolar }} </h3>
 																		</div>
 																		<div class="col-md-12">
 																			<p>Peso</p>
@@ -333,11 +333,11 @@
 																		</div>
 																		<div class="col-md-12">
 																			<p>Total Delivery:</p>
-																			<h3 class="order-text">$ {{ up((total_delivery / tasadolar), 2) | FormatDolar }} / Bs {{ total_delivery | FormatNumber }} </h3>
+																			<h3 class="order-text">Bs {{ up((total_delivery * tasadolar), 2) | FormatNumber  }} / $ {{ total_delivery | FormatDolar  }} </h3>
 																		</div>
 																		<div class="col-md-12">
 																			<p>Total a Pagar:</p>
-																			<h3 class="order-text">$ {{ up((total_pagar / tasadolar),2) | FormatDolar }} / Bs {{total_pagar | FormatNumber}} </h3>
+																			<h3 class="order-text">Bs {{ up((total_pagar * tasadolar),2) |  FormatNumber }} / $ {{total_pagar | FormatDolar }} </h3>
 																		</div>
 																	</div>
 																</div>
@@ -434,7 +434,7 @@
 																<div class="order-description order-total">
 																	<div class="row">
 																		<p>Total</p>
-																		<h3 class="order-text">$ {{ up((total_cart / tasadolar), 2) | FormatDolar}} / Bs {{total_cart | FormatNumber}} </h3>
+																		<h3 class="order-text">Bs {{ up((total_cart * tasadolar), 2) | FormatNumber }} / $ {{total_cart | FormatDolar }} </h3>
 																		<span v-if="payButton">
 																			<font color="red">
 																				Su abono de pago debe ser exacto
@@ -457,11 +457,11 @@
 																			</tr>
 																			<tr>
 																				<td>Resta:  </td>
-																				<td>$ {{ up((Resta / tasadolar), 2) | FormatDolar}} / Bs {{Resta | FormatNumber}}</td>
+																				<td>Bs {{ up((Resta * tasadolar), 2) | FormatNumber }} / $ {{Resta | FormatDolar }}</td>
 																			</tr>
 																			<tr>
 																				<td>Total:  </td>
-																				<td>$ {{  up((totalAbono / tasadolar), 2) | FormatDolar}} / Bs {{totalAbono | FormatNumber}}</td>
+																				<td>Bs {{  up((totalAbono * tasadolar), 2) | FormatNumber }} / Bs {{totalAbono | FormatDolar }}</td>
 																			</tr>
 																		</table>
 																		
@@ -471,8 +471,8 @@
 																<div class="order-description">
 																	<div class="row"  v-for="product_cart in products_cart" :key="product_cart.id">
 																		<p>{{product_cart.product.name}} ({{product_cart.cant}} Articulos)</p>
-																		<h3 v-if="product_cart.product.discount > 0" class="order-text">$ {{ up((product_cart.product.discount / tasadolar),2) | FormatDolar}} / Bs {{product_cart.product.discount | FormatNumber}}</h3>
-																		<h3 v-if="product_cart.product.discount <= 0" class="order-text">$ {{ up((product_cart.product.price / tasadolar),2) | FormatDolar }} / Bs {{product_cart.product.price | FormatNumber}}</h3>
+																		<h3 v-if="product_cart.product.discount > 0" class="order-text">Bs {{ up((product_cart.product.discount * tasadolar),2) | FormatNumber }} / $ {{product_cart.product.discount | FormatDolar }}</h3>
+																		<h3 v-if="product_cart.product.discount <= 0" class="order-text">Bs {{ up((product_cart.product.price * tasadolar),2) | FormatNumber }} / $ {{product_cart.product.price | FormatDolar }}</h3>
 																	</div>
 																</div>
 																
@@ -520,7 +520,7 @@
 											</div>
 											<div class="thanks-footer">
 												<h3 class="order-text" data-toggle="modal" data-target="#ModalOrder">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.43 19.97"><title>mis-pedidos-bio-mercados</title><g id="Capa_2" data-name="Capa 2"><g id="Perfil_de_Usuario" data-name="Perfil de Usuario"><path d="M14.53,13h.32a.31.31,0,0,0,0-.61h0v-.82h.84a.27.27,0,0,0,.28.2.3.3,0,0,0,.31-.3v-.21A.31.31,0,0,0,16,11H14.53a.27.27,0,0,0-.21.09.29.29,0,0,0-.09.21v1.43a.31.31,0,0,0,.09.22.27.27,0,0,0,.21.09Z"/><path d="M14.53,15.76H16a.3.3,0,0,0,.3-.3V14a.3.3,0,0,0-.3-.3H14.53a.3.3,0,0,0-.3.3v1.43a.3.3,0,0,0,.3.3Zm.31-1.43h.82v.83h-.82Z"/><path d="M14.85,17.93h0v-.82h.82a.31.31,0,0,0,.61,0v-.29A.33.33,0,0,0,16,16.5H14.53a.32.32,0,0,0-.3.32v1.43a.29.29,0,0,0,.09.21.32.32,0,0,0,.21.08h.32a.31.31,0,0,0,0-.61Z"/><path d="M16.66,11.32l-.89.89-.27-.27a.3.3,0,0,0-.43.43l.49.49a.32.32,0,0,0,.43,0l1.1-1.11a.3.3,0,0,0-.43-.43Z"/><path d="M16.66,16.93l-.89.89-.27-.27a.3.3,0,0,0-.43.43l.49.48a.3.3,0,0,0,.43,0l1.1-1.1a.3.3,0,0,0-.43-.43Z"/><path d="M19.78,11.69H17.87a.3.3,0,1,0,0,.6h1.91a.3.3,0,0,0,0-.6Z"/><path d="M19.78,14.46H17.87a.31.31,0,0,0,0,.61h1.91a.31.31,0,0,0,0-.61Z"/><path d="M19.78,17.24H17.87a.31.31,0,0,0,0,.61h1.91a.31.31,0,0,0,0-.61Z"/><path d="M20.13,8.61H19.05a1.07,1.07,0,0,0-1-.78H16.88V5a.32.32,0,0,0-.15-.26L8.59,0a.32.32,0,0,0-.3,0L.15,4.74A.32.32,0,0,0,0,5v9.4a.33.33,0,0,0,.15.27l8.14,4.7a.32.32,0,0,0,.31,0l4.29-2.47v1.78a1.25,1.25,0,0,0,.37.92,1.28,1.28,0,0,0,.92.37h5.95a1.28,1.28,0,0,0,.92-.37,1.3,1.3,0,0,0,.38-.92V9.92a1.3,1.3,0,0,0-1.3-1.31ZM18,8.43a.44.44,0,0,1,.44.44v0a.44.44,0,0,1-.44.44H16.28a.43.43,0,0,1-.44-.44v0a.44.44,0,0,1,.44-.44ZM8.44.65l3.39,2L4.29,7,.91,5ZM8.16,18.58.61,14.23V5.53L8.16,9.88Zm.28-9.23-3.54-2L12.44,3,16,5Zm4.45.57V16.2L8.76,18.58V9.88l7.51-4.35v2.3h0a1.06,1.06,0,0,0-1,.78H14.18a1.29,1.29,0,0,0-1.29,1.31Zm7.93,8.76a.68.68,0,0,1-.2.49.7.7,0,0,1-.49.2H14.18a.7.7,0,0,1-.49-.2.68.68,0,0,1-.2-.49V9.92a.7.7,0,0,1,.69-.71h1.09a1,1,0,0,0,1,.74H18a1,1,0,0,0,1-.74h1.1a.71.71,0,0,1,.69.71Z"/></g></g></svg>
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.43 19.97"><title>mis-pedidos</title><g id="Capa_2" data-name="Capa 2"><g id="Perfil_de_Usuario" data-name="Perfil de Usuario"><path d="M14.53,13h.32a.31.31,0,0,0,0-.61h0v-.82h.84a.27.27,0,0,0,.28.2.3.3,0,0,0,.31-.3v-.21A.31.31,0,0,0,16,11H14.53a.27.27,0,0,0-.21.09.29.29,0,0,0-.09.21v1.43a.31.31,0,0,0,.09.22.27.27,0,0,0,.21.09Z"/><path d="M14.53,15.76H16a.3.3,0,0,0,.3-.3V14a.3.3,0,0,0-.3-.3H14.53a.3.3,0,0,0-.3.3v1.43a.3.3,0,0,0,.3.3Zm.31-1.43h.82v.83h-.82Z"/><path d="M14.85,17.93h0v-.82h.82a.31.31,0,0,0,.61,0v-.29A.33.33,0,0,0,16,16.5H14.53a.32.32,0,0,0-.3.32v1.43a.29.29,0,0,0,.09.21.32.32,0,0,0,.21.08h.32a.31.31,0,0,0,0-.61Z"/><path d="M16.66,11.32l-.89.89-.27-.27a.3.3,0,0,0-.43.43l.49.49a.32.32,0,0,0,.43,0l1.1-1.11a.3.3,0,0,0-.43-.43Z"/><path d="M16.66,16.93l-.89.89-.27-.27a.3.3,0,0,0-.43.43l.49.48a.3.3,0,0,0,.43,0l1.1-1.1a.3.3,0,0,0-.43-.43Z"/><path d="M19.78,11.69H17.87a.3.3,0,1,0,0,.6h1.91a.3.3,0,0,0,0-.6Z"/><path d="M19.78,14.46H17.87a.31.31,0,0,0,0,.61h1.91a.31.31,0,0,0,0-.61Z"/><path d="M19.78,17.24H17.87a.31.31,0,0,0,0,.61h1.91a.31.31,0,0,0,0-.61Z"/><path d="M20.13,8.61H19.05a1.07,1.07,0,0,0-1-.78H16.88V5a.32.32,0,0,0-.15-.26L8.59,0a.32.32,0,0,0-.3,0L.15,4.74A.32.32,0,0,0,0,5v9.4a.33.33,0,0,0,.15.27l8.14,4.7a.32.32,0,0,0,.31,0l4.29-2.47v1.78a1.25,1.25,0,0,0,.37.92,1.28,1.28,0,0,0,.92.37h5.95a1.28,1.28,0,0,0,.92-.37,1.3,1.3,0,0,0,.38-.92V9.92a1.3,1.3,0,0,0-1.3-1.31ZM18,8.43a.44.44,0,0,1,.44.44v0a.44.44,0,0,1-.44.44H16.28a.43.43,0,0,1-.44-.44v0a.44.44,0,0,1,.44-.44ZM8.44.65l3.39,2L4.29,7,.91,5ZM8.16,18.58.61,14.23V5.53L8.16,9.88Zm.28-9.23-3.54-2L12.44,3,16,5Zm4.45.57V16.2L8.76,18.58V9.88l7.51-4.35v2.3h0a1.06,1.06,0,0,0-1,.78H14.18a1.29,1.29,0,0,0-1.29,1.31Zm7.93,8.76a.68.68,0,0,1-.2.49.7.7,0,0,1-.49.2H14.18a.7.7,0,0,1-.49-.2.68.68,0,0,1-.2-.49V9.92a.7.7,0,0,1,.69-.71h1.09a1,1,0,0,0,1,.74H18a1,1,0,0,0,1-.74h1.1a.71.71,0,0,1,.69.71Z"/></g></g></svg>
 													Orden {{num_order}}
 												</h3>
 												<a href="/catalog" type="button" class="btn btn-submit">SEGUIR COMPRANDO</a>
@@ -627,7 +627,7 @@
 
 				var envioData = {
 					precio_b: this.delivery,
-					precio_d: this.delivery / this.tasadolar,
+					precio_d: this.delivery * this.tasadolar,
 					peso_max: this.peso_max
 				};
 				data[0] = envioData

@@ -605,14 +605,14 @@
 																	</div>
 																	<div class="product-prices"
 																		v-if="favorite.impuesto > 0">
-																		<p> ${{ (favorite.calculado / tasadolar) |
-																			FormatDolar }} / Bs {{ favorite.calculado |
-																											FormatNumber }}</p>
+																		<p> Bs{{ (favorite.calculado * tasadolar) |
+																			 FormatNumber }} / $ {{ favorite.calculado |
+																				FormatDolar }}</p>
 																	</div>
 																	<div class="product-prices" v-if="!favorite.impuesto">
-																		<p> ${{ (favorite.price / tasadolar) | FormatDolar
+																		<p> ${{ (favorite.price * tasadolar) | FormatNumber
 																		}}
-																			/ Bs {{ favorite.price | FormatNumber }}</p>
+																			/ Bs {{ favorite.price | FormatDolar  }}</p>
 																	</div>
 																</div>
 																<div class="product-add">
