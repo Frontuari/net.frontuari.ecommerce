@@ -8,6 +8,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Promise\Utils;
 use Illuminate\Support\Facades\Auth;
+use App\Services\IdempiereService;
+
 
 class IdempiereGetController extends Controller
 {
@@ -84,6 +86,20 @@ class IdempiereGetController extends Controller
             }
         }
 
+        $idempiereService = new IdempiereService();
+        $productsData = $idempiereService->extractProductData($responses);
+        $taxData = $idempiereService->extracTaxtData($responses);
+        $wareHouseDAta = $idempiereService->extractWarehouse($responses);
+
+        return response()->json($wareHouseDAta);
+
+        
+
+        
+
         return response()->json($responses);
+
+
+ 
     }
 }

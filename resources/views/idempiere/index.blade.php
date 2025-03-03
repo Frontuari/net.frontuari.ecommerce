@@ -47,7 +47,7 @@
                 <td>{{ $connection->ftu_app_warehouse_id }}</td>
                 <td>{{ $connection->ad_language }}</td>
                 <td>{{ $connection->user }}</td>
-                <td>{{ $connection->password }}</td>
+                <td>****</td>
             
                 <td>  <a href="{{ route('connection.edit', $connection->id) }}" class="btn btn-sm btn-warning">Editar</a></td>
             </tr>

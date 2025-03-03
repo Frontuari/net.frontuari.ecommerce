@@ -1,0 +1,182 @@
+<?php
+
+namespace App\Services;
+
+use Illuminate\Support\Collection;
+
+class IdempiereService
+{
+    public function extractProductData($responseData)
+    {
+
+ 
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+
+
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['getProductAPP']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['getProductAPP']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+
+
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['getProductAPP']['WindowTabData']['DataSet']['DataRow'];
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $productsData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $productsData[] = [
+                'cod_product'        => $fields->get('Value'),
+                'm_product_id'       => $fields->get('M_Product_ID'),
+                'name'               => $fields->get('Name'),
+                'price'              => $fields->get('PriceList'),
+                'quantity'           => $fields->get('QtyOnHand'),
+                'pro_cat_id'         => $fields->get('M_Product_Category_ID'),
+                'categoria'          => $fields->get('category_name', ''),
+                'product_type'       => $fields->get('ProductType'),
+                'product_type_name'  => $fields->get('producttype_name'),
+                'tax_cat_id'         => $fields->get('C_TaxCategory_ID'),
+                'tax_cat_name'       => $fields->get('taxcategory_name'),
+                'product_group_id'   => $fields->get('FTU_ProductGroup_ID'),
+                'product_group_name' => $fields->get('FTU_ProductGroup_Name'),
+                'um_id'              => $fields->get('C_UOM_ID'),
+                'um_name'            => $fields->get('UOMName'),
+                'quantity_sold'      => 0, // Default
+                'pricelistsales'     => $fields->get('pricelistsales'),
+            ];
+        }
+
+
+
+        return $productsData;
+    }
+
+    public function extracTaxtData($responseData)
+    {
+
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+
+
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+
+
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow'];
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $taxData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $taxData[] = [
+                'c_tax_id'           => $fields->get('C_Tax_ID'),
+                'tax_indicator'      => $fields->get('TaxIndicator'),
+                'rate'               => $fields->get('Rate'),
+                'name'               => $fields->get('Name'),
+                'c_tax_category_id'  => $fields->get('C_TaxCategory_ID'),
+                'iswithholding'      => $fields->get('IsWithholding'),
+            ];
+        }
+
+
+
+        return $taxData;
+    }
+
+    public function extractWarehouse($responseData)
+    {
+
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+
+
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['getWarehouseAPP']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['getWarehouseAPP']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['getWarehouseAPP']['WindowTabData']['DataSet']['DataRow'];
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $wareHouseData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $wareHouseData[] = [
+                'ad_client_id'           => $fields->get('AD_Client_ID'),
+                'ad_org_id'      => $fields->get('AD_Org_ID'),
+                'm_warehouse_id'               => $fields->get('M_Warehouse_ID'),
+                'name'               => $fields->get('WarehouseName'),
+                'value'  => $fields->get('WarehouseValue')
+                
+            ];
+        }
+
+  
+
+
+
+        return $wareHouseData;
+    }
+}

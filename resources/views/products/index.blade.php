@@ -35,7 +35,7 @@
                                     <td>{{ $product->description_short }}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->price }}</td>
-                                    <td>{{ $product->subcategories->name }}</td> <!-- Cambia esto para mostrar el nombre de la subcategoría -->
+                                    <td>{{ $product->subcategories}}</td> <!-- Cambia esto para mostrar el nombre de la subcategoría -->
 
                                     <td>
                                         <a href="{{ route('products.detalle', $product->id) }}" class="btn btn-sm btn-primary">Ver</a>
