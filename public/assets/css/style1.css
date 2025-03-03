@@ -690,7 +690,7 @@
 	======================================================
 */
 	#main-slider{
-		display: none;
+		display: block;
 	}
 	.carousel-item .container{
 		display: flex;

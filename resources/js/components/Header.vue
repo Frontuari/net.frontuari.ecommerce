@@ -146,7 +146,7 @@
 						</li>
 					
 						<li id="nav-all-categories" class="nav-item dropdown">
-							<div class="dropdown-menu" aria-labelledby="navbarCategories" style="height: 600px; overflow-y: scroll;">
+							<div class="dropdown-menu" aria-labelledby="navbarCategories" style="max-height: 600px; overflow-y: scroll;">
 								<a v-for="cat in categories" :key="cat.id" class="dropdown-item" :href="'/catalog?cat='+cat.id" >{{cat.name}}</a>
 							</div>
 						</li>
