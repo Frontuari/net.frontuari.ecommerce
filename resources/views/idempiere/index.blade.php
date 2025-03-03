@@ -1,6 +1,13 @@
 @extends('voyager::master')
 
 
+@php
+    // Si no se ha iniciado sesión, redirige al login de Voyager
+    if (!Auth::check()) {
+        header("Location: " . route('voyager.login'));
+        exit();
+    }
+@endphp
 
 @section('content')
 <div class="container">

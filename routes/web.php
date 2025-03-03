@@ -12,7 +12,7 @@
 */
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Idempiere\IdempiereProductController;
+use App\Http\Controllers\Idempiere\IdempiereGetController;
 use App\Http\Controllers\IdempiereConnectionController;
 use TCG\Voyager\Facades\Voyager;
 
@@ -92,7 +92,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Vista Idempiere Para actualizar dato y ver los datos del Token
 
-    Route::get('idempiere/products', [IdempiereProductController::class, 'getProducts'])->name('getProducts');
+    Route::get('idempiere/products', [IdempiereGetController::class, 'getProducts'])->name('getProducts');
 
 
     // Rutas protegidas solo para el rol 'super'
