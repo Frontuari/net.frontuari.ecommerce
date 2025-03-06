@@ -19,12 +19,28 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('products.index', compact('products'));
-    }
+        {
+            $search = $request->input('search');
+            
+            $products = Product::query();
 
+            
+            
+        
+            // Si hay una búsqueda, filtra por el nombre
+            if ($search) {
+                $products = $products->whereRaw('UPPER(name) LIKE ?', ["%".strtoupper($search)."%"])
+                ->orWhere('id', 'like', "%$search%");;
+            }
+        
+            // Paginación de los productos, usando paginate en lugar de get
+            $products = $products->paginate(10); // Ajusta el número de productos por página según necesites
+        
+            return view('products.index', compact('products'));
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

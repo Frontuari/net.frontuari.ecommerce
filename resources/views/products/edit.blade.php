@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="peso">Peso:</label>
+                            <label for="peso">Peso Kg:</label>
                             <input type="integer" name="peso" class="form-control" value="{{ $product->peso }}"
                                 placeholder="Ingrese el peso del producto">
                         </div>
