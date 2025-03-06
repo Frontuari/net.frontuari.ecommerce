@@ -14,9 +14,6 @@ class IdempiereService
             return [];
         }
 
-      
-
-
         // Verificar si existen los datos esperados
         if (
             !isset($responseData['getProductAPP']['WindowTabData']['DataSet']['DataRow']) ||
@@ -36,7 +33,7 @@ class IdempiereService
             $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
         }
 
-  
+
         $productsData = [];
 
         foreach ($dataRows as $row) {
@@ -69,22 +66,18 @@ class IdempiereService
             ];
         }
 
-        
-  
 
 
 
         return $productsData;
     }
 
-    public function extracTaxtData($responseData)
+public function extracTaxtData($responseData)
     {
-
         // Verificar si la respuesta ya es un array
         if (!is_array($responseData)) {
             return [];
         }
-
 
         // Verificar si existen los datos esperados
         if (
@@ -93,9 +86,6 @@ class IdempiereService
         ) {
             return [];
         }
-
-
-
 
         // Obtener los registros de productos
         $dataRows = $responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow'];
@@ -174,11 +164,9 @@ class IdempiereService
                 'm_warehouse_id'               => $fields->get('M_Warehouse_ID'),
                 'name'               => $fields->get('WarehouseName'),
                 'value'  => $fields->get('WarehouseValue')
-                
+
             ];
         }
-
-  
 
 
 
@@ -188,14 +176,11 @@ class IdempiereService
     public function extractConversion($responseData)
     {
 
-  
 
         // Verificar si la respuesta ya es un array
         if (!is_array($responseData)) {
             return [];
         }
-
-
         // Verificar si existen los datos esperados
         if (
             !isset($responseData['getRateConversion']['WindowTabData']['DataSet']['DataRow']) ||
@@ -208,14 +193,13 @@ class IdempiereService
         // Obtener los registros de productos
         $dataRows = $responseData['getRateConversion']['WindowTabData']['DataSet']['DataRow'];
 
-        dd($dataRows);
 
         // Asegurar que sea un array de registros
         if (!is_array($dataRows) || isset($dataRows['field'])) {
             $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
         }
 
-        $wareHouseData = [];
+        $coinData = [];
 
         foreach ($dataRows as $row) {
             // Validar que 'field' exista y sea un array
@@ -226,20 +210,17 @@ class IdempiereService
             // Usar Collection para buscar datos más eficientemente
             $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
 
-            $wareHouseData[] = [
-                'ad_client_id'           => $fields->get('AD_Client_ID'),
-                'ad_org_id'      => $fields->get('AD_Org_ID'),
-                'm_warehouse_id'               => $fields->get('M_Warehouse_ID'),
-                'name'               => $fields->get('WarehouseName'),
-                'value'  => $fields->get('WarehouseValue')
-                
+            $coinData[] = [
+                'name' =>'nameCoinIdempiere',
+                'symbol' =>'symbolCoinIdempiere',
+                'rate'               => $fields->get('MultiplyRate'),
+                'C_Currency_ID_To'               => $fields->get('C_Currency_ID_To'),
             ];
         }
 
-  
-
-
-
-        return $wareHouseData;
+     
+        return $coinData;
     }
+
+    
 }

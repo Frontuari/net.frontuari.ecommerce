@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\IdempiereService;
 use App\Services\IdempiereQuery;
 use App\Http\Controllers\Idempiere\ProductControllerIdempiere; 
+use App\Http\Controllers\Idempiere\TaxControllerIdempiere; 
+use App\Http\Controllers\Idempiere\rateControllerIdempiere; 
 use Illuminate\Http\Request;
 
 
@@ -93,25 +95,29 @@ class IdempiereGetController extends Controller
         
 
         $idempiereService = new IdempiereService();
+        //Se Descomponen los productos para preparar para la inserccion
+        //El funcionamiento es igual al del app movil
         $productsData = $idempiereService->extractProductData($responses);
         $taxData = $idempiereService->extracTaxtData($responses);
         $wareHouseData = $idempiereService->extractWarehouse($responses);
         $coinsConversion = $idempiereService->extractConversion($responses);
 
-        dd($coinsConversion);
-
-      
-
-        
 
 
-        // Llamar al ProductControllerIdempiere para almacenar los productos
-        // $productController = new ProductControllerIdempiere(new IdempiereQuery(), $idempiereService); 
-        // $productController->store(new Request($productsData));  // Inserta automáticamente
+        //INSERCCION DE PRODUCTOS
+        $productController = new ProductControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        $productController->store(new Request($productsData));  // Inserta automáticamente
+        //INSERCCION  DE IMPUESTOS
+        $taxController = new TaxControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        $taxController->store(new Request($taxData));  // Inserta impuestos correctamente
+
+        //Inserccion de Monedas
+        $coinController = new rateControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        $coinController->store(new Request($coinsConversion));  // Inserta Monedas correctamente
 
 
 
-        // return response()->json($wareHouseData);
+        return response()->json($coinsConversion);
 
         
 

@@ -12,7 +12,9 @@ class IdempiereQuery
     
         foreach ($productsData as $product) {
             $insertData[] = [
+                'id'          => $product['m_product_id'],
                 'name'          => $product['name'],
+                'description_short'   => $product['name'], // Ajustar si es necesario
                 'description'   => $product['name'], // Ajustar si es necesario
                 'price'         => $product['price'],
                 'm_product_id'  => $product['m_product_id'],
@@ -24,10 +26,75 @@ class IdempiereQuery
         // Usar upsert para insertar o actualizar si el m_product_id ya existe
         DB::table('products')->upsert(
             $insertData,
-            ['m_product_id'],  // Clave única para evitar duplicados
+            ['id'],  // Clave única para evitar duplicados
             ['name', 'description', 'price', 'updated_at'] // Columnas a actualizar si ya existe
         );
     
         return ['message' => 'Productos insertados o actualizados correctamente'];
+    }
+
+    public function insertTax(array $taxData)
+    {
+       
+        $insertData = [];
+    
+        foreach ($taxData as $datas) {
+            $insertData[] = [
+                'id'          => $datas['c_tax_id'],
+                'name'          => $datas['name'],
+                'short_name'   =>$datas['name'],
+                'value'         => $datas['rate'],
+                'c_tax_category_id'  => $datas['c_tax_category_id'],
+                'created_at'    => now(),
+                'updated_at'    => now(),
+                'iswithholding'  => $datas['iswithholding'],
+                'status' => 'A',
+                'tax_indicator'  => $datas['tax_indicator']
+                
+            ];
+        }
+    
+        // Usar upsert para insertar o actualizar si el m_product_id ya existe
+        DB::table('taxes')->upsert(
+            $insertData,
+            ['id'],  // Clave única para evitar duplicados
+            ['name', 'short_name', 'tax_indicator','value', 'updated_at','c_tax_category_id','iswithholding'] // Columnas a actualizar si ya existe
+        );
+    
+        return ['message' => 'Taxes insertados o actualizados correctamente'];
+    }
+
+    public function insertCoin(array $coinData)
+
+    
+    {
+
+   
+       
+        $insertData = [];
+
+    
+        foreach ($coinData as $datas) {
+            $insertData[] = [
+                'id' =>  $datas['C_Currency_ID_To'],
+                'name'  => $datas['name'],
+                'symbol'  => $datas['symbol'],
+                'rate'  => $datas['rate'],
+                'created_at'    => now(),
+                'updated_at'    => now(),
+                'status' => 'A',
+            
+                
+            ];
+        }
+    
+        // Usar upsert para insertar o actualizar si el m_product_id ya existe
+        DB::table('coins')->upsert(
+            $insertData,
+            ['id'],  // Clave única para evitar duplicados
+            ['name' ,'symbol', 'rate', 'updated_at'] // Columnas a actualizar si ya existe
+        );
+    
+        return ['message' => 'Coin insertados o actualizados correctamente'];
     }
 }
