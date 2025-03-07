@@ -77,6 +77,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('products/{id}/edit','API\ProductController@edit')->name('products.edit');
     Route::get('/opiniones', 'RatingProductsController@index')->name('opiniones.index');
     Route::get('rating-products', 'API\RatingProductsController@index')->name('voyager.rating-products.index');
+
+
+    Route::put('roles/{id}', 'App\Http\Controllers\VoyagerRoleController@update');
+
+
     
 
     Route::get('/order-products', 'OrdersController@products')->name('orders.productos');

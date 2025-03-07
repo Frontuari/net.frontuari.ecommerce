@@ -26,7 +26,8 @@
 
                         <!-- PUT Method if we are editing -->
                         @if(isset($dataTypeContent->id))
-                            {{ method_field("PUT") }}
+                        {{ method_field("PUT") }}
+                        <input type="hidden" name="role_id" value="{{ $dataTypeContent->id }}">
                         @endif
 
                         <!-- CSRF TOKEN -->
