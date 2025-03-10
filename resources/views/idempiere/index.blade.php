@@ -16,7 +16,7 @@
     @if(Auth::user()->role_id == 1)
     <h2 class="text-center">Conexiones Idempiere</h2>
 
-       <a href="{{ route('getProducts') }}" class="btn btn-primary">Consulta Idempiere</a>
+       <a href="{{ route('getIdempiere') }}" class="btn btn-primary">Consulta Idempiere</a>
     <table class="table">
         <thead>
             <tr>

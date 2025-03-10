@@ -27,7 +27,26 @@ class Prueba extends BaseDimmer
     public function run()
     {
         $h="";
-        $h.= "<div class='row'>".$this->top();
+        $h .= '<a href="'. route("getIdempiere") .'" class="btn btn-primary" onclick="mostrarCargando(event)">Sincronización con Idempiere</a>';
+        //Codigo visual para la Sincronizacion
+        $h .= '<div id="loadingScreen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.9); text-align:center; z-index:9999;">';
+        $h .= '<div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);">';
+        $h .= '<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status"></div>';
+        $h .= '<p style="font-size: 18px; color: #333;">Sincronizando con Idempiere</p>';
+        $h .= '</div></div>';
+
+        $h .= '<script>
+        function mostrarCargando(event) {
+            event.preventDefault();
+            document.getElementById("loadingScreen").style.display = "block";
+            setTimeout(() => {
+                window.location.href = event.target.href;
+            }, 500);
+        }
+        </script>';
+
+
+        $h.= " <div class='row'>".$this->top();
         $rol=Auth::user()->role_id;
         if($rol!=7){
           $h.=$this->productos();
@@ -94,6 +113,7 @@ class Prueba extends BaseDimmer
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Historico de ordenes</h3>
+                 
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

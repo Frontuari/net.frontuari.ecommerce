@@ -97,7 +97,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     //Vista Idempiere Para actualizar dato y ver los datos del Token
 
-    Route::get('idempiere/products', [IdempiereGetController::class, 'getProducts'])->name('getProducts');
+    Route::get('idempiere/getIdempiere', [IdempiereGetController::class, 'getIdempiere'])->name('getIdempiere');
 
 
     // Rutas protegidas solo para el rol 'super'

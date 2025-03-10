@@ -65,12 +65,7 @@ class IdempiereQuery
     }
 
     public function insertCoin(array $coinData)
-
-    
     {
-
-   
-       
         $insertData = [];
 
     
@@ -97,4 +92,35 @@ class IdempiereQuery
     
         return ['message' => 'Coin insertados o actualizados correctamente'];
     }
+
+    public function insertCatgeorie(array $insertCategorie)
+    {
+        $insertData = [];
+
+    
+        foreach ($insertCategorie as $datas) {
+            $insertData[] = [
+                'id' =>  $datas['idCategory'],
+                'name'  => $datas['name'],
+                'created_at'    => now(),
+                'updated_at'    => now(),
+                'status' => $datas['status'],
+                'adulto' => 'N',
+            ];
+            //Adulto es Y
+        }
+    
+        // Usar upsert para insertar o actualizar si el m_product_id ya existe
+        DB::table('categories')->upsert(
+            $insertData,
+            ['id'],  // Clave única para evitar duplicados
+            ['name' , 'updated_at','status','adulto'] // Columnas a actualizar si ya existe
+        );
+    
+        return ['message' => 'Category insertados o actualizados correctamente'];
+    }
+
+
+
 }
+

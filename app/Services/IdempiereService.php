@@ -176,7 +176,6 @@ public function extracTaxtData($responseData)
     public function extractConversion($responseData)
     {
 
-
         // Verificar si la respuesta ya es un array
         if (!is_array($responseData)) {
             return [];
@@ -220,6 +219,58 @@ public function extracTaxtData($responseData)
 
      
         return $coinData;
+    }
+
+    public function exctractCategory($responseData)
+    {
+
+     
+
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['EFTU_getProductCategory']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['EFTU_getProductCategory']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['EFTU_getProductCategory']['WindowTabData']['DataSet']['DataRow'];
+
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $categoryData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $categoryData[] = [
+                'idCategory' =>$fields->get('EFTU_RV_ProductCategory_ID'),
+                'name' =>$fields->get('ftu_productgroup_name'),
+                'status' =>$fields->get('ecommerce_isactive'),
+                'adulto'=>$fields->get('adulto'),
+                
+            ];
+        }
+
+
+     
+        return $categoryData;
     }
 
     
