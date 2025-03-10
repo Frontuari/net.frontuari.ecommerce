@@ -74,6 +74,8 @@ class IdempiereService
 
 public function extracTaxtData($responseData)
     {
+
+    
         // Verificar si la respuesta ya es un array
         if (!is_array($responseData)) {
             return [];
@@ -81,14 +83,14 @@ public function extracTaxtData($responseData)
 
         // Verificar si existen los datos esperados
         if (
-            !isset($responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow']) ||
-            empty($responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow'])
+            !isset($responseData['EFTU_getTax']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['EFTU_getTax']['WindowTabData']['DataSet']['DataRow'])
         ) {
             return [];
         }
 
         // Obtener los registros de productos
-        $dataRows = $responseData['getTaxAPP']['WindowTabData']['DataSet']['DataRow'];
+        $dataRows = $responseData['EFTU_getTax']['WindowTabData']['DataSet']['DataRow'];
 
         // Asegurar que sea un array de registros
         if (!is_array($dataRows) || isset($dataRows['field'])) {
@@ -107,7 +109,7 @@ public function extracTaxtData($responseData)
             $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
 
             $taxData[] = [
-                'c_tax_id'           => $fields->get('C_Tax_ID'),
+                'c_tax_id'           => $fields->get('EFTU_RV_Tax_ID'),
                 'tax_indicator'      => $fields->get('TaxIndicator'),
                 'rate'               => $fields->get('Rate'),
                 'name'               => $fields->get('Name'),
@@ -221,11 +223,8 @@ public function extracTaxtData($responseData)
         return $coinData;
     }
 
-    public function exctractCategory($responseData)
+    public function extractCategory($responseData)
     {
-
-     
-
         // Verificar si la respuesta ya es un array
         if (!is_array($responseData)) {
             return [];
@@ -267,10 +266,100 @@ public function extracTaxtData($responseData)
                 
             ];
         }
-
-
-     
         return $categoryData;
+    }
+    public function extractSubCategory($responseData)
+    {
+
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['EFTU_getProductSubCategory']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['EFTU_getProductSubCategory']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['EFTU_getProductSubCategory']['WindowTabData']['DataSet']['DataRow'];
+
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $categoryData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $categoryData[] = [
+                'ID_SubCategory' =>$fields->get('EFTU_RV_ProductSubCategory_ID'),
+                'name' =>$fields->get('subcategory_name'),
+                'status' =>$fields->get('ecommerce_isactive'),
+                'ID_Category'=>$fields->get('EFTU_RV_ProductCategory_ID'),
+
+                
+            ];
+        }
+        return $categoryData;
+    }
+
+    public function extractStores($responseData)
+    {
+
+
+        // Verificar si la respuesta ya es un array
+        if (!is_array($responseData)) {
+            return [];
+        }
+        // Verificar si existen los datos esperados
+        if (
+            !isset($responseData['EFTU_getStores']['WindowTabData']['DataSet']['DataRow']) ||
+            empty($responseData['EFTU_getStores']['WindowTabData']['DataSet']['DataRow'])
+        ) {
+            return [];
+        }
+
+        // Obtener los registros de productos
+        $dataRows = $responseData['EFTU_getStores']['WindowTabData']['DataSet']['DataRow'];
+
+
+        // Asegurar que sea un array de registros
+        if (!is_array($dataRows) || isset($dataRows['field'])) {
+            $dataRows = [$dataRows]; // Convertir en array si solo hay un elemento
+        }
+
+        $storeData = [];
+
+        foreach ($dataRows as $row) {
+            // Validar que 'field' exista y sea un array
+            if (!isset($row['field']) || !is_array($row['field'])) {
+                continue;
+            }
+
+            // Usar Collection para buscar datos más eficientemente
+            $fields = collect($row['field'])->mapWithKeys(fn($item) => [$item['@column'] => $item['val']]);
+
+            $storeData[] = [
+                'ID_Store' =>$fields->get('EFTU_RV_Stores_ID'),
+                'name' =>$fields->get('organization_name'),
+                'logo' =>$fields->get('logo'),
+                'status' =>$fields->get('ecommerce_isactive')  
+            ];
+        }
+        return $storeData;
     }
 
     

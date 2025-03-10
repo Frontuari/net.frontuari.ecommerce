@@ -7,7 +7,7 @@ use App\Services\IdempiereQuery;
 use App\Services\IdempiereService;
 use App\Http\Controllers\Controller; 
 
-class CategoryControllerIdempiere extends Controller
+class SubCategoryControllerIdempiere extends Controller
 {
     protected $IdempiereQuery;
     protected $idempiereService;
@@ -21,17 +21,17 @@ class CategoryControllerIdempiere extends Controller
     // Insertar productos en la base de datos
     public function store(Request $request)
     {
-        $categories = $request->all();
+        $subCategories = $request->all();
     
-        if (empty($categories)) {
+        if (empty($subCategories)) {
             return response()->json(['error' => 'No hay productos para insertar'], 400);
         }
     
         // Insertar los productos en la base de datos
-        $this->IdempiereQuery->insertCategorie($categories);
+        $this->IdempiereQuery->insertSubCategorie($subCategories);
     
         // Opcional: Retornar confirmación o simplemente terminar la ejecución
-        return response()->json(['message' => 'Categorias insertados correctamente']);
+        return response()->json(['message' => 'SubCategorias insertados correctamente']);
     }
 
 

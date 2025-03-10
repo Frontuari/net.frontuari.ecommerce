@@ -14,6 +14,9 @@ use App\Http\Controllers\Idempiere\ProductControllerIdempiere;
 use App\Http\Controllers\Idempiere\TaxControllerIdempiere; 
 use App\Http\Controllers\Idempiere\rateControllerIdempiere; 
 use App\Http\Controllers\Idempiere\CategoryControllerIdempiere; 
+use App\Http\Controllers\Idempiere\SubCategoryControllerIdempiere; 
+use App\Http\Controllers\Idempiere\StoresControllerIdempiere; 
+
 use Illuminate\Http\Request;
 
 
@@ -38,7 +41,7 @@ class IdempiereGetController extends Controller
         $url = "{$conexion->url}ADInterface/services/rest/model_adservice/query_data?{$conexion->token}=";
 
         // Definir los tipos de servicios que queremos consultar
-        $serviceTypes = ['EFTU_getProductCategory'];
+        $serviceTypes = ['EFTU_getProductCategory','EFTU_getProductSubCategory','EFTU_getTax','EFTU_getStores'];
 
         // Crear un cliente de Guzzle
         $client = new Client();
@@ -102,7 +105,9 @@ class IdempiereGetController extends Controller
         $taxData = $idempiereService->extracTaxtData($responses);
         $wareHouseData = $idempiereService->extractWarehouse($responses);
         $coinsConversion = $idempiereService->extractConversion($responses);
-        $categories=$idempiereService->exctractCategory($responses);
+        $categories=$idempiereService->extractCategory($responses);
+        $subCategories=$idempiereService->extractSubCategory($responses);
+        $stores=$idempiereService->extractStores($responses);
 
 
 
@@ -110,27 +115,28 @@ class IdempiereGetController extends Controller
         // $productController = new ProductControllerIdempiere(new IdempiereQuery(), $idempiereService); 
         // $productController->store(new Request($productsData));  // Inserta automáticamente
         // //INSERCCION  DE IMPUESTOS
-        // $taxController = new TaxControllerIdempiere(new IdempiereQuery(), $idempiereService); 
-        // $taxController->store(new Request($taxData));  // Inserta impuestos correctamente
+        $taxController = new TaxControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        $taxController->store(new Request($taxData));  // Inserta impuestos correctamente
 
         // //Inserccion de Monedas
         // $coinController = new rateControllerIdempiere(new IdempiereQuery(), $idempiereService); 
         // $coinController->store(new Request($coinsConversion));  // Inserta Monedas correctamente
 
-        
-
         //Categorias
-        $categoriesController = new CategoryControllerIdempiere(new IdempiereQuery(), $idempiereService); 
-        $categoriesController->store(new Request($categories));  // Inserta Categorias
+         $categoriesController = new CategoryControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+         $categoriesController->store(new Request($categories));  // Inserta Categorias
+        //SubCategories
 
+        $subCategoriesController = new SubCategoryControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        $subCategoriesController->store(new Request($subCategories));  // Inserta Categorias
 
-    
+        $storesController = new StoresControllerIdempiere(new IdempiereQuery(), $idempiereService); 
+        $storesController->store(new Request($stores));  // Inserta Categorias
 
-        // return response()->json($coinsConversion);
 
         
         return redirect()->route('voyager.dashboard');
-        // return response()->json($responses);
+     
 
 
  

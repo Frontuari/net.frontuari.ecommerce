@@ -93,7 +93,7 @@ class IdempiereQuery
         return ['message' => 'Coin insertados o actualizados correctamente'];
     }
 
-    public function insertCatgeorie(array $insertCategorie)
+    public function insertCategorie(array $insertCategorie)
     {
         $insertData = [];
 
@@ -119,6 +119,61 @@ class IdempiereQuery
     
         return ['message' => 'Category insertados o actualizados correctamente'];
     }
+
+    public function insertSubCategorie(array $insertSubCategorie)
+    {
+        $insertData = [];
+    
+        foreach ($insertSubCategorie as $datas) {
+            $insertData[] = [
+                'id' =>  $datas['ID_SubCategory'],
+                'name'  => $datas['name'],
+                'created_at'    => now(),
+                'updated_at'    => now(),
+                'status' => $datas['status'],
+                'categories_id'=> $datas['ID_Category']
+            ];
+            //Adulto es Y
+        }
+    
+        // Usar upsert para insertar o actualizar si  ya existe
+        DB::table('sub_categories')->upsert(
+            $insertData,
+            ['id'],  // Clave única para evitar duplicados
+            ['name' , 'updated_at','status','categories_id'] // Columnas a actualizar si ya existe
+        );
+    
+        return ['message' => 'SubCategory insertados o actualizados correctamente'];
+    }
+
+    public function insertStore(array $insertStore)
+    {
+        $insertData = [];
+
+        foreach ($insertStore as $datas) {
+            $insertData[] = [
+                'id' =>  $datas['ID_Store'],
+                'name'  => $datas['name'],
+                'nro_tienda'  => $datas['ID_Store'],
+                'logo'  => $datas['logo'],
+                'created_at'    => now(),
+                'updated_at'    => now(),
+                'status' => $datas['status'],
+                'is_principal'=> true
+            ];
+            //Adulto es Y
+        }
+    
+        // Usar upsert para insertar o actualizar si  ya existe
+        DB::table('stores')->upsert(
+            $insertData,
+            ['id'],  // Clave única para evitar duplicados
+            ['name' , 'updated_at','status','logo','nro_tienda','is_principal'] // Columnas a actualizar si ya existe
+        );
+    
+        return ['message' => 'Stores insertados o actualizados correctamente'];
+    }
+
 
 
 
