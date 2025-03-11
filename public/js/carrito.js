@@ -792,7 +792,11 @@ function procesarOrden() {
 
 	if (document.getElementById("direccion_selected")) {
 		console.log("esto es apagar usd", aPagarUsd);
+
 		if (checkDeliveryType == 2 && aPagarUsd < 3) {
+			console.log("1", aPagarUsd)
+			console.log("2", checkDeliveryType)
+			
 			Swal.fire("Pago en Línea", "Para este tipo de delivery el monto debe ser al menos de 3$", "error");
 		} else {
 			Swal.fire({
@@ -1144,6 +1148,7 @@ function deli_type(e) {
 	
 
 	checkDeliveryType = e.value;
+	
 	if (parseInt(e.value) > 0) {
 		// Mostrar el select y otros elementos
 		console.log("entre auqi en E VALUE",)

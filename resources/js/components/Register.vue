@@ -22,15 +22,15 @@
                     <option value="G-">G</option>
                     <option value="C-">C</option>
                 </select>
-                <input type="text" class="form-control" style="width: 79%; display: inline-block;" id="rif" name="rif" v-model="User.rif">
+                <input type="text" class="form-control" style="width: 79%; display: inline-block;" id="rif" name="rif" maxlength="20" v-model="User.rif">
             </div>
             <div class="form-group">
                 <label for="username">Nombre y Apellido:</label>
-                <input type="text" class="form-control" id="name" name="name" v-model="User.name">
+                <input type="text" class="form-control" id="name" name="name" maxlength="100" v-model="User.name">
             </div>
             <div class="form-group">
                 <label for="email">Correo Electrónico:</label>
-                <input type="text" class="form-control" id="email" name="email" v-model="User.email">
+                <input type="text" class="form-control" id="email" name="email" maxlength="100"  v-model="User.email">
             </div>
             <div class="form-group">
                 <label for="birthdate">Fecha de Nacimiento:</label>
@@ -38,15 +38,15 @@
             </div>
             <div class="form-group">
                 <label for="tlf">Nro de Teléfono:</label>
-                <input type="text" class="form-control" id="tlf" name="tlf" v-model="User.tlf">
+                <input type="text" class="form-control" id="tlf" name="tlf" maxlength="23" v-model="User.tlf">
             </div>
             <div class="form-group">
                 <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" id="password" name="password" v-model="User.password">
+                <input type="password" class="form-control" id="password" name="password" maxlength="30" v-model="User.password">
             </div>
             <div class="form-group">
                 <label for="password2">Repite la contraseña:</label>
-                <input type="password" class="form-control" id="password2" name="password2" v-model="User.c_password">
+                <input type="password" class="form-control" id="password2" name="password2" maxlength="30" v-model="User.c_password">
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="terms" name="terms">
@@ -87,30 +87,38 @@
                 if( this.User.rif.trim() != '' && this.User.name.trim() != '' && this.User.password.trim() != '' && this.User.c_password.trim() != '' && this.User.email.trim() != '' && this.User.sex.trim() != '') {
 
                     if(this.User.password == this.User.c_password){
-                        const formData = new FormData();
-                        formData.append("rif",this.User.nationality+this.User.rif);
-                        formData.append("name",this.User.name);
-                        formData.append("password",this.User.password);
-                        formData.append("email",this.User.email);
-                        formData.append("birthdate",this.User.birthdate);
-                        formData.append("tlf",this.User.tlf);
-                        formData.append("sex",this.User.sex);
-                        formData.append("from","web");
+                        if(this.User.password.length >= 8){
+                            const formData = new FormData();
+                            formData.append("rif",this.User.nationality+this.User.rif);
+                            formData.append("name",this.User.name);
+                            formData.append("password",this.User.password);
+                            formData.append("email",this.User.email);
+                            formData.append("birthdate",this.User.birthdate);
+                            formData.append("tlf",this.User.tlf);
+                            formData.append("sex",this.User.sex);
+                            formData.append("from","web");
 
-                            axios.post(URLHOME+'api_rapida.php?evento=registrarUsuario', formData).then( (data) => {
-                                Swal.fire("Bio en línea","Usuario Registrado Exitosamente","success").then( result => {
-                                    location.href="/";    
-                                });
-                            }).catch(err => {
-                                if(!!err)
-                                {
-                                    Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: "El correo ya está en uso, intente con otro correo",
+                                axios.post(URLHOME+'api_rapida.php?evento=registrarUsuario', formData).then( (data) => {
+                                    Swal.fire("EOS Delivery","Usuario Registrado Exitosamente","success").then( result => {
+                                        location.href="/";    
                                     });
-                                }
+                                }).catch(err => {
+                                    if(!!err)
+                                    {
+                                        Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: "El correo ya está en uso, intente con otro correo",
+                                        });
+                                    }
+                                });
+                        } else {
+                            Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'La clave tiene que tener mínimo 8 caracteres',
                             });
+                        }       
                     }else {
                         Swal.fire({
                           icon: 'error',

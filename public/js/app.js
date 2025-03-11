@@ -3967,28 +3967,36 @@ __webpack_require__.r(__webpack_exports__);
     saveData: function saveData() {
       if (this.User.rif.trim() != '' && this.User.name.trim() != '' && this.User.password.trim() != '' && this.User.c_password.trim() != '' && this.User.email.trim() != '' && this.User.sex.trim() != '') {
         if (this.User.password == this.User.c_password) {
-          var formData = new FormData();
-          formData.append("rif", this.User.nationality + this.User.rif);
-          formData.append("name", this.User.name);
-          formData.append("password", this.User.password);
-          formData.append("email", this.User.email);
-          formData.append("birthdate", this.User.birthdate);
-          formData.append("tlf", this.User.tlf);
-          formData.append("sex", this.User.sex);
-          formData.append("from", "web");
-          axios.post(URLHOME + 'api_rapida.php?evento=registrarUsuario', formData).then(function (data) {
-            Swal.fire("Bio en línea", "Usuario Registrado Exitosamente", "success").then(function (result) {
-              location.href = "/";
-            });
-          })["catch"](function (err) {
-            if (!!err) {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: "El correo ya está en uso, intente con otro correo"
+          if (this.User.password.length >= 8) {
+            var formData = new FormData();
+            formData.append("rif", this.User.nationality + this.User.rif);
+            formData.append("name", this.User.name);
+            formData.append("password", this.User.password);
+            formData.append("email", this.User.email);
+            formData.append("birthdate", this.User.birthdate);
+            formData.append("tlf", this.User.tlf);
+            formData.append("sex", this.User.sex);
+            formData.append("from", "web");
+            axios.post(URLHOME + 'api_rapida.php?evento=registrarUsuario', formData).then(function (data) {
+              Swal.fire("EOS Delivery", "Usuario Registrado Exitosamente", "success").then(function (result) {
+                location.href = "/";
               });
-            }
-          });
+            })["catch"](function (err) {
+              if (!!err) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: "El correo ya está en uso, intente con otro correo"
+                });
+              }
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'La clave tiene que tener mínimo 8 caracteres'
+            });
+          }
         } else {
           Swal.fire({
             icon: 'error',
@@ -11310,7 +11318,8 @@ var render = function render() {
     attrs: {
       type: "password",
       id: "password",
-      name: "password"
+      name: "password",
+      maxlength: "30"
     },
     domProps: {
       value: _vm.password
@@ -11338,7 +11347,8 @@ var render = function render() {
     attrs: {
       type: "password",
       id: "samepassword",
-      name: "samepassword"
+      name: "samepassword",
+      maxlength: "30"
     },
     domProps: {
       value: _vm.samepassword
@@ -11512,7 +11522,8 @@ var render = function render() {
     attrs: {
       type: "text",
       id: "rif",
-      name: "rif"
+      name: "rif",
+      maxlength: "20"
     },
     domProps: {
       value: _vm.User.rif
@@ -11540,7 +11551,8 @@ var render = function render() {
     attrs: {
       type: "text",
       id: "name",
-      name: "name"
+      name: "name",
+      maxlength: "100"
     },
     domProps: {
       value: _vm.User.name
@@ -11568,7 +11580,8 @@ var render = function render() {
     attrs: {
       type: "text",
       id: "email",
-      name: "email"
+      name: "email",
+      maxlength: "100"
     },
     domProps: {
       value: _vm.User.email
@@ -11624,7 +11637,8 @@ var render = function render() {
     attrs: {
       type: "text",
       id: "tlf",
-      name: "tlf"
+      name: "tlf",
+      maxlength: "23"
     },
     domProps: {
       value: _vm.User.tlf
@@ -11652,7 +11666,8 @@ var render = function render() {
     attrs: {
       type: "password",
       id: "password",
-      name: "password"
+      name: "password",
+      maxlength: "30"
     },
     domProps: {
       value: _vm.User.password
@@ -11680,7 +11695,8 @@ var render = function render() {
     attrs: {
       type: "password",
       id: "password2",
-      name: "password2"
+      name: "password2",
+      maxlength: "30"
     },
     domProps: {
       value: _vm.User.c_password
@@ -100123,8 +100139,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\ecommerce\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\ecommerce\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
