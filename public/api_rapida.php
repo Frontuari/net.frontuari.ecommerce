@@ -1198,9 +1198,6 @@ function crearOrden($json){
     }else if ($delivery_type == 1){
         $delivery_type_text = "Delivery Express";
         $transports_id=2;
-    }else if($delivery_type == 2){
-        $delivery_type_text = "Entregar Durante el Dia";
-        $transports_id=3;
     }
 
     $coins_id=1;
@@ -1266,6 +1263,7 @@ function crearOrden($json){
    $sql="SELECT peso_max,price,coalesce((price*(SELECT SUM(value) FROM det_tax_transports dtt INNER JOIN taxes t ON t.id=dtt.taxes_id WHERE dtt.transports_id=$transports_id GROUP BY dtt.transports_id)/100),0.000000) as impuesto FROM transports WHERE id=$transports_id";
 
     $arr=q($sql);
+    // dd($arr); 
 
         // Parsear el arreglo a JSON
 
@@ -1279,14 +1277,24 @@ function crearOrden($json){
 
         while($pesoTotal>$peso_cargado) {
             $multiplo_peso++;
-         
-              $peso_cargado+=($peso_max+$peso_cargado);
-         
-          }
-//--------------FIN PESO-------------------
+        
+            $peso_cargado+=($peso_max+$peso_cargado);
+        
+        }
+//--------------FIN PESO------------------- 
+
+        // ! VALIDACION PARA EL MAX PRICE - COMENTADO GUARDAR PORFA PLS
+        // if($arr[0]['price'] > 15){
+        //     $total_transport=($arr[0]['price']*0);
+        // }else{
+        //     $total_transport=($arr[0]['price']*$multiplo_peso);
+        // }
+        // //dd($arr);
 
         $total_transport=($arr[0]['price']*$multiplo_peso);
+        
         $impuesto=$arr[0]['impuesto'];
+        //dd($impuesto);
         if($impuesto>0){
             $base_imponible+=$total_transport;
             $total_tax+=$impuesto;

@@ -2004,7 +2004,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     userlogged: Object,
     tasadolar: Number,
     peso_max: Number,
-    delivery: Number
+    delivery: Number,
+    delivery_max_price: Number
   },
   methods: {
     handleInputChange: function handleInputChange(product_cart, product_id, index) {
@@ -2026,7 +2027,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           product_cart.cant = maxStock;
           this.increaseValue(parseInt(product_cart.cant), product_id, index);
         } else {
-          console.log("esto es product_cart antes de ser  invokada en la function", product_cart.cant);
+          console.log("esto es product_cart antes de ser  invocada en la function", product_cart.cant);
           // Si no es mayor, llamar a increaseValue con el nuevo valor
           this.increaseValues(parseInt(product_cart.cant), product_id, index);
         }
@@ -2039,9 +2040,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var envioData = {
         precio_b: this.delivery,
         precio_d: this.delivery * this.tasadolar,
-        peso_max: this.peso_max
+        peso_max: this.peso_max,
+        delivery_max_price: this.delivery_max_price
       };
+      console.log("MEOW 1", envioData);
       data[0] = envioData;
+      console.log("MEOW 2", envioData);
       window.localStorage.setItem('envio', JSON.stringify({
         "data": data
       }));
@@ -2190,6 +2194,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.total_delivery = Math.round(this.total_weight / this.peso_max) * this.delivery;
         this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
       }
+
+      // if (this.total_cart > 15) {
+      // 	console.log("HOLA TONOTOS")
+      // 	this.total_delivery = 3;
+      // 	this.total_pagar = parseFloat(this.total_cart);
+
+      // }
     },
     mask: function mask(event, index) {
       this.paymentData[index].amount = this.paymentData[index].amount.replace(/(.*){1}/, '$1').replace(/[^\d]/g, '').replace(/(\d\d?)$/, ',$1').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -2310,7 +2321,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         this.total_cart += parseFloat(this.products_cart[i].product.price) * parseInt(this.products_cart[i].cant);
       }
+      console.log("CAN YOU READ THIS?: ", this.delivery_max_price);
       this.total_weight += parseFloat(this.products_cart[i].product.peso) * parseFloat(this.products_cart[i].cant);
+
+      // ESTO REVISA SI TOTAL_CART SE PASA DEL PRECIO MAXIMO
+
+      // if (this.total_cart > this.delivery_max_price) {
+      // 	this.total_delivery = 0;
+      // 	this.total_pagar = parseFloat(this.total_cart);
+      // }else{
+      // 	this.total_delivery = (Math.round(this.total_weight / this.peso_max) * this.delivery);
+      // 	this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
+      // }
+
       this.total_delivery = Math.round(this.total_weight / this.peso_max) * this.delivery;
       this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
     }
@@ -2319,7 +2342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log("esto es dataUser", this.datauser);
     } else {
       this.datauser.id = 'undefined';
-      Swal.fire("Bio en Línea", "Debe iniciar sesión para confirmar su carrito de compras", "info");
+      Swal.fire("EOS Delivery", "Debe iniciar sesión para confirmar su carrito de compras", "info");
     }
     console.log("esto es la selectedDirection", this.selectedDirection);
     this.order = {
@@ -6733,17 +6756,6 @@ var staticRenderFns = [function () {
       checked: ""
     }
   }), _vm._v(" Zona Pick up ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-md-4"
-  }, [_c("div", {
-    staticClass: "radio"
-  }, [_c("label", [_c("input", {
-    attrs: {
-      type: "radio",
-      onclick: "deli_type(this);",
-      value: "2",
-      name: "delivery_type"
-    }
-  }), _vm._v(" Delivery Gratis: Entrega en las próximas 24 horas")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-md-4"
   }, [_c("div", {
     staticClass: "radio"

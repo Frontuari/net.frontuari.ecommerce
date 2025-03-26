@@ -18,8 +18,12 @@
 		:peso_max="{{$peso}}"
 		:delivery="{{$delivery}}" 
 		:tasadolar="{{$tasa_dolar}}" 
-		:userlogged="{{ json_encode($_SESSION['usuario'] ?? '') }}">
+		:userlogged="{{ json_encode($_SESSION['usuario'] ?? '') }}"
+		:delivery_max_price="{{$delivery_max_price}}"
+		>
 	</cart>
+
+	
 
 	<div id="MegaSoftOverlay" class="overlay">
 
