@@ -83,7 +83,7 @@ if($htmlFinal){
 
         <div class="row">
             <div class="col-md-12 text-center">
-                <br /><br /><hr />www.biomercados.com.ve</div>     
+                <br /><br /><hr />https://eosdelivery.com.ar/</div>     
             </div>
 
         </div>

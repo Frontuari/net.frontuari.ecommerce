@@ -32,7 +32,7 @@ return "
 Alimentos FM, C.A.<br>
 RIF: J-31721968-6<br>
 <br>
-".nl2br($data)."<BR></div><hr><div style='text-align:center'><br>Para más información, visita la sección contáctanos de www.biomercados.com.ve<br><span style=''><b>¡INSPIRADOS EN SERVIR!</b><span></div>
+".nl2br($data)."<BR></div><hr><div style='text-align:center'><br>Para más información, visita la sección contáctanos de https://eosdelivery.com.ar/<br><span style=''><b>¡INSPIRADOS EN SERVIR!</b><span></div>
 
         </td>
         <td></td>

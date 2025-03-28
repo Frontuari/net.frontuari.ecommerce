@@ -58,7 +58,7 @@ function salidaMala($xml){
     echo '
     <div style="text-align: center; "><img src="../logo.png" width="200" /></div>
 <p>&nbsp;</p>
-<div style="text-align: center;">Transacción <b><span style="color:red">RECHAZADA</span></b><br> <b>Cod. '.$xml->getCodigo().' '.$xml->getDescripcion().'</b><br><br> <a href="http://'.$host.'/mega/PreRegistro.php?nro_orden='.$xml->getFactura().'&total='.$xml->getMonto().'">haga clic aquí para intentar nuevamente.</a><br /><br /><hr />www.biomercados.com.ve</div>     
+<div style="text-align: center;">Transacción <b><span style="color:red">RECHAZADA</span></b><br> <b>Cod. '.$xml->getCodigo().' '.$xml->getDescripcion().'</b><br><br> <a href="http://'.$host.'/mega/PreRegistro.php?nro_orden='.$xml->getFactura().'&total='.$xml->getMonto().'">haga clic aquí para intentar nuevamente.</a><br /><br /><hr />https://eosdelivery.com.ar/</div>     
     ';
 
 
@@ -79,7 +79,7 @@ function salidaBuena($xml){
 Nro de control '.$xml->getControl().'
 Orden Nro. '.$xml->getFactura().'<br>
 Referencia. '.$xml->getReferencia().'<br>
-<br /><hr />www.biomercados.com.ve</div>     
+<br /><hr />https://eosdelivery.com.ar/</div>     
     ';
 
     $amount=$xml->getMonto()/100;
@@ -173,7 +173,7 @@ return "
 Alimentos FM, C.A.<br>
 RIF: J-31721968-6<br>
 <br>
-".nl2br($data)."<BR></div><hr><div style='text-align:center'><br>Para más información, visita la sección contáctanos de www.biomercados.com.ve<br><span style=''><b>¡INSPIRADOS EN SERVIR!</b><span></div>
+".nl2br($data)."<BR></div><hr><div style='text-align:center'><br>Para más información, visita la sección contáctanos de https://eosdelivery.com.ar/<br><span style=''><b>¡INSPIRADOS EN SERVIR!</b><span></div>
 
         </td>
         <td></td>
@@ -188,7 +188,7 @@ function formatear_VIEJO($data){
     Alimentos FM, C.A.<br>
     RIF: J-31721968-6<br>
     <br>
-    ".nl2br($data)."<BR></div><div style='text-align:center'><br>Para más información, visita la sección contáctanos de www.biomercados.com.ve<br><span style=''><b>¡INSPIRADOS EN SERVIR!</b><span></div>";
+    ".nl2br($data)."<BR></div><div style='text-align:center'><br>Para más información, visita la sección contáctanos de https://eosdelivery.com.ar/<br><span style=''><b>¡INSPIRADOS EN SERVIR!</b><span></div>";
     
     }
 
@@ -214,17 +214,17 @@ function enviarCorreo($email,$titulo,$body){
 	    //Server settings
 	    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
 	    $mail->isSMTP();                                            // Send using SMTP
-	    $mail->Host       = 'mail.biomercados.com.ve';                    // Set the SMTP server to send through
+	    $mail->Host       = 'smtp.gmail.com';                 // Set the SMTP server to send through
 	    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-	    $mail->Username   = 'noreply@biomercados.com.ve';                     // SMTP username
-	    $mail->Password   = 'Bio2020';                               // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+	    $mail->Username   = 'hectopiaes@gmail.com';                     // SMTP username
+	    $mail->Password   = 'pbtr dqlf gwuu lple'; // !!! COLOCAR LA CONTRASEÑA AQUÍ
+        $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         
 	    $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 	    $mail->SMTPDebug = 0;
         $mail->CharSet = 'UTF-8';
 	    //Recipients
-	    $mail->setFrom('noreply@biomercados.com.ve', 'Biomercados - Bio en línea');
+	    $mail->setFrom('hectopiaes@gmail.com', 'EOS Delivery');
 	    $mail->addAddress($email);
 	    
 	    $mail->isHTML(true);

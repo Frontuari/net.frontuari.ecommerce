@@ -27,6 +27,6 @@
          */
         public function build()
         {
-            return $this->markdown('email.verification')->subject('Bienvenido a BioMercados');
+            return $this->markdown('email.verification')->subject('Bienvenido a EOS!');
         }
     }

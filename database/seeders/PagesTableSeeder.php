@@ -749,7 +749,7 @@ array (
 array (
 'id' => 4,
 'titulo' => 'Felicidades por su primera compra',
-'body' => '<div style="text-align: center; background-color: #203876;"><img src="https://i.imgur.com/bqhoBSp.png" width="200" /></div>
+'body' => '<div style="text-align: center; background-color: #203876;"><img src="https://i.imgur.com/bqhoBSp.png" width="200" /></div> // TODO: Cambiar referencias a esta imagen por una nueva
 <p>&nbsp;</p>
 <div style="text-align: center;">Felicidades<br /><br /><hr /><a href="#">linksitio.com</a></div>', // TODO: Reemplazar por link del sitio web
 'status' => 'A',
