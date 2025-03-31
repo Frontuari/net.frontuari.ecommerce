@@ -32,7 +32,7 @@ if($_GET['evento']=='' && $_POST['evento']!=''){
 switch($evento) {
     case 'contactweb':
         $message = array("name"=>$_POST['name'],"email"=>$_POST['email'],"message"=>$_POST['message']);
-        enviarCorreo("contacto@biomercados.com.ve",$_POST['subject'],plantillaContacto($message));
+        enviarCorreo("hectopiarsinr@gmail.com",$_POST['subject'],plantillaContacto($message));
         break;
     case 'web_no_login':
         $row['data']['listarPublicidadToda']=listarPublicidadToda(true);
@@ -306,7 +306,7 @@ switch($evento) {
         $name=$_SESSION['usuario']['name'];
         $phone=$_SESSION['usuario']['phone'];
         $orders_id=$_GET['orders_id']; //EL NRO DE ORDEN NO FUNCIONA AGREGAR EN UN FUTURO
-        enviarCorreo('devoluciones.bioencasa@biomercados.com.ve',"Solicitud de Devolución","El cliente $email, $name, $phone esta solicitando una devolución.");
+        enviarCorreo('hectopiarsinr@gmail.com',"Solicitud de Devolución","El cliente $email, $name, $phone esta solicitando una devolución.");
         salidaNueva(null,"Su solicitud ha sido procesada. Nos comunicaremos con usted.");
     break;
     case 'reporte_ingresos':
@@ -1198,9 +1198,6 @@ function crearOrden($json){
     }else if ($delivery_type == 1){
         $delivery_type_text = "Delivery Express";
         $transports_id=2;
-    }else if($delivery_type == 2){
-        $delivery_type_text = "Entregar Durante el Dia";
-        $transports_id=3;
     }
 
     $coins_id=1;
@@ -1266,6 +1263,7 @@ function crearOrden($json){
    $sql="SELECT peso_max,price,coalesce((price*(SELECT SUM(value) FROM det_tax_transports dtt INNER JOIN taxes t ON t.id=dtt.taxes_id WHERE dtt.transports_id=$transports_id GROUP BY dtt.transports_id)/100),0.000000) as impuesto FROM transports WHERE id=$transports_id";
 
     $arr=q($sql);
+    // dd($arr); 
 
         // Parsear el arreglo a JSON
 
@@ -1279,14 +1277,24 @@ function crearOrden($json){
 
         while($pesoTotal>$peso_cargado) {
             $multiplo_peso++;
-         
-              $peso_cargado+=($peso_max+$peso_cargado);
-         
-          }
-//--------------FIN PESO-------------------
+        
+            $peso_cargado+=($peso_max+$peso_cargado);
+        
+        }
+//--------------FIN PESO------------------- 
+
+        // ! VALIDACION PARA EL MAX PRICE - COMENTADO GUARDAR PORFA PLS
+        // if($arr[0]['price'] > 15){
+        //     $total_transport=($arr[0]['price']*0);
+        // }else{
+        //     $total_transport=($arr[0]['price']*$multiplo_peso);
+        // }
+        // //dd($arr);
 
         $total_transport=($arr[0]['price']*$multiplo_peso);
+        
         $impuesto=$arr[0]['impuesto'];
+        //dd($impuesto);
         if($impuesto>0){
             $base_imponible+=$total_transport;
             $total_tax+=$impuesto;
@@ -1959,17 +1967,17 @@ function enviarCorreo($email,$titulo,$body){
 	    //Server settings
 	    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
 	    $mail->isSMTP();                                            // Send using SMTP
-	    $mail->Host       = 'mail.biomercados.com.ve';                    // Set the SMTP server to send through
+	    $mail->Host       = 'smtp.gmail.com';                 // Set the SMTP server to send through
 	    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-	    $mail->Username   = 'noreply@biomercados.com.ve';                     // SMTP username
-	    $mail->Password   = 'Bio2020';                               // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+	    $mail->Username   = 'hectopiaes@gmail.com';
+	    $mail->Password   = 'pbtr dqlf gwuu lple'; // !!! COLOCAR LA CONTRASEÑA AQUÍ
+        $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         
 	    $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 	    $mail->SMTPDebug = 0;
         $mail->CharSet = 'UTF-8';
 	    //Recipients
-	    $mail->setFrom('noreply@biomercados.com.ve', 'Biomercados - Bio en línea');
+	    $mail->setFrom('hectopiaes@gmail.com', 'EOS Delivery');
 	    $mail->addAddress($email);
 	    
 	    $mail->isHTML(true);
@@ -1979,6 +1987,7 @@ function enviarCorreo($email,$titulo,$body){
 	    $mail->send();
 	    return true;
 	} catch (Exception $e) {
+        echo "El mensaje no se pudo enviar! - {$mail->ErrorInfo}";
 	    return false;
 	}
 

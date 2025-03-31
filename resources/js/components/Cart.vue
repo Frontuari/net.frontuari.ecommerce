@@ -205,11 +205,11 @@
 															  <label><input type="radio" onclick="deli_type(this);" value="0" name="delivery_type" checked> Zona Pick up </label>
 															</div>
 														</div>
-														<div class="col-md-4">
+														<!-- <div class="col-md-4">
 															<div class="radio">
 															  <label><input type="radio" onclick="deli_type(this);"  value="2" name="delivery_type"> Delivery Gratis: Entrega en las próximas 24 horas</label>
 															</div>
-														</div>
+														</div> -->
 														<div class="col-md-4">
 															<div class="radio">
 															  <label><input type="radio" onclick="deli_type(this);"  value="1" name="delivery_type"> Delivery Express: </label>
@@ -583,7 +583,8 @@
 			userlogged: Object,
 			tasadolar: Number,
 			peso_max: Number,
-			delivery: Number
+			delivery: Number,
+			delivery_max_price: Number
 		},
 		methods:{
 
@@ -608,31 +609,30 @@
 
 				} else {
 
-					console.log("esto es product_cart antes de ser  invokada en la function", product_cart.cant);
+					console.log("esto es product_cart antes de ser  invocada en la function", product_cart.cant);
 					// Si no es mayor, llamar a increaseValue con el nuevo valor
 					this.increaseValues(parseInt(product_cart.cant), product_id, index);
 				}
 			}else{
 
 				this.increaseValues(1, product_id, index);
-
 			}
-
-
 		},
 
 			envio(){
-
 				var data = [];
 
 				var envioData = {
 					precio_b: this.delivery,
 					precio_d: this.delivery * this.tasadolar,
-					peso_max: this.peso_max
+					peso_max: this.peso_max,
+					delivery_max_price: this.delivery_max_price
 				};
+				console.log("MEOW 1", envioData);
+
 				data[0] = envioData
 			
-					
+					console.log("MEOW 2", envioData);
 					window.localStorage.setItem('envio', JSON.stringify({"data":data}));
 					
 		
@@ -775,6 +775,14 @@
 					this.total_delivery = (Math.round(this.total_weight / this.peso_max) * this.delivery);
 					this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
 				}
+				
+				
+				// if (this.total_cart > 15) {
+				// 	console.log("HOLA TONOTOS")
+				// 	this.total_delivery = 3;
+				// 	this.total_pagar = parseFloat(this.total_cart);
+					
+				// }
 			},
 			mask(event,index) {
 				this.paymentData[index].amount = (this.paymentData[index].amount.replace(/(.*){1}/, '$1').replace(/[^\d]/g, '').replace(/(\d\d?)$/, ',$1').replace(/\B(?=(\d{3})+(?!\d))/g, "."));
@@ -868,9 +876,24 @@
 				}else{
 					this.total_cart += parseFloat(this.products_cart[i].product.price) * parseInt(this.products_cart[i].cant);
 				}
+				console.log("CAN YOU READ THIS?: ", this.delivery_max_price);
+
 				this.total_weight += parseFloat(this.products_cart[i].product.peso) * parseFloat(this.products_cart[i].cant);
+				
+				// ESTO REVISA SI TOTAL_CART SE PASA DEL PRECIO MAXIMO
+				
+				
+				// if (this.total_cart > this.delivery_max_price) {
+				// 	this.total_delivery = 0;
+				// 	this.total_pagar = parseFloat(this.total_cart);
+				// }else{
+				// 	this.total_delivery = (Math.round(this.total_weight / this.peso_max) * this.delivery);
+				// 	this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
+				// }
+				
 				this.total_delivery = (Math.round(this.total_weight / this.peso_max) * this.delivery);
 				this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
+
 			}
 
 			if(this.isObject(this.userlogged)){
@@ -879,7 +902,7 @@
 
 			}else{
 				this.datauser.id = 'undefined';
-				Swal.fire("Bio en Línea","Debe iniciar sesión para confirmar su carrito de compras","info");
+				Swal.fire("EOS Delivery","Debe iniciar sesión para confirmar su carrito de compras","info");
 			}
 
 
