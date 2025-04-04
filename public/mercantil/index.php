@@ -669,29 +669,33 @@ function formato_numero($numero){
     
     
         $mail = new PHPMailer(true);
-    
+        $mail_data=q("SELECT * FROM ad_service_email");
+        $m_username = $mail_data[0]['email_sender'];
+        $m_pass = $mail_data[0]['password'];
+
         try {
+
             //Server settings
-	    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-	    $mail->isSMTP();                                            // Send using SMTP
-	    $mail->Host       = 'smtp.gmail.com';                 // Set the SMTP server to send through
-	    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-	    $mail->Username   = 'hectopiaes@gmail.com';                     // SMTP username
-	    $mail->Password   = 'pbtr dqlf gwuu lple'; // !!! COLOCAR LA CONTRASEÑA AQUÍ
-        $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-        
-	    $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-	    $mail->SMTPDebug = 0;
-        $mail->CharSet = 'UTF-8';
-	    //Recipients
-	    $mail->setFrom('hectopiaes@gmail.com', 'EOS Delivery');
-	    $mail->addAddress($email);
-	    
-	    $mail->isHTML(true);
-	    $mail->Subject = $titulo;
-	    $mail->Body    = $body;
-	    
-	    $mail->send();
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                 // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = $m_username;
+            $mail->Password   = $m_pass; // !!! COLOCAR LA CONTRASEÑA AQUÍ
+            $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            
+            $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->SMTPDebug = 0;
+            $mail->CharSet = 'UTF-8';
+            //Recipients
+            $mail->setFrom($m_username, 'EOS Delivery');
+            $mail->addAddress($email);
+            
+            $mail->isHTML(true);
+            $mail->Subject = $titulo;
+            $mail->Body    = $body;
+            
+            $mail->send();
             return true;
         } catch (Exception $e) {
             return false;

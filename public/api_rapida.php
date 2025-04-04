@@ -6,6 +6,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+use App\AdServiceEmail;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
@@ -31,7 +33,9 @@ if($_GET['evento']=='' && $_POST['evento']!=''){
 }
 switch($evento) {
     case 'contactweb':
+
         $message = array("name"=>$_POST['name'],"email"=>$_POST['email'],"message"=>$_POST['message']);
+        // SE VA A ENVIAR EL CORREO A LA COMPAñIA
         enviarCorreo("hectopiarsinr@gmail.com",$_POST['subject'],plantillaContacto($message));
         break;
     case 'web_no_login':
@@ -1963,21 +1967,27 @@ function enviarCorreo($email,$titulo,$body){
 
 	$mail = new PHPMailer(true);
 
+    $mail_data=q("SELECT * FROM ad_service_email");
+
+    $m_username = $mail_data[0]['email_sender'];
+    $m_pass = $mail_data[0]['password'];
+
 	try {
+
 	    //Server settings
 	    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
 	    $mail->isSMTP();                                            // Send using SMTP
 	    $mail->Host       = 'smtp.gmail.com';                 // Set the SMTP server to send through
 	    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-	    $mail->Username   = 'hectopiaes@gmail.com';
-	    $mail->Password   = 'pbtr dqlf gwuu lple'; // !!! COLOCAR LA CONTRASEÑA AQUÍ
+	    $mail->Username   = $m_username;
+	    $mail->Password   = $m_pass; // !!! COLOCAR LA CONTRASEÑA AQUÍ
         $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         
 	    $mail->Port       = 465;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 	    $mail->SMTPDebug = 0;
         $mail->CharSet = 'UTF-8';
 	    //Recipients
-	    $mail->setFrom('hectopiaes@gmail.com', 'EOS Delivery');
+	    $mail->setFrom($m_username, 'EOS Delivery');
 	    $mail->addAddress($email);
 	    
 	    $mail->isHTML(true);

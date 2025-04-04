@@ -5,6 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdClientId extends Model {
-    protected $table = 'ad_client_id'; 
-};
+class AdServiceEmail extends Model {
+    protected $table = 'ad_service_email'; 
+}

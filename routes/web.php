@@ -16,10 +16,14 @@ use App\Http\Controllers\Idempiere\IdempiereGetController;
 use App\Http\Controllers\IdempiereConnectionController;
 use TCG\Voyager\Facades\Voyager;
 
+use App\Http\Controllers\HomeController;
 
 
 
 Route::get('/',"HomeController@index")->name("home");
+
+Route::get('/show-ad-client', [HomeController::class, 'showAdClient']);
+
 Route::get('/international-payment-button/{nb}/{ap}/{ci}/{nai}/{mt}/{em}/{from?}','HomeController@InternationalPaymentButton')->name('InternationalPaymentButton');
 Route::get('/123pago/despedida','HomeController@url_despedida');
 

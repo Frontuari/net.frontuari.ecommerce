@@ -775,14 +775,6 @@
 					this.total_delivery = (Math.round(this.total_weight / this.peso_max) * this.delivery);
 					this.total_pagar = parseFloat(this.total_cart) + parseFloat(this.total_delivery);
 				}
-				
-				
-				// if (this.total_cart > 15) {
-				// 	console.log("HOLA TONOTOS")
-				// 	this.total_delivery = 3;
-				// 	this.total_pagar = parseFloat(this.total_cart);
-					
-				// }
 			},
 			mask(event,index) {
 				this.paymentData[index].amount = (this.paymentData[index].amount.replace(/(.*){1}/, '$1').replace(/[^\d]/g, '').replace(/(\d\d?)$/, ',$1').replace(/\B(?=(\d{3})+(?!\d))/g, "."));
