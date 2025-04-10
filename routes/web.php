@@ -23,6 +23,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/',"HomeController@index")->name("home");
 
 Route::get('/show-ad-client', [HomeController::class, 'showAdClient']);
+Route::get('/ad-client-id', [AdClientController::class, 'index']);
+Route::get('/api/call-name', [App\Http\Controllers\ApiRapidaController::class, 'callName']);
 
 Route::get('/international-payment-button/{nb}/{ap}/{ci}/{nai}/{mt}/{em}/{from?}','HomeController@InternationalPaymentButton')->name('InternationalPaymentButton');
 Route::get('/123pago/despedida','HomeController@url_despedida');

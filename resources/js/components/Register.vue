@@ -63,6 +63,7 @@
     </div>
 </template>
 <script>
+    import { callName } from './utils/CallbackApiRapida';
     export default{
         data() {
             return {
@@ -83,7 +84,9 @@
             userlogged: Object
         },
         methods: {
-            saveData() {
+
+            async saveData() {
+                const nombre = await callName('name');
                 if( this.User.rif.trim() != '' && this.User.name.trim() != '' && this.User.password.trim() != '' && this.User.c_password.trim() != '' && this.User.email.trim() != '' && this.User.sex.trim() != '') {
 
                     if(this.User.password == this.User.c_password){
@@ -97,9 +100,10 @@
                             formData.append("tlf",this.User.tlf);
                             formData.append("sex",this.User.sex);
                             formData.append("from","web");
+                            
 
                                 axios.post(URLHOME+'api_rapida.php?evento=registrarUsuario', formData).then( (data) => {
-                                    Swal.fire("EOS Delivery","Usuario Registrado Exitosamente","success").then( result => {
+                                    Swal.fire(nombre,"Usuario Registrado Exitosamente","success").then( result => {
                                         location.href="/";    
                                     });
                                 }).catch(err => {

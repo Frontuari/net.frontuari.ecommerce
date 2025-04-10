@@ -539,6 +539,7 @@
 </template>
 
 <script>
+	import { callName } from './utils/CallbackApiRapida';
 	import ModalOrder from './ModalOrder.vue';
 
 	export default {
@@ -587,6 +588,7 @@
 			delivery_max_price: Number
 		},
 		methods:{
+			
 
 					handleInputChange(product_cart, product_id, index) {
 			// Obtener el valor actual del campo de entrada como un número
@@ -894,7 +896,10 @@
 
 			}else{
 				this.datauser.id = 'undefined';
-				Swal.fire("EOS Delivery","Debe iniciar sesión para confirmar su carrito de compras","info");
+				(async () => {
+					const nombre = await callName('name');
+					Swal.fire(nombre,"Debe iniciar sesión para confirmar su carrito de compras","info");
+				})();
 			}
 
 

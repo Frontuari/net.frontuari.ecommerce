@@ -70,7 +70,7 @@ function procesarPago() {
 	}
 	if (coins_id == 2) { //Bolivares
 		if(amount > aPagarUsd) {
-			Swal.fire("EOS Delivery","El monto a pagar en Bolivares debe ser exacto","warning");
+			Swal.fire("Pagos en Línea","El monto a pagar en Bolivares debe ser exacto","warning");
 			throw new Error("El monto a pagar debe ser exacto");
 		}
 		amount = amount * rate;
@@ -461,7 +461,7 @@ function procesar(data, evento) {
 							Compra Completada
 						</li>
 					</ul>`
-						div_completo_metodo_pago.innerHTML = '<div class="row mt-4"><div class="col-md-12 center h3 text-center" style="color:#203876"><br><br><br><br>Desde EOS Delivery agradecemos su preferencia, nuestra prioridad es ofrecer el mejor servicio siempre. ¡Fácil, Rápido y Seguro!</div></div>';
+						div_completo_metodo_pago.innerHTML = '<div class="row mt-4"><div class="col-md-12 center h3 text-center" style="color:#203876"><br><br><br><br>Agradecemos su preferencia, nuestra prioridad es ofrecer el mejor servicio siempre. ¡Gracias por su compra!</div></div>';
 					}
 
 				}
@@ -648,7 +648,7 @@ function procesar(data, evento) {
 					get('listarMetodosDePago');
 				}
 			} else {
-				Swal.fire("EOS Delivery", data.msj_general);
+				Swal.fire("Pagos en Línea", data.msj_general);
 			}
 
 			break;
@@ -868,7 +868,7 @@ function procesarOrden() {
 			});
 		}
 	} else {
-		Swal.fire("EOS Delivery", "No hay direcciones registradas", "error");
+		Swal.fire("Pagos en Línea", "No hay direcciones registradas", "error");
 	}
 
 }
@@ -1158,7 +1158,7 @@ function formato_moneda(value) {
 function getPaymentData(paymentData) {
 	paymentDataip = paymentData;
 	if (!paymentDataip) {
-		Swal.fire("EOS Delivery", "Su pago no se ha podido procesar, intente nuevamente!!", "error");
+		Swal.fire("Pagos en Línea", "Su pago no se ha podido procesar, intente nuevamente!!", "error");
 		document.getElementById("div_btn_guardar_pago").innerHTML = "<div class='loaderb'><div>";
 		location.reload();
 	}

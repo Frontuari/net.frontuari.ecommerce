@@ -10,9 +10,6 @@ class AdClientController extends Controller
 {
     function index() {
         $AdC = AdClientId::where("id",1)->first();
-        // // $Transporte = Transporte::where("id",2)->first();
-        
-        //dd($AdC);
 
         return view("cart",[
             $adClient = AdClientId::where("id", 1)->first()

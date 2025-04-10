@@ -320,11 +320,15 @@ switch($evento) {
         $arr=q("SELECT SUM(amount) ingreso,fecha FROM (SELECT amount,created_at::date AS fecha   FROM det_bank_orders where (created_at between '$fecha_inicio' and '$fecha_fin') AND (status='aprobado')) t GROUP BY fecha ORDER BY fecha");   
 
     break;
+    case 'callName':
+        callName();
     default:
     
     salidaNueva(null,"Intente de nuevo.",false);
     // salida($row,"Disculpe debe enviar un evento".$_POST['evento']."-".$_GET['evento'],false);
 }
+
+
 function actualizarFotoPerfil(){
     $users_id=$_SESSION['usuario']['id'];
     //wh_log("CARGANDO IMAGEN");
@@ -385,6 +389,15 @@ function listarCombos($tipo_salida=false){
     }
 }
 
+function callName() {
+    $client_id = q("SELECT * FROM ad_client_id");
+   
+    if (is_array($client_id)) {
+        header('Content-Type: application/json');
+        echo json_encode($client_id);
+        //? exit;
+    }
+}
 
 function best_sql_listarFavoritos($tipo_salida){
     $users_id=$_SESSION['usuario']['id'];
@@ -441,9 +454,11 @@ json_build_object('f',f.id)) as json_favorite,p.description_short,p.qty_avaliabl
 function d($row){
     return gzcompress(json_encode($row), 9);
 }
+
 function e($row){
     return base64_encode(gzcompress(rawurlencode(json_encode($row)),9));
 }
+
 function obtenerTodo(){
     // Configuración de la conexión a la base de datos (reemplaza con tus propios valores)
     $dsn = 'pgsql:host=' . env('DB_HOST') . ';port=' . env('DB_PORT') . ';dbname=' . env('DB_DATABASE');

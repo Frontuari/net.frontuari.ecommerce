@@ -836,7 +836,8 @@ import ModalProducto from './ModalProducto.vue';
 import ModalCalificacion from './ModalCalificacion.vue';
 import DireccionHabitacion from './DireccionHabitacion.vue';
 import DireccionUser from './DireccionUser.vue';
-import { error } from 'jquery';
+// ? import { error } from 'jquery';
+import { callName } from './utils/CallbackApiRapida';
 export default {
 	data() {
 		return {
@@ -1167,8 +1168,9 @@ export default {
 					const formData = new FormData();
 					formData.append("email",user_data.email);
 					formData.append("password",user_data.newpassword);
+					const nombre = await callName('name');
 					axios.post(URLHOME+'api_rapida.php?evento=changePassword',formData).then( (data) => {
-							Swal.fire("EosCommerce","¡Clave Cambiada con Exito!","success").then( result => {
+							Swal.fire(nombre,"¡Clave Cambiada con Exito!","success").then( result => {
 								document.location.href = '/';
 							});
 						}).catch(error => {

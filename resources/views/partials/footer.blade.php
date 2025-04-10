@@ -5,9 +5,8 @@
 					<div class="footer-block" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
 						<img src="/assets/img/Logo.png" alt="Bio Mercados">
 						
-						<p><span>Teléfono:</span> Número de teléfono</p>
-						<p><span>Correo:</span> contacto@sitio.com.ve</p>
-						<!-- TODO: Arreglar info de contacto -->
+						<p><span>Teléfono: </span><span id="phone_number"></span></p>
+						<p><span>Correo: </span><span id="email_address"></span></p>
 					</div>
 				</div>
 				<div class="col-lg-2" style="display: flex; flex-direction: column; align-items: center;">
@@ -69,7 +68,7 @@
 			<div class="container-fluid">
 				<div class="row">
 				<div class="col-md-8">
-					<p>EOS © <?php echo date('Y'); ?> Todos los Derechos Reservados <br/>J-XXXXXXXX-Z</p>
+					<p><span id="store_name"></span> © <?php echo date('Y'); ?> Todos los Derechos Reservados <br/><span id="store_rif"></span></p>
 				</div>
 					<div class="col-md-4">
 						<ul class="social-icons">							
@@ -101,12 +100,30 @@
 	<div class="over toggle-menu"></div>
 </main>
 
+	{{-- * JS PRINCIPAL !!!!!!! --}}
 	<script id="aaa" type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/bio-forms.js') }}?ver=1.0.0"></script>
 	@yield('js')
 	<script type="text/javascript" src="js/carrito.js?ver={{ strtotime(date('Y-m-d h:m:s')) }}"></script>
 	
 	<script>
+
+    fetch("/api/call-name")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Resultado de callName():", data);
+            const info = data[0];
+
+			document.getElementById("store_name").textContent = info.name ?? 'No disponible';
+			document.getElementById("phone_number").textContent = info.phone ?? 'No disponible';
+            document.getElementById("email_address").textContent = info.email ?? 'No disponible';
+            document.getElementById("store_rif").textContent = info.rif ?? 'No disponible';
+
+        })
+        .catch(error => {
+            console.error("Error al llamar a callName:", error);
+        });
+
 
 	//******************************************************************
 	// Determinar valores de fecha y hora para la recojer el pedido
@@ -247,9 +264,9 @@
 
 			
 			$(window).on('load',function(){
-		        
+		    
 
-		        width_window = parseInt($(window).width());
+		    	width_window = parseInt($(window).width());
 		        if(width_window<=990)
 		        {
 		        	$(".container-movil").removeClass("container-fluid").addClass("container");
@@ -370,9 +387,9 @@
 			axios.post(URLSERVER+"api/subscribe",formdata).then( (resp) => {
 				console.log("resp::> ",resp.data);
 				if(resp.data.code == "409"){
-					Swal.fire("Bio en línea","Su correo ya existe en nuestros registros","warning");
+					Swal.fire("Error!","Su correo ya existe en nuestros registros","warning");
 				}else {
-					Swal.fire("Bio en línea","Suscripción realizada con éxito","success");
+					Swal.fire("Éxito!","Suscripción realizada exitosamente","success");
 				}
 				
 			});
