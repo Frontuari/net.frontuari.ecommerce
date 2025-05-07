@@ -3,7 +3,7 @@
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="footer-block" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
-						<img src="/assets/img/Logo.png" alt="Bio Mercados">
+						<img id="logo_img" src="" alt="logo">
 						
 						<p><span>Teléfono: </span><span id="phone_number"></span></p>
 						<p><span>Correo: </span><span id="email_address"></span></p>
@@ -108,21 +108,40 @@
 	
 	<script>
 
-    fetch("/api/call-name")
-        .then(response => response.json())
-        .then(data => {
-            console.log("Resultado de callName():", data);
-            const info = data[0];
+	fetch("/api/call-name")
+		.then(response => response.json())
+		.then(data => {
+			console.log("Resultado de callName():", data);
+			const info = data[0];
 
+			if (data.length === 0){
+
+			document.getElementById("store_name").textContent = 'No disponible';
+			document.getElementById("phone_number").textContent =  'No disponible';
+			document.getElementById("email_address").textContent =  'No disponible';
+			document.getElementById("store_rif").textContent =  'No disponible';
+
+			document.getElementById("logo_img").src = 'resources/assets/loading3.gif';
+
+			}
+			else{
+				
 			document.getElementById("store_name").textContent = info.name ?? 'No disponible';
 			document.getElementById("phone_number").textContent = info.phone ?? 'No disponible';
-            document.getElementById("email_address").textContent = info.email ?? 'No disponible';
-            document.getElementById("store_rif").textContent = info.rif ?? 'No disponible';
+			document.getElementById("email_address").textContent = info.email ?? 'No disponible';
+			document.getElementById("store_rif").textContent = info.rif ?? 'No disponible';
 
-        })
-        .catch(error => {
-            console.error("Error al llamar a callName:", error);
-        });
+			const logoPath = info.logo ? 'storage/' + info.logo : null;
+			document.getElementById("logo_img").src = logoPath ?? 'resources/assets/loading3.gif';
+
+			}
+
+
+		})
+		.catch(error => {
+			console.error("Error al llamar a callName:", error);
+		});
+
 
 
 	//******************************************************************

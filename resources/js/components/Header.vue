@@ -21,7 +21,13 @@
 						</button>
 					</div>
 					<div id="brand-header" class="col-lg-2 col-4">
-						<a  href="/" class="navbar-brand"><img  src="/img/Logo.png" alt="Bio Mercados" style="width: 80%; height: auto"></a>
+						<a href="/" class="navbar-brand">
+							<img
+								:src="logoUrl"
+								:style="isDefaultLogo ? { width: '60px', height: 'auto' } : { width: '80%', height: 'auto' }"
+								alt="LOGO"
+								/>
+						</a>
 					</div>
 
 					<div id="search-header" class="col-lg-6 col-md-14">
@@ -171,6 +177,8 @@
 export default {
     data() {
         return {
+			logoUrl: 'img/loading3.gif', 
+			defaultLogoPath: 'img/loading3.gif',
 			cant_cart: 0,
 			cant_favorite: 0,
 			saldo: 0,
@@ -187,6 +195,11 @@ export default {
 			},
 			logged: false
         }
+	},
+	computed: {
+		isDefaultLogo() {
+		return this.logoUrl === this.defaultLogoPath;
+		}
 	},
 	props: {
 		userlogged: Object,
@@ -312,7 +325,22 @@ export default {
             this.cant_favorite = data;
         });
     },
+	
     mounted() {
+
+		this.logoUrl = 'img/loading3.gif'; // valor inicial de respaldo
+		fetch("/api/call-name")
+			.then(response => response.json())
+			.then(data => {
+			if (data.length > 0 && data[0].logo) {
+				this.logoUrl = 'storage/' + data[0].logo;
+			}
+			})
+			
+			.catch(error => {
+			console.error("Error al llamar a callName:", error);
+			});
+
 		console.log("esto es la cantidad de cant_cart", this.cant_cart);
 		this.getCategories();
 		this.getFavorites();
@@ -328,3 +356,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.small-logo {
+  max-width: 100px; /* adjust size as needed */
+}
+</style>
