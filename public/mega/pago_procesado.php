@@ -8,7 +8,7 @@ use App\AdServiceEmail;
 
 $maildata = AdServiceEmail::where("id",1)->first();
 echo $maildata;
-dd($maildata);
+//dd($maildata);
 
 $a=extraer_datos_db();
 $con=conectar_db($a['host'],$a['database'],$a['user'],$a['password'],$a['port']);

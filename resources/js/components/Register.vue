@@ -86,7 +86,6 @@
         methods: {
 
             async saveData() {
-                const nombre = await callName('name');
                 if( this.User.rif.trim() != '' && this.User.name.trim() != '' && this.User.password.trim() != '' && this.User.c_password.trim() != '' && this.User.email.trim() != '' && this.User.sex.trim() != '') {
 
                     if(this.User.password == this.User.c_password){
@@ -103,7 +102,7 @@
                             
 
                                 axios.post(URLHOME+'api_rapida.php?evento=registrarUsuario', formData).then( (data) => {
-                                    Swal.fire(nombre,"Usuario Registrado Exitosamente","success").then( result => {
+                                    Swal.fire("Éxito","Usuario Registrado Exitosamente","success").then( result => {
                                         location.href="/";    
                                     });
                                 }).catch(err => {

@@ -4075,14 +4075,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     saveData: function saveData() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var nombre, formData;
+        var formData;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
-              return Object(_utils_CallbackApiRapida__WEBPACK_IMPORTED_MODULE_0__["callName"])('name');
-            case 2:
-              nombre = _context.sent;
               if (_this.User.rif.trim() != '' && _this.User.name.trim() != '' && _this.User.password.trim() != '' && _this.User.c_password.trim() != '' && _this.User.email.trim() != '' && _this.User.sex.trim() != '') {
                 if (_this.User.password == _this.User.c_password) {
                   if (_this.User.password.length >= 8) {
@@ -4096,7 +4092,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     formData.append("sex", _this.User.sex);
                     formData.append("from", "web");
                     axios.post(URLHOME + 'api_rapida.php?evento=registrarUsuario', formData).then(function (data) {
-                      Swal.fire(nombre, "Usuario Registrado Exitosamente", "success").then(function (result) {
+                      Swal.fire("Éxito", "Usuario Registrado Exitosamente", "success").then(function (result) {
                         location.href = "/";
                       });
                     })["catch"](function (err) {
@@ -4129,7 +4125,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   text: 'Todos los campos son obligatorios'
                 });
               }
-            case 4:
+            case 1:
             case "end":
               return _context.stop();
           }
