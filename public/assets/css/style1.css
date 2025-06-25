@@ -538,10 +538,12 @@
 	.navbar .navbar-nav{
 		justify-content: space-between;
 		width: 100%;
+		background-color: #203876;
 	}
 	.navbar .navbar-nav .nav-item:not(.dropdown),
 	.navbar .navbar-nav #nav-categories{
 		display: none;
+		background-color: #203876;
 	}
 	.navbar .navbar-nav #nav-all-categories{
 		display: block;
@@ -574,6 +576,7 @@
 		.navbar .navbar-nav .nav-item:not(.dropdown),
 		.navbar .navbar-nav #nav-categories{
 			display: block;
+			background-color: #203876;
 		}
 		.navbar .navbar-nav #nav-all-categories{
 			display: none;

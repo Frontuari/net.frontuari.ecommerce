@@ -1151,11 +1151,12 @@ header .dropdown-menu a:focus {
     background-position: center bottom;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 300px;
+    max-height: 185px;
+
 }
 
 .category-box-double .category-img {
-    height: 185px;
+    max-height: 185px;
 }
 
 .category-box-double .category-img:not(:last-child) {
@@ -3727,11 +3728,6 @@ input#bio-search{
     background:#EBEBEB !important; 
     border-radius:20px !important; 
     padding-left:20px !important;
-}
-
-div#brand-header img{
-    width: 100px;
-    height: 100px;
 }
 
 button.btn-search{

@@ -31,6 +31,7 @@
 							<img src="assets/img/filtro-bio-mercados.svg">Filtrar por <img class="rotate-img" src="assets/img/botón-circular-bio.svg">
 						</h3>
 						<div id="filters-content" class="collapse">
+							<!-- * FILTRO DE PRECIOS -->
 							<div class="filter filter-price">
 								<h4>Precio</h4>
 			

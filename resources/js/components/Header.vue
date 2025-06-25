@@ -24,7 +24,7 @@
 						<a href="/" class="navbar-brand">
 							<img
 								:src="logoUrl"
-								:style="isDefaultLogo ? { width: '60px', height: 'auto' } : { width: '80%', height: 'auto' }"
+								:style="{ 'logo-loading': isDefaultLogo, 'logo-loaded': !isDefaultLogo }"
 								alt="LOGO"
 								/>
 						</a>
@@ -115,7 +115,7 @@
 				</div>
 			</div>
 		</div>
-		<nav class="navbar navbar-expand-lg navbar-light color-white navbar-custom" style=" width: 80%; background-color: white; border-bottom: 1px solid #ccc; padding: 0;">
+		<nav class="navbar navbar-expand-lg navbar-light color-white navbar-custom" style=" width: 100%; background-color: white; border-bottom: 1px solid #ccc; padding: 0;">
 			<div class="container-fluid" style=" width: 100%; position: relative; padding: 0px 0;">
 				<div id="mainNavbar">
 					<div id="top-info" class="w-100 align-items-center">
@@ -126,12 +126,12 @@
 						</div>
 					</div>
 					<div>
-						<ul class="navbar-nav" style="display: flex;align-items: left; padding-right: 15px;">
+						<ul class="navbar-nav" style="display: flex;align-items: right; padding-right: 15px; background-color: #203876">
 							<li id="nav-categories" class="nav-item dropdown">
 							<a class="nav-link" href="#" id="navbarCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div style="width: 100%; display: flex; align-items: left; justify-content: center; padding-left: 100px; ">
-								<img src="/assets/img/Menu.png" style="width: 55px; height: 35px; padding-right: 10px;" alt="Menu">
-								<span style="color: black; font-weight: 800; font-size: 16px; font-family: Arial, Helvetica, sans-serif; padding-left: 15px; padding-right: 15px;" >Todas las categorías</span>
+								<div class="men-butt-div">
+								<img src="/assets/img/Menu.png" class="menu-image" alt="Menu">
+								<span class="drop-cat-text" >Todas las categorías</span>
 								<hr  style="width: 2px; height: 35px; background-color: black; border: none; margin: 0px 6px; opacity: 0.3;" >
 							</div>
 							</a>
@@ -143,7 +143,7 @@
 						
 						<li class="nav-item" v-for="cat in categories.slice(0,5)" :key="cat.id">
 							<a class="nav-link" :href="'/catalog?cat=' + cat.id" style="display: flex; align-items: center;">
-							<span style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; color: black; display: flex; align-items: center;">
+							<span class="bar-cat-text">
 								{{ cat.name + " " }}
 								<img src="/assets/img/Abajo.png" alt="icon" style="margin-left: 5px;">
 							</span>

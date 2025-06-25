@@ -8806,12 +8806,9 @@ var render = function render() {
       href: "/"
     }
   }, [_c("img", {
-    style: _vm.isDefaultLogo ? {
-      width: "60px",
-      height: "auto"
-    } : {
-      width: "80%",
-      height: "auto"
+    style: {
+      "logo-loading": _vm.isDefaultLogo,
+      "logo-loaded": !_vm.isDefaultLogo
     },
     attrs: {
       src: _vm.logoUrl,
@@ -9105,7 +9102,7 @@ var render = function render() {
   }, [_vm._v(_vm._s(_vm.cant_favorite))])])]) : _vm._e()])])])])]), _vm._v(" "), _c("nav", {
     staticClass: "navbar navbar-expand-lg navbar-light color-white navbar-custom",
     staticStyle: {
-      width: "80%",
+      width: "100%",
       "background-color": "white",
       "border-bottom": "1px solid #ccc",
       padding: "0"
@@ -9125,8 +9122,9 @@ var render = function render() {
     staticClass: "navbar-nav",
     staticStyle: {
       display: "flex",
-      "align-items": "left",
-      "padding-right": "15px"
+      "align-items": "right",
+      "padding-right": "15px",
+      "background-color": "#203876"
     }
   }, [_c("li", {
     staticClass: "nav-item dropdown",
@@ -9166,13 +9164,7 @@ var render = function render() {
         href: "/catalog?cat=" + cat.id
       }
     }, [_c("span", {
-      staticStyle: {
-        "font-family": "Arial, Helvetica, sans-serif",
-        "font-weight": "900",
-        color: "black",
-        display: "flex",
-        "align-items": "center"
-      }
+      staticClass: "bar-cat-text"
     }, [_vm._v("\n\t\t\t\t\t\t\t\t" + _vm._s(cat.name + " ") + "\n\t\t\t\t\t\t\t\t"), _c("img", {
       staticStyle: {
         "margin-left": "5px"
@@ -9313,32 +9305,15 @@ var staticRenderFns = [function () {
       "aria-expanded": "false"
     }
   }, [_c("div", {
-    staticStyle: {
-      width: "100%",
-      display: "flex",
-      "align-items": "left",
-      "justify-content": "center",
-      "padding-left": "100px"
-    }
+    staticClass: "men-butt-div"
   }, [_c("img", {
-    staticStyle: {
-      width: "55px",
-      height: "35px",
-      "padding-right": "10px"
-    },
+    staticClass: "menu-image",
     attrs: {
       src: "/assets/img/Menu.png",
       alt: "Menu"
     }
   }), _vm._v(" "), _c("span", {
-    staticStyle: {
-      color: "black",
-      "font-weight": "800",
-      "font-size": "16px",
-      "font-family": "Arial, Helvetica, sans-serif",
-      "padding-left": "15px",
-      "padding-right": "15px"
-    }
+    staticClass: "drop-cat-text"
   }, [_vm._v("Todas las categorías")]), _vm._v(" "), _c("hr", {
     staticStyle: {
       width: "2px",

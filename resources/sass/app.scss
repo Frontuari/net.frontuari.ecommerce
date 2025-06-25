@@ -8,6 +8,63 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~animate.css/animate.min.css';
 @import '~ion-rangeslider/css/ion.rangeSlider.min.css';
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// // @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// ! comentado porque causa errores al compilar ^^^^^^^^
 @import '~select2/src/scss/core';
-@import '~daterangepicker/daterangepicker.css';
+@import '~daterangepicker/daterangepicker.css'; 
+
+// * HAGAN LOS CAMBIOS Y AÑADIDURAS AL CSS EN ESTE ARCHIVO, SI LO HACEN DIRECTAMENTE
+
+// -= HEADER.VUE =-
+
+.drop-cat-text{
+    // dropdown category text - para las categorías en el menú desplegable
+    color: white; 
+    font-weight: 800; 
+    font-size: 16px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    padding-left: 15px; 
+    padding-right: 15px;
+}
+
+.men-butt-div{ 
+    // menu button div !!!
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    padding-left: 100px;
+}
+
+.menu-image{
+    width: 55px;
+    height: 35px; 
+    padding-right: 10px;
+}
+
+.bar-cat-text{
+    // bar category text - para las categorías que se muestran en la barra principal
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo-loaded{
+    width: 100%;
+    //max-height: auto;
+    //padding-bottom: 90px;
+}
+
+.logo-loading{
+    width: 100%;
+    max-height: auto;
+}
+
+// guh
+div#brand-header img{
+	max-width: 500px;
+	max-height: 100px;
+    padding-bottom: 1rem;
+}
